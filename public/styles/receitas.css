@@ -37,8 +37,8 @@ header .menu a{
 /* === MODAL === */
 .modal {
     background-color: white; /* modal branco de apresentação */
-    width: 50%;
-    height: 50%;
+    width: 660px;
+    height: 413px;
     margin: 25vh auto;
     position: relative;
     border-radius: 16px;
@@ -71,8 +71,8 @@ header .menu a{
     border-radius: 15px;
     width: 600px;
     height: 200px;
-    margin: 30px;
-    display: flex;
+    margin: 30px 30px 5px;
+    
 }
 
 .modal-content {
@@ -88,6 +88,8 @@ header .menu a{
     color: #111111;
     font-size: 24px;
     line-height: 28px;
+    
+    
 }
 .modal-content span {
     font-size: 18px;
@@ -98,11 +100,18 @@ header .menu a{
 .close-modal {
     margin-top: 8vh;
 }
-.close-modal a {
+.close-modal i {
     font-size: 16px;
     color: #999;
     line-height: 19px;
     cursor: pointer;
+    
+    position: relative;
+    
+    top: 304px;
+    right: 281px;
+    
+    
 }
   
 
