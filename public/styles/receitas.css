@@ -34,8 +34,77 @@ header .menu a{
     margin-bottom: 30px;
 }
 
+/* === MODAL === */
+.modal {
+    background-color: white; /* modal branco de apresentação */
+    width: 50%;
+    height: 50%;
+    margin: 25vh auto;
+    position: relative;
+    border-radius: 16px;
+}
+.modal-overlay { /* tela escurecida */
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.close-modal {
+    color: black;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
 
+/* === MODAL.ACTIVE === */
 
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-image img {
+    border-radius: 15px;
+    width: 600px;
+    height: 200px;
+    margin: 30px;
+    display: flex;
+}
+
+.modal-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.modal-content h3 {
+    text-align: center;
+    width: 332px;
+    height: 28px;
+    color: #111111;
+    font-size: 24px;
+    line-height: 28px;
+}
+.modal-content span {
+    font-size: 18px;
+    color: #777777;
+    line-height: 21px;
+    margin-top: 5px;
+}
+.close-modal {
+    margin-top: 8vh;
+}
+.close-modal a {
+    font-size: 16px;
+    color: #999;
+    line-height: 19px;
+    cursor: pointer;
+}
+  
 
 /*=== Footer ===*/
 footer {
