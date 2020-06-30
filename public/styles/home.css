@@ -12,6 +12,13 @@ header .menu a{
     font-size: 16px;
     margin-right: 30px;
 }
+header .menu a:hover {
+    color: rgb(35, 104, 231);
+}
+.logo img {
+    position: absolute;
+    left: 210px;
+}
 
 /* === conteudo banner ===*/
 

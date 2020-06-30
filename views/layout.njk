@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        {% block head %}       
+        {% endblock %}
+        <meta charset="UTF8">
+    </head>
+<body>
+    <header>
+        <div class="content">
+            <div class="logo">  <!-- FICAR DE OLHO NESSA CLASSE PQ PODE DAR PROBLEMAS NA LARGURADA PAGINA--> 
+                <img src="/images/logo.png" alt="logo FoodFy"> <!--LOGO -->
+            </div>
+            <div class="menu">
+                <a href="/">Inicio</a>
+                <a href="/sobre">Sobre</a>
+                <a href="/receitas">Receitas</a>
+            </div>
+        </div> 
+    </header>
+
+    {% block content %} {% endblock %}
+
+    <footer>
+        <p class="copy">Todos os direitos reservados, receitas Foodfy.</p>
+    </footer>
+
+</body>
+</html>

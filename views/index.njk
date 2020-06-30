@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            <link rel="stylesheet" href="/styles/style.css">
+            <link rel="stylesheet" href="/styles/home.css">
+            <title>Foodfy</title>
+        {% endblock %}
+    </head>
+
+{% block content %}
+    <div class="content">
+        <div class="banner">
+            <div class="banner__texto">
+                <h1>{{ index.title }}</h1>
+                <p>{{ index.description }}</p>
+            </div>
+            <img src="{{ index.image_chef }}" alt="image chef">
+        </div>
+
+        <div class="container">
+            <h2>Mais acessadas</h2>
+
+            <div class="cards">
+                {% for receita in index.receitas %}
+                    <div class="card" id="{{ item.image }}" name="{{ item.title }}" chef="por {{item.author }}">
+                        <img src="{{ receita.image }}" alt="">
+                        <h3>{{ receita.title }}</h3>
+                        <span>por {{receita.author}}</span>                        
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+    

@@ -1,0 +1,28 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>{{ item.title }}</title>
+    <link rel="stylesheet" href="/styles/recipes.css">
+    <link rel="stylesheet" href="/styles/style.css">
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="card">
+            <iframe src="/recipes/{{item.id}} " frameborder="0"></iframe>
+        </div>
+        <img src="{{ item.image }}" alt="{{ item.title }}">
+        <div class="card__title">
+            <h1>{{item.title}}</h1>
+            <p>{{item.author}}</p>
+        </div>
+        <div class="card__content">
+            <p>{{ item.ingredients }}</p>
+            <p>{{ item.preparation }}</p>
+            <p>{{ item.information }}</p>
+        </div>
+
+    </section>
+
+{% endblock %}
