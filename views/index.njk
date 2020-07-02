@@ -26,7 +26,7 @@
 
             <div class="cards">
                 {% for receita in index.receitas %}
-                    <div class="card" id="{{ item.image }}" name="{{ item.title }}" chef="por {{item.author }}">
+                    <div class="card">
                         <img src="{{ receita.image }}" alt="">
                         <h3>{{ receita.title }}</h3>
                         <span>por {{receita.author}}</span>                        

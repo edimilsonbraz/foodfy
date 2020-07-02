@@ -1,5 +1,6 @@
 module.exports = [
     {
+      id: '0',
       image: '/images/burger.png',
       title: 'Triplo bacon burger',
       author: 'Jorge Relato',
@@ -23,6 +24,7 @@ module.exports = [
       information: "Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! \n\n Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface."
     },
     {
+      id: '1',
       image: '/images/pizza.png',
       title: 'Pizza 4 estações',
       author: 'Fabiana Melo',
@@ -50,6 +52,7 @@ module.exports = [
       information: 'Pizza de liquidificador é uma receita deliciosa e supersimples de preparar. Feita toda no liquidificador, ela é bem prática para o dia a dia. Aqui no TudoGostoso você também encontra diversas delícias práticas feitas no liquidificador: massa de panqueca, torta de frango de liquidificador, pão de queijo de liquidificador, bolo de banana, bolo de chocolate e muito mais!'
     },
     {
+      id: '2',
       image: '/images/asinhas.png',
       title: 'Asinhas de frango ao barbecue',
       author: 'Vania Steroski',
@@ -67,6 +70,7 @@ module.exports = [
       information: ''
     },
     {
+      id: '3',
       image: '/images/lasanha.png',
       title: "Lasanha mac n' cheese",
       author: 'Juliano Vieira',
@@ -87,6 +91,7 @@ module.exports = [
       information: 'Recheie a lasanha com o que preferir.'
     },
     {
+      id: '4',
       image: '/images/espaguete.png',
       title: 'Espaguete ao alho',
       author: 'Júlia Kinoto',
@@ -111,6 +116,7 @@ module.exports = [
       information: 'Não lave o macarrão nem passe óleo ou gordura nele depois de escorrê-lo. Coloque direto na frigideira.'
     },
     {
+      id: '5',
       image: '/images/doce.png',
       title: 'Docinhos pão-do-céu',
       author: 'Ricardo Golvea',
@@ -130,6 +136,6 @@ module.exports = [
         'Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o',
         'açúcar de confeiteiro e corte em quadrados.'
       ],
-      information: ''
+      information: 'Coma com moderação!'
     }
   ];

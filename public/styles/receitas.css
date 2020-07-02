@@ -5,7 +5,7 @@ header {
 }
 
 header .menu {
-    margin-left: 122.4px;
+    text-align: left;
 }
 
 header .menu a{
@@ -17,7 +17,7 @@ header .menu a:hover {
 }
 .logo img {
     position: absolute;
-    left: 210px;
+    left: 205px;
 }
 
 /* === Cards ===*/

@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            <link rel="stylesheet" href="/styles/style.css">
+            <link rel="stylesheet" href="/styles/receitas.css">
+            <title>Receitas Foodfy</title>
+        {% endblock %}
+    </head>
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+                       
+            <div class="cards">
+                {% for recipe in recipes %}
+                    <div class="card" id="{{ recipe.id }}" name="{{ recipe.title }}" chef="por {{recipe.author }}">
+                        <img src="{{ recipe.image }}" alt="">
+                        <h3>{{ recipe.title }}</h3>
+                        <span>por {{recipe.author}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <script src="scripts.js"></script>
+
+{% endblock %}

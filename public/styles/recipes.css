@@ -1,20 +1,93 @@
-.recipe {
+/* .recipe {
 
+} */
+header {
+    padding: 38px 0px 36px;
+    display: flex;
+    align-items: center;
 }
-.card img {
+
+header .menu {
+    text-align: left;
+}
+
+header .menu a{
+    font-size: 16px;
+    margin-right: 30px;
+}
+header .menu a:hover {
+    color: rgb(35, 104, 231);
+}
+
+.logo img {
+    position: absolute;
+    left: 205px;
+} 
+.card__image img {
     border-radius: 15px;
     height: 280px;
     margin: 50px 0;
+    width: 940px;
+}
+.card__title h1 {
+    text-align: center;
 }
 .card__title p {
     font-size: 20px;
     color: #777777;
+    text-align: center;
 }
-.card__content {
+.recipe__content {
     font-size: 18px;
     color: #444444;
 }
-.logo img {
-    position: absolute;
-    left: 210px;
+.recipe__content h4 {
+    font-size: 24px;
+    color: #111111;
+    margin-top: 32px;
+    display: inline-block;
 }
+.recipe__content a {
+    font-size: 12px;
+    color: #444444;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(224, 224, 224);
+    border-radius: 5px;
+    display: inline-block;
+}
+/* .ingredient {
+    display: inline-block;
+} */
+.recipe__content ul li {
+    line-height: 28px;
+    color: #444444;
+    
+}
+.recipe__content ul {
+    margin-top: 20px;
+}
+.recipe__content p {
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
+}
+/*=== Footer ===*/
+footer {
+    background-color: #EEEEEE;
+    margin-top: 50px;
+    padding: 23px;
+    
+}
+footer p {
+    text-align: center;
+    color: #999999;
+    font-size: 14px;
+} 
+
+/* ============== SHOW-HIDE ============== */
+
+.hide {
+    display: none;
+    visibility: hidden;
+  }
