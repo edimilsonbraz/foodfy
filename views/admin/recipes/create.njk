@@ -1,0 +1,29 @@
+{% extends "layoutAdmin.njk" %}
+
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            <title>Foodfy</title>
+        {% endblock %}
+    </head>
+
+    
+{% block content %}
+
+    <form class="content" method="POST" action="/admin/recipes">
+        
+        <div class="container">
+            <h2>Criando Receitas</h2>
+
+            {% include 'admin/recipes/fields.njk' %}
+
+        </div>
+    </form>
+
+{% endblock %}
+    
+    
+
+   
