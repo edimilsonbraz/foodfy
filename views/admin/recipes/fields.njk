@@ -3,11 +3,31 @@
     <div class="cards">
         <div class="card">
 
+                <button type="submit">Salvar receita</button>
+
             <div class="item">
                 <div>Imagem da receita</div>
-                <div id="images_url">
-                        <div class="image_url">
-                            <input type="url" name="image_url" placeholder="http://">
+                <div id="images">
+                        <div class="image">
+                            <input type="text" name="image" placeholder="/image.png">
+                        </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Título da receita</div>
+                <div id="titles">
+                        <div class="title">
+                            <input type="text" name="title">
+                        </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Autor da receita</div>
+                <div id="authors">
+                        <div class="author">
+                            <input type="text" name="author">
                         </div>
                 </div>
             </div>
@@ -16,7 +36,7 @@
                 <div>Ingredientes</div>
                 <div id="ingredients">
                         <div class="ingredient">
-                            <input type="text" name="ingredients[]" value="" placeholder="Ingredient" />
+                            <input type="text" name="ingredients[]" value="" placeholder="Ingredient"/>
                         </div>
                     <button type="button" class="add-ingredient">Add Ingredient</button>
                 </div>
@@ -26,18 +46,18 @@
                 <div>Modo de preparo</div>
                 <div id="preparations">
                         <div class="preparation">
-                            <input type="text" name="preparation" value="">
+                            <input type="text" name="preparation[]" value="" placeholder="Preparation"/> 
                         </div>
+                        <button type="button" class="add-preparation">Add Preparation</button>
                 </div>
             </div>
 
             <div class="item">
                 <div>Informações adicionais</div>
                 <div id="informations">
-                    
-                        <div class="information">
-                            <input type="text" name="preparation" value="">
-                        </div>
+                    <div class="information">
+                        <input type="text" name="information" value="">
+                    </div>
                 </div>
             </div>  
 

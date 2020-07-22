@@ -1,6 +1,7 @@
 const express = require('express')
 const routes = express.Router()
-// const recipes = require('./controllers/recipes')
+const recipes = require('./controllers/recipes')
+
 
 
 routes.get('/', function(req, res) {
@@ -21,10 +22,7 @@ routes.get("/admin/recipes/create", function(req, res) {  // Mostrar formulário
 // routes.get("/admin/recipes/:id", recipes.show) // Exibir detalhes de uma receita
 // routes.get("/admin/recipes/:id/edit", recipes.edit) // Mostrar formulário de edição de receita
 
-routes.post("/admin/recipes", function(req, res) {  // Cadastrar nova receita
-
-    return res.send(" Recebido")
-}) 
+routes.post("/admin/recipes", recipes.post) 
 // routes.get("/admin/recipes", recipes.put) // Editar uma receita
 // routes.get("/admin/recipes", recipes.delete)  // Deletar uma receita
 

@@ -1,0 +1,30 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "image": "/images/burger.png",
+      "title": "Triplo bacon burger",
+      "author": "Jorge Relato",
+      "ingredients": [
+        "3 kg de carne moída (escolha uma carne magra e macia)"
+      ],
+      "preparation": [
+        "Faça um de cada vez e retire o aro logo em seguida."
+      ],
+      "information": "Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres."
+    },
+    {
+      "id": 2,
+      "image": "/images/pizza.png",
+      "title": "Pizza 4 estações",
+      "author": "Fabiana Melo",
+      "ingredients": [
+        "1 xícara (chá) de leite"
+      ],
+      "preparation": [
+        "No liquidificador bata o leite, o ovo, o sal, o açúcar, a margarina, a farinha de trigo e o fermento em pó até que tudo esteja encorporado."
+      ],
+      "information": "Pizza de liquidificador é uma receita deliciosa e supersimples de preparar."
+    }
+  ]
+}
