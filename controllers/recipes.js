@@ -39,3 +39,21 @@ exports.post = function(req, res) {
         // return res.send(req.body)
 
 }
+
+exports.show = function(req, res) {
+
+    const { id } = req.params
+    
+    const foundRecipe = data.recipes.find(function(recipe) {
+        return recipe.id == id
+    })
+
+    if(!foundRecipe) return res.send("Recipe not found")
+
+    return res.render("admin/recipes/show", { recipe: foundRecipe})
+}
+
+exports.edit = function(req, res) {
+
+    return res.send("Está funfando")
+}

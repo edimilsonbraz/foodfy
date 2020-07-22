@@ -43,7 +43,8 @@ header .menu a:hover {
     border-radius: 15px;
 }
 .card h3 {
-    margin: 20px 5px 2px;
+    margin: 20px 5px 0px;
+    font-weight: bold;
 }
 .card span {  /*config autor*/
     margin-left: 5px;
@@ -59,17 +60,7 @@ header .menu a:hover {
     font-weight: bold;
 }
 
-/*==== CREATE ====*/
-.card .item div:nth-child(1) {
-    font-weight: bold;
-    font-size: 16px;
-    color: #111111;
-    
-}
-.card div:nth-child(2) {
-    font-size: 32px;
-}
-
+/*==== CREATE FORM ====*/
 input {
     width: 940px;
     height: 36px;
@@ -87,9 +78,7 @@ input::placeholder {
     font-weight: normal;
 }
 
-.item div .image_url input:first-child {
-    margin-bottom: 30px;
-}
+
 .information input {
     height: 157px;
 }
@@ -103,10 +92,15 @@ button {
     outline: none;
 
     cursor: pointer;
+
+    background-color: var(--color-rocket);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 4px;
 }
 
 button[type="submit"],
-a.create {
+a.buttons {
     background-color: var(--color-rocket);
     color: white;
     padding: 8px 18px;
@@ -119,9 +113,13 @@ a.create {
     outline: none;
     
     position: absolute;
-    top: 100px;
+    top: 110px;
     right: 178px;
     
+}
+
+h2.title2 {
+    margin-top: 55px;
 }
 
 /*=== Footer ===*/

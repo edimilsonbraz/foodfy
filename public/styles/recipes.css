@@ -26,7 +26,7 @@ header .menu a:hover {
 .card__image img {
     border-radius: 15px;
     height: 280px;
-    margin: 50px 0;
+    margin: 24px 0 50px;
     width: 940px;
 }
 .card__title h1 {

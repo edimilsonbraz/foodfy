@@ -6,7 +6,7 @@
                 <button type="submit">Salvar receita</button>
 
             <div class="item">
-                <div>Imagem da receita</div>
+                <h3>Imagem da receita</h3>
                 <div id="images">
                         <div class="image">
                             <input type="text" name="image" placeholder="/image.png">
@@ -15,7 +15,7 @@
             </div>
 
             <div class="item">
-                <div>Título da receita</div>
+                <h3>Título da receita</h3>
                 <div id="titles">
                         <div class="title">
                             <input type="text" name="title">
@@ -24,7 +24,7 @@
             </div>
 
             <div class="item">
-                <div>Autor da receita</div>
+                <h3>Autor da receita</h3>
                 <div id="authors">
                         <div class="author">
                             <input type="text" name="author">
@@ -33,27 +33,29 @@
             </div>
 
             <div class="item">
-                <div>Ingredientes</div>
-                <div id="ingredients">
+                <h3>Ingredientes</h3>
+                    <div id="ingredients">
+                        {# {% for ingredient in recipe.ingredients %} #}
                         <div class="ingredient">
-                            <input type="text" name="ingredients[]" value="" placeholder="Ingredient"/>
+                            <input type="text" name="ingredients[]" value="{{ ingredient }}" placeholder="Ingrediente"/>
                         </div>
-                    <button type="button" class="add-ingredient">Add Ingredient</button>
-                </div>
+                        {# {% endfor %} #}
+                    </div>
+                <button type="button" class="add-ingredient">Adicionar novo</button>
             </div>
 
             <div class="item">
-                <div>Modo de preparo</div>
-                <div id="preparations">
+                <h3>Modo de preparo</h3>
+                    <div id="preparations">
                         <div class="preparation">
-                            <input type="text" name="preparation[]" value="" placeholder="Preparation"/> 
+                            <input type="text" name="preparation[]" value="{{ preparation }}" placeholder="Preparation"/> 
                         </div>
-                        <button type="button" class="add-preparation">Add Preparation</button>
-                </div>
+                    </div>
+                <button type="button" class="add-preparation">Adicionar novo</button>
             </div>
 
             <div class="item">
-                <div>Informações adicionais</div>
+                <h3>Informações adicionais</h3>
                 <div id="informations">
                     <div class="information">
                         <input type="text" name="information" value="">

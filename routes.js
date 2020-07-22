@@ -19,8 +19,9 @@ routes.get("/admin/recipes/create", function(req, res) {  // Mostrar formulário
 
     return res.render("admin/recipes/create")
 }) 
-// routes.get("/admin/recipes/:id", recipes.show) // Exibir detalhes de uma receita
-// routes.get("/admin/recipes/:id/edit", recipes.edit) // Mostrar formulário de edição de receita
+routes.get("/admin/recipes/:id", recipes.show) // Exibir detalhes de uma receita
+
+routes.get("/admin/recipes/:id/edit", recipes.edit) // Mostrar formulário de edição de receita
 
 routes.post("/admin/recipes", recipes.post) 
 // routes.get("/admin/recipes", recipes.put) // Editar uma receita

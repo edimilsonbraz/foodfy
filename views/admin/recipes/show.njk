@@ -1,0 +1,68 @@
+{% extends "layoutAdmin.njk" %}
+
+{% block head %}
+    <title>{{ recipe.title }}</title>
+    <link rel="stylesheet" href="/styles/recipes.css">
+    <link rel="stylesheet" href="/styles/style.css">
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="card__title">
+            <h2 class="title2">Receita: {{recipe.title}}</h2>
+            <a class="buttons" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
+        </div>
+
+
+        <div class="card__image">
+            <img src="{{recipe.image}}" alt="">
+        </div>
+        <div class="card__title">
+            <h1>{{recipe.title}}</h1>
+            <p>{{recipe.author}}</p>
+        </div>
+
+        <div class="recipe__content">
+
+            <!-- INGREDIENTES -->
+            <div class="ingredient">
+                <h4>Ingredientes</h4>
+                <a onClick='showHide(".ingredients-list", this)' >ESCONDER</a>
+            </div>
+            <div class="card-text">    
+                <ul class="ingredients-list">                    
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!-- MODO DE PREPARO -->
+            <div class="preparation">
+                <h4>Modo de preparo</h4>
+                <a onClick='showHide(".preparations-list", this)'>ESCONDER</a>
+            </div>
+            <div class="card-text">    
+                <ul class="preparations-list">
+                    {% for item in recipe.preparation %}
+                        <li>{{item}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- INFORMAÇÕES -->
+            <div class="information">
+                <h4>Informações adicionais</h4>
+                <a onClick='showHide(".information-p", this)'>ESCONDER</a>
+            </div>
+            <div class="card-text">
+                <p class="information-p">{{ recipe.information }}</p>
+            </div>    
+
+        </div>
+
+    </section>
+    
+{% endblock %}
