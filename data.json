@@ -1,10 +1,10 @@
 {
   "recipes": [
     {
-      "id": 1,
-      "image": "/images/burger.png",
-      "title": "Triplo bacon burger",
-      "author": "Jorge Relato",
+      "id": "1",
+      "image": "  /images/burger.png",
+      "title": "  Triplo bacon burger",
+      "author": "  Jorge Relato",
       "ingredients": [
         "3 kg de carne moída (escolha uma carne magra e macia)",
         "300 g de bacon moído",
@@ -22,7 +22,7 @@
         "Faça no máximo 4 camadas por forma e leve para congelar.",
         "Retire do congelador, frite ou asse e está pronto."
       ],
-      "information": "Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! \\n\\n Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface."
+      "information": "                                                        Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! \\n\\n Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface. \r\n                         \r\n                        "
     },
     {
       "id": 2,
@@ -92,10 +92,10 @@
       "information": "Recheie a lasanha com o que preferir."
     },
     {
-      "id": 5,
-      "image": "/images/espaguete.png",
-      "title": "Espaguete ao alho",
-      "author": "Júlia Kinoto",
+      "id": "5",
+      "image": "  /images/espaguete.png",
+      "title": "  Espaguete ao alho",
+      "author": "  Júlia Kinoto",
       "ingredients": [
         "1 pacote de macarrão 500 g (tipo do macarrão a gosto)",
         "1 saquinho de alho granulado",
@@ -114,7 +114,7 @@
         "O dente de alho, serve para você untar os pratos onde serão servidos o macarrão.",
         "Coloque as porções nos pratos já com o cheiro do alho, e enfeite com algumas ervas."
       ],
-      "information": "Não lave o macarrão nem passe óleo ou gordura nele depois de escorrê-lo. Coloque direto na frigideira."
+      "information": "                                                        Não lave o macarrão nem passe óleo ou gordura nele depois de escorrê-lo. Coloque direto na frigideira. \r\n                         \r\n                        "
     },
     {
       "id": 6,

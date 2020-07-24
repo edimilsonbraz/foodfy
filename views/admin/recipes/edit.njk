@@ -1,0 +1,27 @@
+{% extends "layoutAdmin.njk" %}
+
+{% block content %}
+
+        
+        
+
+<form class="content" method="POST" action="/admin/recipes?_method=PUT">
+
+        
+        <button type="submit">Salvar receita</button>
+    <div class="container">
+                                
+        <h2>Editando Receita</h2>
+
+        {% include 'admin/recipes/fields.njk' %}
+
+        <input type="hidden" name="id" value={{ recipe.id }}>
+
+    </div>
+</form>   
+
+<form action="/admin/recipes?_method=DELETE" method="post">
+    <input type="hidden" name="id" value={{ recipe.id }}>
+    <button class="delete" type="submit">Deletar</button>
+</form>
+{% endblock %}

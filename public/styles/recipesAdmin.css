@@ -68,7 +68,6 @@ input {
     font-size: 16px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    border-radius: 4px;
     margin: 10px auto 0px;
     outline: none;
 }
@@ -77,10 +76,18 @@ input::placeholder {
     color: rgba(0, 0, 0, 0.308);
     font-weight: normal;
 }
-
-
-.information input {
+textarea {
+    width: 940px;
     height: 157px;
+    background: #FFFFFF;
+    font-family: roboto;
+    font-size: 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+
+    margin-top: 10px;
+
+    outline: none;
 }
 
 button {
@@ -115,6 +122,14 @@ a.buttons {
     position: absolute;
     top: 110px;
     right: 178px;
+    
+}
+button.delete {
+    background-color: crimson;
+
+    position: absolute;
+    top: 110px;
+    right: 330px;
     
 }
 

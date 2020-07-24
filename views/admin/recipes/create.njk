@@ -11,12 +11,14 @@
 
     
 {% block content %}
-
+                        
+                        
     <form class="content" method="POST" action="/admin/recipes">
-        
+                            <button type="submit">Salvar receita</button>
+                            
         <div class="container">
-            <h2>Criando Receitas</h2>
-
+            <h2>Criando Receita</h2>
+                    
             {% include 'admin/recipes/fields.njk' %}
 
         </div>
