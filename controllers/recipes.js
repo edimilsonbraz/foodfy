@@ -4,7 +4,7 @@ const data = require("../data.json")
 
 exports.index = function(req, res) {   
 
-    return res.render("admin/recipes/index")
+    return res.render("admin/recipes/index", {recipes: data.recipes})
 }
 
 exports.create = function(req, res) {  
@@ -92,7 +92,8 @@ exports.put = function(req, res) {
 
     const recipe = {
         ...foundRecipe,
-        ...req.body
+        ...req.body,
+        id: Number(req.body.id) //transforma a string em um numero
     }
 
     data.recipes[index] = recipe

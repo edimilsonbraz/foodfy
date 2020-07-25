@@ -4,6 +4,7 @@
     <title>{{ recipe.title }}</title>
     <link rel="stylesheet" href="/styles/recipes.css">
     <link rel="stylesheet" href="/styles/style.css">
+    
 {% endblock %}
 
 {% block content %}
@@ -11,11 +12,11 @@
     <section class="content">
 
         <div class="card__image">
-            <img src="{{recipes.image}}" alt="">
+            <img src="{{recipe.image}}" alt="">
         </div>
         <div class="card__title">
-            <h1>{{recipes.title}}</h1>
-            <p>{{recipes.author}}</p>
+            <h1>{{recipe.title}}</h1>
+            <p>{{recipe.author}}</p>
         </div>
 
         <div class="recipe__content">
@@ -27,7 +28,7 @@
             </div>
             <div class="card-text">    
                 <ul class="ingredients-list">                    
-                    {% for ingredient in recipes.ingredients %}
+                    {% for ingredient in recipe.ingredients %}
                         <li>{{ingredient}}</li>
                     {% endfor %}
                 </ul>
@@ -40,7 +41,7 @@
             </div>
             <div class="card-text">    
                 <ul class="preparations-list">
-                    {% for item in recipes.preparation %}
+                    {% for item in recipe.preparation %}
                         <li>{{item}}</li>
                     {% endfor %}
                 </ul>
@@ -52,7 +53,7 @@
                 <a onClick='showHide(".information-p", this)'>ESCONDER</a>
             </div>
             <div class="card-text">
-                <p class="information-p">{{ recipes.information }}</p>
+                <p class="information-p">{{ recipe.information }}</p>
             </div>    
 
         </div>

@@ -8,7 +8,6 @@ header {
     align-items: center;
     background-color: #111111;
     height: 80px;
-    
 }
 
 header .menu {
@@ -26,6 +25,55 @@ header .menu a:hover {
     display: block;
     margin-left: -470px;
 } 
+/*TESTE NEW==*/
+
+
+.card__image img {
+    border-radius: 15px;
+    height: 280px;
+    margin: 24px 0 50px;
+    width: 940px;
+}
+.card__title h1 {
+    text-align: center;
+}
+.card__title p {
+    font-size: 20px;
+    color: #777777;
+    text-align: center;
+}
+.recipe__content {
+    font-size: 18px;
+    color: #444444;
+}
+.recipe__content h4 {
+    font-size: 24px;
+    color: #111111;
+    margin-top: 32px;
+    display: inline-block;
+}
+.recipe__content a {
+    font-size: 12px;
+    color: #444444;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(224, 224, 224);
+    border-radius: 5px;
+    display: inline-block;
+}
+.recipe__content ul li {
+    line-height: 28px;
+    color: #444444;
+    
+}
+.recipe__content ul {
+    margin-top: 20px;
+}
+.recipe__content p {
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
+}
 
 /* === Cards ===*/
 .cards {
@@ -46,7 +94,7 @@ header .menu a:hover {
     margin: 20px 5px 0px;
     font-weight: bold;
 }
-.card span {  /*config autor*/
+.card span.autor {  /*config autor*/
     margin-left: 5px;
     font-size: 14px;
     color: #777777;
@@ -58,7 +106,13 @@ header .menu a:hover {
     font-size: 14px;
     color: var(--color-rocket);
     font-weight: bold;
+    margin-left: 5px;
+
 }
+.card a:hover {
+    color: #4a3f9e;
+}
+
 
 /*==== CREATE FORM ====*/
 input {
@@ -124,13 +178,20 @@ a.buttons {
     right: 178px;
     
 }
+button[type="submit"]:hover {
+    background-color: #4a3f9e;
+}
+a.buttons:hover {
+    background-color: #4a3f9e;
+}
 button.delete {
-    background-color: crimson;
-
+    background-color: rgb(231, 90, 90);
     position: absolute;
     top: 110px;
     right: 330px;
-    
+}
+button.delete:hover {
+    background-color: crimson;
 }
 
 h2.title2 {
@@ -149,3 +210,10 @@ footer p {
     color: #999999;
     font-size: 14px;
 } 
+
+/* ============== SHOW-HIDE ============== */
+
+.hide {
+    display: none;
+    visibility: hidden;
+  }

@@ -9,6 +9,7 @@ const cards = document.querySelectorAll('.card')
 //     })
     
 // }
+
 // Função de mostrar e esconder
 
 function showHide(esconder, change) {

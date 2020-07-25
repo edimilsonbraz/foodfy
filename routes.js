@@ -1,11 +1,20 @@
 const express = require('express')
 const routes = express.Router()
 const recipes = require('./controllers/recipes')
+const foodfy = require('./controllers/foodfy')
+
 
 
 routes.get('/', function(req, res) {
-    return res.redirect("/admin/recipes")
+
+    return res.redirect("/foodfy")
 })
+
+routes.get("/foodfy", foodfy.index) 
+routes.get("/about", foodfy.about)
+routes.get("/recipe", foodfy.recipe)
+routes.get("/recipesList", foodfy.recipesList)
+
 
 routes.get("/admin/recipes", recipes.index)  // Mostrar a Lista de receitas
 routes.get("/admin/recipes/create", recipes.create) // Mostrar formulário de nova receita

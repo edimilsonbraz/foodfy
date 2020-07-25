@@ -6,7 +6,7 @@
             <meta charset="UTF8">
             <meta name="viewport" content="width=device-widht, initial-scale=1.0">
             <link rel="stylesheet" href="/styles/style.css">
-            <link rel="stylesheet" href="/styles/home.css">
+            <link rel="stylesheet" href="/styles/index.css">
             <title>Foodfy</title>
         {% endblock %}
     </head>
@@ -15,21 +15,24 @@
     <div class="content">
         <div class="banner">
             <div class="banner__texto">
-                <h1>{{ index.title }}</h1>
-                <p>{{ index.description }}</p>
+                <h1>As melhores receitas</h1>
+                <p>Aprenda a construir os melhores pratos
+                   com receitas criadas por profissionais
+                   do mundo inteiro. 
+                </p>
             </div>
-            <img src="{{ index.image_chef }}" alt="image chef">
+            <img src="/images/chef.png" alt="image chef">
         </div>
 
         <div class="container">
             <h2>Mais acessadas</h2>
 
             <div class="cards">
-                {% for receita in index.receitas %}
+                {% for recipe in recipes %}
                     <div class="card">
-                        <img src="{{ receita.image }}" alt="">
-                        <h3>{{ receita.title }}</h3>
-                        <span>por {{receita.author}}</span>                        
+                    <a href="admin/recipes"><img src="{{ recipe.image }}" alt=""></a>    
+                        <h3>{{ recipe.title }}</h3>
+                        <span>por {{recipe.author}}</span>                        
                     </div>
                 {% endfor %}
             </div>

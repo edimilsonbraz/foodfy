@@ -12,10 +12,9 @@
 
     
 {% block content %}
-
     <div class="content">
-        
         <div class="container">
+
             <h2>Gerenciar receitas</h2>
 
             <a class="buttons" href="/admin/recipes/create">Cadastrar receita</a>
@@ -25,7 +24,7 @@
                     <div class="card">
                         <img src="{{ recipe.image }}" alt="">
                         <h3>{{ recipe.title }}</h3>
-                        <span>por {{ recipe.author }}</span><br>
+                        <span class="autor">por {{ recipe.author }}</span><br>
                         <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>                       
                     </div>
                 {% endfor %}

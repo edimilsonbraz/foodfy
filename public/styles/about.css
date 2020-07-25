@@ -1,3 +1,6 @@
+:root {
+    --color-rocket: #6558C3;
+}
 header {
     padding: 38px 0px 36px;
     display: flex;
@@ -13,6 +16,22 @@ header .menu a{
 }
 header .menu a:hover {
     color: rgb(35, 104, 231);
+    font-weight: bold;
+}
+header a.button { /* BOTÃO GERENCIAR */
+    font-size: 16px;
+
+    cursor: pointer;
+
+    background-color: #4a3f9e;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 4px;
+}
+header a.button:hover {
+    background-color: var(--color-rocket);
+    color: white;
+    font-weight: bold;
 }
 .logo img {
     position: absolute;
