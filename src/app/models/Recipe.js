@@ -7,7 +7,7 @@ module.exports = {
     all(callback) {
 
         db.query(`SELECT * FROM recipes`, function(err, results) {
-            if (err) return res.send("Database error! Post") 
+            if (err) return res.send("Database error! All") 
             
             callback(results.rows)
         })
@@ -34,7 +34,7 @@ module.exports = {
             data.igredients,
             data.preparation,
             data.information,
-            date(Date.now())
+            date(Date.now()).format
         ]
     
         db.query(query, values, function(err, results) {
@@ -51,5 +51,18 @@ module.exports = {
                 if (err) return res.send("Database error! Find") 
                 callback(results.rows[0])
             })
-        }
+    },
+    update(data, callback) {
+
+    },
+    chefsSelectOptions(callback) {
+        db.query(`SELECT name, id FROM chefs`, function(err, results) {
+            if(err) throw 'Database Error! SelectOpt'
+
+            callback(results.rows)
+        })
+    },
+    paginate(params) {
+
+    }
 }

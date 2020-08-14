@@ -15,17 +15,17 @@
     <div class="content">
         <div class="container">
 
-            <h2>Gerenciar receitas</h2>
+            <h2>Gerenciar Chefs</h2>
 
-            <a class="buttons" href="/admin/recipes/create">Cadastrar receita</a>
+            <a class="buttons" href="/admin/chefs/create">Cadastrar chef</a>
 
             <div class="cards">
-                {% for recipe in recipes %}
+                {% for chef in chefs %}
                     <div class="card">
-                        <img src="{{ recipe.image }}" alt="">
-                        <h3>{{ recipe.title }}</h3>
-                        <span class="autor">por {{ recipe.chef_id }}</span><br>
-                        <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>                       
+                        <img src="{{ chef.avatar_url }}" alt="">
+                        <h3>{{ chef.name}}</h3>
+                        <span class="autor">por {{ chef.name }}</span><br>
+                        <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>                       
                     </div>
                 {% endfor %}
             </div>

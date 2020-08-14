@@ -13,7 +13,10 @@ module.exports = {
     },
     create(req, res) {
 
-        return res.render("admin/recipes/create")
+        Recipe.chefsSelectOptions(function(options) {
+            return res.render("admin/recipes/create", { chefOptions: options })
+
+        })
 
     },
     post(req, res) {
@@ -27,8 +30,7 @@ module.exports = {
         }
 
         Recipe.create(req.body, function(recipe) {
-            
-            return res.redirect(`/admin/recipes/${recipe.id}`)
+            return res.redirect(`admin/recipes/${recipe.id}`)
 
         })
     },

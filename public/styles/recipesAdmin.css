@@ -115,7 +115,7 @@ header .menu a:hover {
 
 
 /*==== CREATE FORM ====*/
-input {
+input, select {
     width: 940px;
     height: 36px;
     background: #FFFFFF;
@@ -129,6 +129,11 @@ input::placeholder {
     font-size: 16px;
     color: rgba(0, 0, 0, 0.308);
     font-weight: normal;
+}
+select option {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    
 }
 textarea {
     width: 940px;

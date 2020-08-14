@@ -10,15 +10,11 @@
     </head>
 
 {% block content %}
-    <form class="content" method="POST" action="/admin/recipes">
-                            <button type="submit">Salvar receita</button>
+    <form class="content" method="POST" action="/admin/chefs">
+                            <button type="submit">Salvar Chef</button>
                             
-        <div class="container">
-            <h2>Criando Receita</h2>
+       {% include 'admin/chefs/fields.njk' %}
 
-           {% include 'admin/recipes/fields.njk' %}
-
-        </div>
     </form>
 {% endblock %}
     
