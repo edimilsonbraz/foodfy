@@ -55,17 +55,26 @@ module.exports = {
         })
 
     },
-    put(req, res) {
+    update(req, res) {
 
-        return res.render(`admin/chefs/${id}`)
-      
-
+            const keys = Object.keys(req.body)//CRIA UM OBJETO QUE TEM VARIAS FUNÇÕES//CRIOU UM ARRAY DE CHAVES -> { }
+    
+            for (key of keys) { 
+                if (req.body[key] == "") {
+                    return res.send('Please, fill all fields!')
+                }
+            }
+    
+           Chef.update(req.body, function() {
+               return res.redirect(`admin/chefs/${req.body.id}`)
+            })
+    
     },
     delete(req, res) {
 
-
-        return res.redirect("/admin/chefs")
-    
+        Chef.delete(req.body.id, function() {
+            return res.redirect(`admin/chers`)
+        })
 
     },
 }

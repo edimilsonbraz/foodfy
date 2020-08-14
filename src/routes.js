@@ -23,7 +23,7 @@ routes.get("/admin/recipes/create", recipes.create) // Mostrar formulário de no
 routes.get("/admin/recipes/:id", recipes.show) // Exibir detalhes de uma receita
 routes.get("/admin/recipes/:id/edit", recipes.edit) // Mostrar formulário de edição de receita
 routes.post("/admin/recipes", recipes.post) // Criar uma nova receita
-routes.put("/admin/recipes", recipes.put) // Atualizar uma receita
+routes.put("/admin/recipes", recipes.update) // Atualizar uma receita
 routes.delete("/admin/recipes", recipes.delete)  // Deletar uma receita
 
 
@@ -32,7 +32,7 @@ routes.get("/admin/chefs/create", chefs.create) // Mostrar formulário de novo c
 routes.get("/admin/chefs/:id", chefs.show) // Exibir detalhes do chefs e suas receitas
 routes.get("/admin/chefs/:id/edit", chefs.edit) // Mostrar formulário de edição dos chefs
 routes.post("/admin/chefs", chefs.post) // Criar um novo chef
-routes.put("/admin/chefs", chefs.put) // Atualizar um chef
+routes.put("/admin/chefs", chefs.update) // Atualizar um chef
 routes.delete("/admin/chefs", chefs.delete)  // Deleta um chef
 
 
