@@ -16,6 +16,7 @@ routes.get("/foodfy", foodfy.index)
 routes.get("/about", foodfy.about)
 routes.get("/recipe", foodfy.recipe)
 routes.get("/recipesList", foodfy.recipesList)
+routes.get("/chefsList", foodfy.chefsList)
 
 
 routes.get("/admin/recipes", recipes.index)  // Mostrar a Lista de receitas

@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+
+<head>
+    {% block head %}
+        <meta charset="UTF8">
+        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/index.css">
+    {% endblock %}
+</head>
+
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+
+            <div class="cards">
+                {% for chef in chefs %}
+                    <div class="card-chefs">
+                        <img class="img-chefs" src="{{ chef.avatar_url }}" alt="">
+                        <div class="text">   
+                        <span class="chef">{{ chef.name}}</span>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

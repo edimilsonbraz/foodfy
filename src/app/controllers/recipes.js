@@ -30,7 +30,7 @@ module.exports = {
         }
 
         Recipe.create(req.body, function(recipe) {
-            return res.redirect(`admin/recipes/${recipe.id}`)
+            return res.redirect(`/admin/recipes/${recipe.id}`)
 
         })
     },
@@ -39,15 +39,7 @@ module.exports = {
         Recipe.find(req.params.id, function(recipe) {
             if(!recipe) return res.send("Recipe not found")
 
-            recipe.chef_id = recipe.chef_id 
-            recipe.image = recipe.image
-            recipe.title = recipe.title
-            recipe.ingredients = recipe.ingredients
-            recipe.preparation = recipe.preparation
-            recipe.information = recipe.information
-            recipe.create_at = date(recipe.create_at).format
-
-            return res.render("/admin/recipes/show", { recipe })
+            return res.render("admin/recipes/show", { recipe })
         })
 
     },

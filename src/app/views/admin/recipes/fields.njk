@@ -26,7 +26,9 @@
                             <select name="chef">
                                 <option value="">Selecione um Chef</option>
                                 {% for chef in chefOptions %}
-                                    <option value="{{chef.id}}" placeholder="Selecione um chef"  
+                                    <option 
+                                        value="{{chef.id}}" 
+                                        placeholder="Selecione um chef"  
                                         {% if recipe.chef_id == chef.id %} selected {% endif %}>
                                         {{chef.name}}
                                     </option>
@@ -40,7 +42,11 @@
                             <div id="ingredients">
                                 {# {% for ingredient in recipe.ingredients %} #}
                                 <div class="ingredient">
-                                    <input type="text" name="ingredients[]" value="{{ ingredient }}" placeholder="Ingrediente">
+                                    <input 
+                                        type="text" 
+                                        name="ingredients[]" 
+                                        placeholder="Ingrediente"
+                                    >
                                 </div>
                                 {# {% endfor %} #}
                             </div>
@@ -52,7 +58,11 @@
                             <div id="preparations">
                                 {# {% for preparation in recipe.preparation %} #}
                                 <div class="preparation">
-                                    <input type="text" name="preparation[]" value="{{ preparation }}" placeholder="Preparation"> 
+                                    <input 
+                                        type="text" 
+                                        name="preparation[]" 
+                                        placeholder="Preparation"
+                                    > 
                                 </div>
                                 {# {% endfor %} #}
                             </div>
@@ -63,7 +73,10 @@
                         <h3>Informações adicionais</h3>
                         <div id="informations">
                             <div class="information">
-                                <textarea name="information" cols="30" rows="10" value=" {{ recipe.information }}">
+                                <textarea 
+                                    name="information" 
+                                    cols="30" rows="10" 
+                                    value=" {{ recipe.information }}">
                                     {{ recipe.information }} 
                                 </textarea>
                             </div>

@@ -1,5 +1,4 @@
-
-
+const Chef = require('../models/Chef')
 
 
 exports.index = function(req, res) {
@@ -16,12 +15,19 @@ exports.recipe = function (req, res) {
   
     const recipeId = req.params.id
   
-    // console.log(recipeId);
-  
     return res.render("foodfy/recipe", {recipes: recipe[recipeId]} )
 }
 
 exports.recipesList = function(req, res) {
       
-    return res.render("foodfy/recipesList", { recipes: data.recipes})
+    return res.render("foodfy/recipesList", { recipes})
+}
+exports.chefsList = function(req, res) {
+    
+    Chef.all(function(chefs) {
+
+        return res.render("foodfy/chefsList", {chefs})
+
+    })
+      
 }

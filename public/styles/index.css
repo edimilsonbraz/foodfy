@@ -6,6 +6,7 @@ header {
     padding: 38px 0px 36px;
     display: flex;
     align-items: center;
+    margin-bottom: 62px;
 }
 
 header .menu {
@@ -97,6 +98,49 @@ header a.button:hover {
     color: #777777;
     margin-bottom: 30px;
 }
+
+
+
+
+/*=========== CHEFS ===========*/
+.card-chefs {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    /* column-gap: 20px; */
+    margin-right: 60px;
+}
+.card-chefs img {
+    width: 64px;
+    border-radius: 50%;
+}
+.card-chefs h3 {
+    margin: 20px 5px 0px;
+    font-weight: bold;
+}
+.card-chefs spam {
+    font-size: 18px;
+}
+
+.card-chefs a {
+    font-family: Roboto-Bold;
+    font-size: 14px;
+    color: var(--color-rocket);
+    font-weight: bold;
+    
+}
+.card-chefs a:hover {
+    color: #4a3f9e;
+}
+
+span.chef {
+    margin-bottom: 10px;
+}
+
+
+
+
+
 
 /*=== Footer ===*/
 footer {
