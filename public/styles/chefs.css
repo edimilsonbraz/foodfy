@@ -10,10 +10,6 @@ header {
     height: 80px;
 }
 
-header .menu {
-    text-align: left;
-}
-
 header .menu a{
     font-size: 16px;
     color: white;
@@ -26,14 +22,68 @@ header .menu a:hover {
     position: absolute;
     left: 205px
 } 
-/*TESTE NEW==*/
 
+
+/* === Cards ===*/
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 0 auto;
+}
+.container h2 {
+    margin: 50px 0 62px;
+    color: #111111;
+}
+
+/*=========== CHEFS ===========*/
+.card-chefs {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    column-gap: 20px;
+    margin-right: 60px;
+}
+.card-chefs img {
+    width: 64px;
+    border-radius: 50%;
+}
+.card-chefs h3 {
+    margin: 20px 5px 0px;
+    font-weight: bold;
+}
+.card-chefs spam {
+    font-size: 18px;
+}
+
+.card-chefs a {
+    font-family: Roboto-Bold;
+    font-size: 14px;
+    color: var(--color-rocket);
+    font-weight: bold;
+    
+}
+.card-chefs a:hover {
+    color: #4a3f9e;
+}
+
+span.chef {
+    margin-bottom: 10px;
+}
+
+
+.card__image{
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 .card__image img {
-    border-radius: 15px;
-    height: 280px;
-    margin: 24px 0 50px;
-    width: 940px;
+    border-radius: 50%;
+    margin-bottom: 32px;
+    text-align: center;
+    width: 200px;
+    margin: 42px;
 }
 .card__title h1 {
     text-align: center;
@@ -42,76 +92,6 @@ header .menu a:hover {
     font-size: 20px;
     color: #777777;
     text-align: center;
-}
-.recipe__content {
-    font-size: 18px;
-    color: #444444;
-}
-.recipe__content h4 {
-    font-size: 24px;
-    color: #111111;
-    margin-top: 32px;
-    display: inline-block;
-}
-.recipe__content a {
-    font-size: 12px;
-    color: #444444;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: rgb(224, 224, 224);
-    border-radius: 5px;
-    display: inline-block;
-}
-.recipe__content ul li {
-    line-height: 28px;
-    color: #444444;
-    
-}
-.recipe__content ul {
-    margin-top: 20px;
-}
-.recipe__content p {
-    line-height: 28px;
-    color: #444444;
-    margin-top: 20px;
-}
-
-/* === Cards ===*/
-.cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    margin: 0 auto;
-}
-.container h2 {
-    margin: 50px 0 20px;
-    color: #111111;
-}
-.card img {
-    width: 100%;
-    border-radius: 15px;
-}
-.card h3 {
-    margin: 20px 5px 0px;
-    font-weight: bold;
-}
-.card span.autor {  /*config autor*/
-    margin-left: 5px;
-    font-size: 14px;
-    color: #777777;
-    margin-bottom: 30px;
-}
-
-.card a {
-    font-family: Roboto-Bold;
-    font-size: 14px;
-    color: var(--color-rocket);
-    font-weight: bold;
-    margin-left: 5px;
-
-}
-.card a:hover {
-    color: #4a3f9e;
 }
 
 
@@ -135,19 +115,6 @@ select option {
     background-color: rgba(0, 0, 0, 0.1);
     font-weight: bold;
     
-}
-textarea {
-    width: 940px;
-    height: 157px;
-    background: #FFFFFF;
-    font-family: roboto;
-    font-size: 16px;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-
-    margin-top: 10px;
-
-    outline: none;
 }
 
 button {
@@ -180,7 +147,7 @@ a.buttons {
     outline: none;
     
     position: absolute;
-    top: 110px;
+    top: 102px;
     right: 178px;
     
 }
@@ -193,7 +160,7 @@ a.buttons:hover {
 button.delete {
     background-color: rgb(231, 90, 90);
     position: absolute;
-    top: 110px;
+    top: 102px;
     right: 330px;
 }
 button.delete:hover {
@@ -204,11 +171,12 @@ h2.title2 {
     margin-top: 55px;
 }
 
-/*=== Footer ===*/
+/*========== Footer ==========*/
 footer {
     background-color: #EEEEEE;
     margin-top: 50px;
     padding: 23px;
+    
     
 }
 footer p {
@@ -216,6 +184,7 @@ footer p {
     color: #999999;
     font-size: 14px;
 } 
+
 
 /* ============== SHOW-HIDE ============== */
 
