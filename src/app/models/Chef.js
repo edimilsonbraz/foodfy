@@ -61,6 +61,7 @@ module.exports = {
             data.avatar_url,
             data.id
         ]
+        
         db.query(query, values, function(err, results) {
             if(err) throw `Database Error!Update ${err}`
 

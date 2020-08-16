@@ -45,21 +45,39 @@ module.exports = {
     },
     edit(req, res) {
 
+        Recipe.find(req.params.id, function (recipe) {
+            if (!recipe) return res.send("Recipe not found")
 
-        return res.render("admin/recipes/edit", { recipe })
+            Recipe.chefsSelectOptions((options) => {
+                return res.render("admin/recipes/edit", { recipe, chefOptions: options });
+            
+            })    
+
+        })
 
     },
     update(req, res) {
 
-            return res.redirect(`/admin/recipes/${id}`)
+        const keys = Object.keys(req.body) 
 
+        for (key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill all fields!')
+            }
+        }
+
+        Recipe.update(req.body, function () {
+
+            return res.redirect(`/admin/recipes/${req.body.id}`)
+        })
+            
     },
     delete(req, res) {
 
-        return res.redirect("/admin/recipes")
+        Recipe.delete(req.body.id, function () {
 
-
+            return res.redirect("/admin/recipes")
+        })
     },
+
 }
-
-

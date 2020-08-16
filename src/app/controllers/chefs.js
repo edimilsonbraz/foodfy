@@ -36,11 +36,6 @@ module.exports = {
         Chef.find(req.params.id, function(chef) {
             if(!chef) return res.send("Chef not found")
 
-            chef.chef_id = chef.chef_id 
-            chef.name = chef.name
-            chef.avatar_url = chef.avatar_url
-            chef.create_at = date(chef.create_at).format
-
             return res.render("admin/chefs/show", { chef })
         })
 
@@ -66,7 +61,7 @@ module.exports = {
             }
     
            Chef.update(req.body, function() {
-               return res.redirect(`admin/chefs/${req.body.id}`)
+               return res.redirect(`/admin/chefs/${req.body.id}`)
             })
     
     },
