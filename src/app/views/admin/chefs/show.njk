@@ -18,18 +18,21 @@
         </div>
         <div class="card__title">
             <h1>{{chef.name}}</h1>
-            <p>{{chef.total_recipes}} Receita(s)</p>
+            <p>{{recipesByChef.total_recipes}} Receita(s)</p>
         </div>
 
         <div class="recipe__content">
 
-           <div class="cards">
+            <h3>Receitas</h3>
+           <div class="cards__recipes">
                 {% for recipe in recipes %}
-                    <div class="card">
+                    <div class="card__recipes">
                         <img src="{{ recipe.image }}" alt="">
-                        <h3>{{ recipe.title }}</h3>
-                        <span class="autor">por {{ chef.name }}</span><br>
-                        <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>                       
+                        <div class="card__text">
+                            <h4>{{ recipe.title }}</h4>
+                            <span class="autor">por {{ chef.name }}</span><br>
+                            <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>  
+                        </div>
                     </div>
                 {% endfor %}
             </div>   

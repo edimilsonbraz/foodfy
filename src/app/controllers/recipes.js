@@ -6,6 +6,7 @@ module.exports = {
     index(req, res) {
 
         Recipe.all(function(recipes) {
+           
             return res.render("admin/recipes/index", {recipes})
     
         })
@@ -37,6 +38,7 @@ module.exports = {
     show(req, res) {
 
         Recipe.find(req.params.id, function(recipe) {
+            
             if(!recipe) return res.send("Recipe not found")
 
             return res.render("admin/recipes/show", { recipe })
