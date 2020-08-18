@@ -33,11 +33,17 @@ module.exports = {
     },
     show(req, res) {
 
-        Chef.find(req.params.id, function(chef) {
-            if(!chef) return res.send("Chef not found")
+        const { id } = req.params
 
-            return res.render("admin/chefs/show", { chef })
+        Chef.find(id, chef => {
+            Chef.chefRecipes(id, recipes => {
+                Chef.TotalRecipesByChefs(id, recipesByChef => {
+                    return res.render('admin/chefs/show', { chef, recipes, recipesByChef })
+            })
         })
+    })
+            
+
 
     },
     edit(req, res) {
@@ -67,8 +73,22 @@ module.exports = {
     },
     delete(req, res) {
 
-        Chef.delete(req.body.id, function() {
-            return res.redirect(`admin/chers`)
+        const { id } = req.body
+
+        Chef.TotalRecipesByChefs(id, chef => {
+            let { total_recipes } = chef
+    
+            total_recipes = Number(total_recipes)
+    
+            if (chef.total_recipes <= 0) {
+                Chef.delete(id, () => {
+                    return res.redirect('/admin/chefs')
+                })
+                
+            } else {
+                return res.send("You cannot delete a chef that has recipes!!")
+            }
+        
         })
 
     },

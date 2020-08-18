@@ -24,7 +24,7 @@
                     <div class="card">
                         <img src="{{ recipe.image }}" alt="">
                         <h3>{{ recipe.title }}</h3>
-                        <span class="autor">por {{ recipe.chef_id }}</span><br>
+                        <span class="autor">por {{recipe.chef_name}} </span><br>
                         <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>                       
                     </div>
                 {% endfor %}

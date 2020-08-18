@@ -28,7 +28,7 @@ module.exports = {
             RETURNING id
         `
         const values = [
-            data.chef_id,
+            data.chef,
             data.image,
             data.title,
             data.ingredients,
@@ -45,7 +45,7 @@ module.exports = {
     },
     find(id, callback) {
         db.query (`
-            SELECT recipes.*, chefs.name AS chefs_name
+            SELECT recipes.*, chefs.name AS chef_name
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
             WHERE recipes.id = $1`, [id], function(err, results){
@@ -65,7 +65,7 @@ module.exports = {
                 preparation=($5),
                 information=($6)
              WHERE id = $7
-        `
+            `
 
         const values = [
             data.image,
