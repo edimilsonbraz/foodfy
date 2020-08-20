@@ -19,7 +19,8 @@
                     <div class="card-chefs">
                         <img class="img-chefs" src="{{ chef.avatar_url }}" alt="">
                         <div class="text">   
-                        <span class="chef">{{ chef.name}}</span>
+                            <span class="chef">{{ chef.name}}</span>
+                            <p class="chef">{{chef.total_recipes}} receita(s)</p>
                         </div> 
                     </div>
                 {% endfor %}

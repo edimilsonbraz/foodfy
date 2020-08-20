@@ -1,49 +1,59 @@
-/* .recipe {} */
-:root {
-    --color-rocket: #6558C3;
-}
-
 header {
-    padding: 38px 0px 36px;
+    max-width: 940px;
+    margin: 0 auto;
+
+    padding: 38px 0;
     display: flex;
     align-items: center;
-    margin-bottom: 62px;
+
+    justify-content: space-between;
+
+    margin-bottom: 36px;
 }
 
-header .menu {
-    text-align: left;
+.nav__links li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+.nav__links li a:hover {
+    color: var(--color-secundary);
 }
 
-header .menu a{
-    font-size: 16px;
-    margin-right: 30px;
-}
-header .menu a:hover {
-    color: rgb(35, 104, 231);
-    font-weight: bold;
+.button:hover {
+    background-color: var(--color-secundary);
+    transition: all 0.3s ease 0s;
 }
 
-header a.button { /* BOTÃO GERENCIAR */
-    font-size: 16px;
+header a.button, .button { /* BOTÃO GERENCIAR */
 
-    cursor: pointer;
-
-    background-color: #4a3f9e;
+    background-color: var(--color-rocket);
+    
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
 }
 header a.button:hover {
-    background-color: var(--color-rocket);
+    background-color: var(--color-secundary);
     color: white;
     font-weight: bold;
 }
+input {
+    width: 246px;
+    height: 34px;
+    border: 1px solid #DDDDDD ;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+input::placeholder {
+    color: var(--color-placeholder);
+    text-align: center;
+}
 
 
-.logo img {
-    position: absolute;
-    left: 205px;
-} 
+/*==== CONTEUDO ====*/
 .card__image img {
     border-radius: 15px;
     height: 280px;

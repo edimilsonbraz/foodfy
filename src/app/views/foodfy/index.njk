@@ -5,14 +5,15 @@
         {% block head %}
             <meta charset="UTF8">
             <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            <link rel="stylesheet" href="/styles/style.css">
             <link rel="stylesheet" href="/styles/index.css">
             <title>Foodfy</title>
         {% endblock %}
     </head>
 
 {% block content %}
+
     <div class="content">
+
         <div class="banner">
             <div class="banner__texto">
                 <h1>As melhores receitas</h1>
@@ -31,8 +32,10 @@
                 {% for recipe in recipes %}
                     <div class="card">
                         <img src="{{ recipe.image }}" alt="">
-                        <h3>{{ recipe.title }}</h3>
-                        <span class="autor">por {{ recipe.chef_id }}</span><br>
+                        <div class="card__text">
+                            <h3>{{ recipe.title }}</h3>
+                            <span class="autor">por {{recipe.chef_name}} </span>
+                        </div>                      
                     </div>
                 {% endfor %}
             </div>

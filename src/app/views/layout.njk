@@ -10,18 +10,29 @@
     </head>
 <body>
     <header>
+        <a href="/"><img class="logo" src="/images/logo.png" alt="logo FoodFy"></a>    <!--LOGO -->
+            
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="/about">Sobre</a></li>
+                    <li><a href="/recipesList">Receitas</a></li>
+                    <li><a href="/chefsList">Chefs</a></li>
+                    <li><a href="/admin/recipes">Gerenciar</a></li>
+                </ul>
+            </nav>
+
+            <div class="search">
+                <form action="foodfy/search" method="GET">
+                    <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+                    <button class="button" type="submit">Buscar</button>
+                </form>
+            </div>
+    </header>        
         <div class="content">
-            <div class="logo">  <!-- FICAR DE OLHO NESSA CLASSE PQ PODE DAR PROBLEMAS NA LARGURADA PAGINA--> 
-            <a href="/"><img src="/images/logo.png" alt="logo FoodFy"></a>    <!--LOGO -->
-            </div>
-            <div class="menu">
-                <a href="/about">Sobre</a>
-                <a href="/recipesList">Receitas</a>
-                <a href="/chefsList">Chefs</a>
-                <a class="button" href="/admin/recipes">Gerenciar</a>
-            </div>
+            
+           
         </div> 
-    </header>
+   
 
     {% block content %} {% endblock %}
 

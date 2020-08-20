@@ -35,15 +35,15 @@ module.exports = {
 
         const { id } = req.params
 
-        Chef.find(id, chef => {
-            Chef.chefRecipes(id, recipes => {
-                Chef.TotalRecipesByChefs(id, recipesByChef => {
+        Chef.find(req.params.id, function(chef) {
+            Chef.chefRecipes(req.params.id, function(recipes) {
+                Chef.TotalRecipesByChefs(req.params.id, function(recipesByChef) {
+                    
                     return res.render('admin/chefs/show', { chef, recipes, recipesByChef })
             })
         })
     })
             
-
 
     },
     edit(req, res) {
