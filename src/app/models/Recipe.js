@@ -117,4 +117,39 @@ module.exports = {
             callback(results.rows)
         })
     },
+    paginate(params) {
+        // const { filter, limit, offset, callback } = params
+
+        // let query = "",
+        //     filterQuery = "",
+        //     totalQuery = `(
+        //         SELECT count(*) FROM recipes
+        //     ) AS total`
+
+
+        //    if ( filter ) {
+        //     filterQuery = `
+        //     WHERE recipe.title ILIKE '%${filter}%'
+        //     `
+
+        //     totalQuery = `(
+        //         SELECT count(*) FROM recipes
+        //         ${filterQuery}
+        //     ) as total`
+        // }
+
+        // query = `
+        // SELECT recipes.*, ${totalQuery}, count(chefs) AS total_recipes 
+        // FROM recipes
+        // LEFT JOIN chefs ON (recipes.id = members.instructor_id)
+        // ${filterQuery}
+        // GROUP BY instructors.id LIMIT $1 OFFSET $2
+        // `
+
+        // db.query(query, [limit, offset], function(err, results) {
+        //     if (err) throw 'Database Error!'
+
+        //     callback(results.rows)
+        // })
+    }
 }

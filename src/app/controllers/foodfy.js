@@ -22,12 +22,6 @@ exports.about = function(req, res) {
 
     return res.render("foodfy/about")
 }
-// exports.search = function (req, res) {
-  
-//     const recipes = req.params
-  
-//     return res.render("foodfy/search", {recipes} )
-// }
 exports.recipesList = function(req, res) {
       
     Recipe.all(function(recipes) {

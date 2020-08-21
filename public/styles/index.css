@@ -113,15 +113,22 @@ input::placeholder {
 
 
 /*=========== CHEFSList ===========*/
+.cards-chefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 0 auto;
+}
 .card-chefs {
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
-    /* column-gap: 20px; */
-    margin-right: 60px;
+    column-gap: 20px;
+    margin: 0px 0 30px;
 }
 .card-chefs img {
-    width: 64px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
 }
 .card-chefs h3 {

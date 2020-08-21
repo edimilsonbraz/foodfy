@@ -68,6 +68,7 @@ img.logo {
 .recipe__content ul li {
     line-height: 28px;
     color: #444444;
+    list-style: circle;
     
 }
 .recipe__content ul {
