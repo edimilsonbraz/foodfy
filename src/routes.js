@@ -14,7 +14,7 @@ routes.get('/', function(req, res) {
 
 routes.get("/foodfy", foodfy.index) 
 routes.get("/about", foodfy.about)
-routes.get("/recipe", foodfy.recipe)
+routes.get("/search", foodfy.index)
 routes.get("/recipesList", foodfy.recipesList)
 routes.get("/chefsList", foodfy.chefsList)
 

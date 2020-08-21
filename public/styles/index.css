@@ -21,11 +21,13 @@ header {
 }
 .nav__links li a:hover {
     color: var(--color-secundary);
+    font-weight: bold;
 }
 
 .button:hover {
     background-color: var(--color-secundary);
     transition: all 0.3s ease 0s;
+    
 }
 
 header a.button, .button { /* BOTÃO GERENCIAR */
@@ -35,6 +37,7 @@ header a.button, .button { /* BOTÃO GERENCIAR */
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
+    font-weight: bold;
 }
 header a.button:hover {
     background-color: var(--color-secundary);
@@ -149,6 +152,23 @@ p.chef {
     color: #666666;
 }
 
+/*===BUSCA / FILTER====*/
+h3.filtered {
+    margin-bottom: 20px;
+}
+a.filtered {
+    margin: 10px 5px;
+    color: var(--color-rocket);
+}
+a.filtered:hover {
+    color:var(--color-secundary);
+    font-weight: bold;
+}
+.recipes__notFound {
+    text-align: center;
+    margin: 30px;
+    font-size: 20px;
+}
 
 
 /*=== Footer ===*/

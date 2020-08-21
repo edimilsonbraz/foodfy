@@ -41,6 +41,8 @@ module.exports = {
             
             if(!recipe) return res.send("Recipe not found")
 
+            recipe.created_at = date(recipe.created_at).format
+
             return res.render("admin/recipes/show", { recipe })
         })
 
@@ -81,5 +83,4 @@ module.exports = {
             return res.redirect("/admin/recipes")
         })
     },
-
 }

@@ -29,7 +29,6 @@ li, a, button {
 }
 input::placeholder {
     color: #999999;
-    text-align: center;
     font-size: 14px;
 }
 
@@ -45,7 +44,7 @@ h2 {
 
 h3 {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: bold;
     line-height: 21px;
 }
 

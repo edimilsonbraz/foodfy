@@ -4,22 +4,30 @@ const Recipe = require('../models/Recipe')
 
 exports.index = function(req, res) {
 
-    Recipe.all(function(recipes) {
+    const { filter } = req.query;
 
+      if( filter ){
+      Recipe.findBy(filter, function(recipes){
+        return res.render('foodfy/search', { recipes, filter })
+
+      })
+
+    } else {
+      Recipe.all(function(recipes){
         return res.render("foodfy/index", { recipes })
-
-    })
+      })
+    }
 }
 exports.about = function(req, res) {
 
     return res.render("foodfy/about")
 }
-exports.recipe = function (req, res) {
+// exports.search = function (req, res) {
   
-    const recipeId = req.params.id
+//     const recipes = req.params
   
-    return res.render("foodfy/recipe", {recipes: recipe[recipeId]} )
-}
+//     return res.render("foodfy/search", {recipes} )
+// }
 exports.recipesList = function(req, res) {
       
     Recipe.all(function(recipes) {

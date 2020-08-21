@@ -1,34 +1,37 @@
-:root {
-    --color-rocket: #6558C3;
-}
 
+/*====NAV MENU====*/
 header {
-    padding: 38px 0px 36px;
+    
+    margin: 0 auto;
+    height: 80px;
+    padding: 38px 0;
     display: flex;
     align-items: center;
-    background-color: #111111;
-    height: 80px;
+
+    justify-content: normal;
+
+    margin-bottom: 36px;
+
+    background: #111111;
+}
+img.logo {
+    margin: 0  50px  0 208px ;
 }
 
-header .menu {
-    text-align: left;
+.nav__links li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+    color: #FFFFFF;
+}
+.nav__links li a:hover {
+    color: var(--color-secundary);
+    font-weight: bold;
 }
 
-header .menu a{
-    font-size: 16px;
-    color: white;
-    margin-right: 30px;
-}
-header .menu a:hover {
-    color: rgb(35, 104, 231);
-}
-.logo img {
-    position: absolute;
-    left: 205px
-} 
-/*TESTE NEW==*/
-
-
+/*====CONTEUDO====*/
 .card__image img {
     border-radius: 15px;
     height: 280px;
@@ -94,7 +97,7 @@ header .menu a:hover {
 }
 .container h2 {
     margin: 50px 0 30px;
-    color: #111111;
+   
 }
 .card img {
     width: 100%;
@@ -129,13 +132,12 @@ input, select {
     font-size: 16px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    margin: 10px auto 0px;
+    margin: 0px auto 0px;
     outline: none;
 }
 input::placeholder {
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.308);
-    font-weight: normal;
+    
 }
 select option {
     background-color: rgba(0, 0, 0, 0.1);
@@ -191,15 +193,15 @@ a.buttons {
     
 }
 button[type="submit"]:hover {
-    background-color: #4a3f9e;
+    background-color: var(--color-secundary);
 }
 a.buttons:hover {
-    background-color: #4a3f9e;
+    background-color: var(--color-secundary);
 }
 button.delete {
     background-color: rgb(231, 90, 90);
-    position: absolute;
-    top: 110px;
+    /* position: absolute;
+    top: 110px; */
     right: 330px;
 }
 button.delete:hover {
@@ -229,3 +231,19 @@ footer p {
     display: none;
     visibility: hidden;
   }
+
+
+  /*=====CARD FORM=====*/
+
+.card__form h3 {
+    margin: 10px 0 10px;
+    font-weight: bold;
+}
+
+
+.card a {
+    font-family: Roboto-Bold;
+    font-size: 14px;
+    color: var(--color-rocket);
+    font-weight: bold;
+}

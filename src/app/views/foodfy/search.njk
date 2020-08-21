@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            <link rel="stylesheet" href="/styles/index.css">
+            <link rel="stylesheet" href="/styles/index.css">
+            <title>Foodfy</title>
+        {% endblock %}
+    </head>
+
+
+{% block content %}
+    <div class="content">
+
+        <h3 class="filtered">Buscando por "{{filter}}"</h3>
+
+        <div class="cards">
+            {% for recipe in recipes %}
+                <div class="card">
+                    <img src="{{ recipe.image }}" alt="">
+                    <div class="card__text">
+                        <h3>{{ recipe.title }}</h3>
+                        <span class="autor">por {{recipe.chef_name}} </span><br><br>
+                        <a class="filtered" href="/admin/recipes/{{ recipe.id }}">Visualizar</a> 
+                    </div>                      
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if recipes  == 0 %}
+            <div class="recipes__notFound">
+                <strong>Nenhuma busca relacionada</strong>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

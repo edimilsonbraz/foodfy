@@ -7,24 +7,22 @@
         <meta charset="UTF8">
         <link rel="stylesheet" href="/styles/style.css">
         <link rel="stylesheet" href="/styles/recipesAdmin.css">
-        
-
-
     </head>
 <body>
     <header>
-        <div class="content">
-            <div class="logo">  <!-- FICAR DE OLHO NESSA CLASSE PQ PODE DAR PROBLEMAS NA LARGURADA PAGINA--> 
-            <a href="/"><img src="/images/logo_Branca.png" alt="logo FoodFy"></a>  <!--LOGO -->
-            </div>
-            <div class="menu">
-                <a href="/admin/recipes/">RECEITAS</a>
-                <a href="/admin/chefs/">CHEFS</a>
-                <a href=""></a>
-                <a href=""></a>
-            </div>
-        </div> 
+        <a href="/"><img class="logo" src="/images/logo_Branca.png" alt="logo FoodFy"></a>  <!--LOGO -->
+        
+        <nav>
+            <ul class="nav__links">
+                <li><a href="/admin/recipes/">RECEITAS</a></li>
+                <li><a href="/admin/chefs/">CHEFS</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <div class="content">
+    
+    </div> 
 
     {% block content %} {% endblock %}
 
