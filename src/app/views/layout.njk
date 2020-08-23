@@ -23,7 +23,12 @@
 
             <div class="search">
                 <form action="/search" method="GET">
-                    <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+                    <input 
+                        type="text" 
+                        name="filter" 
+                        placeholder="Buscar uma receita" 
+                        value="{{filter}}"
+                    >
                     <button class="button" type="submit">Buscar</button>
                 </form>
             </div>
@@ -33,12 +38,13 @@
            
         </div> 
    
-
+    
     {% block content %} {% endblock %}
 
     <footer>
         <p class="copy">Todos os direitos reservados, receitas Foodfy.</p>
     </footer>
-    <script src="/utils.js"></script>
+    
+    <script src="/scripts.js"></script>
 </body>
 </html>

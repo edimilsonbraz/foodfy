@@ -1,21 +1,20 @@
-
 /*====NAV MENU====*/
 header {
-    
+    background: #111111;
+}
+nav {
+    max-width: 940px;
     margin: 0 auto;
     height: 80px;
     padding: 38px 0;
     display: flex;
     align-items: center;
 
-    justify-content: normal;
-
+    justify-content: flex-start;
     margin-bottom: 36px;
-
-    background: #111111;
 }
 img.logo {
-    margin: 0  50px  0 208px ;
+    margin-right: 50px;
 }
 
 .nav__links li {
@@ -25,6 +24,8 @@ img.logo {
 .nav__links li a {
     transition: all 0.3s ease 0s;
     color: #FFFFFF;
+    margin-right: 30px;
+
 }
 .nav__links li a:hover {
     color: var(--color-secundary);

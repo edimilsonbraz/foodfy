@@ -14,6 +14,7 @@ exports.index = function(req, res) {
 
     } else {
       Recipe.all(function(recipes){
+        
         return res.render("foodfy/index", { recipes })
       })
     }
@@ -23,25 +24,39 @@ exports.about = function(req, res) {
     return res.render("foodfy/about")
 }
 exports.recipesList = function(req, res) {
-      
-    Recipe.all(function(recipes) {
-     Recipe.find(req.params.id, function(recipe) {
+  
+    let { page, limit } = req.query;
 
-        return res.render("foodfy/recipesList", { recipe, recipes})
+    page = page || 1
+    limit = limit || 3
+    let offset = limit * (page - 1)
 
-        })
-    })
     
-}
+    const params = {
+      page,
+      limit,
+      offset,
+      callback(recipes) {
+        
+        const pagination = {
+          total: recipes[0] ? Math.ceil(recipes[0].total / limit) : 0,
+          page
+        }
+        
+        return res.render('foodfy/recipesList', { recipes, pagination })
+      }
+    }
+
+    Recipe.paginate(params)
+
+  }
 exports.chefsList = function(req, res) {
 
-    
     Chef.all(function(chefs) {
-        // Chef.TotalRecipesByChefs(req.params.id, function(recipesByChef) {
 
         return res.render("foodfy/chefsList", {chefs})
 
-        })
-    // })
+    })
+    
       
 }

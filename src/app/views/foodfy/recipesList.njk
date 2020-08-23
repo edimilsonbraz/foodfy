@@ -1,27 +1,27 @@
 {% extends "layout.njk" %}
 
-    <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            <link rel="stylesheet" href="/styles/style.css">
-            <link rel="stylesheet" href="/styles/receitas.css">
-            <link rel="stylesheet" href="/styles/recipes.css">
+<head>
+    {% block head %}
+        <meta charset="UTF8">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/receitas.css">
+        <link rel="stylesheet" href="/styles/recipes.css">
 
-            <title>Receitas Foodfy</title>
-        {% endblock %}
-    </head>
+        <title>Receitas Foodfy</title>
+    {% endblock %}
+</head>
 
 {% block content %}
     <div class="content">
         <div class="container">
-                       
+
             <div class="cards">
                 {% for recipe in recipes %}
                     <div class="card" id="{{ recipe.id }}" name="{{ recipe.title }}" chef="por {{recipe.chef_id }}">
                         <img src="{{ recipe.image }}" alt="">
                         <h3>{{ recipe.title }}</h3>
-                        <span>por {{recipe.chef_name}}</span>
+                        <span>por
+                            {{recipe.chef_name}}</span>
                     </div>
                 {% endfor %}
             </div>
@@ -30,11 +30,54 @@
         <div class="pagination"
             data-page={{pagination.page}}
             data-total={{pagination.total}}
-            data-filter={{filter}}
         ></div>
 
     </div>
 
-    <script src="utils.js"></script>
+    <script>
+        function paginate(selectedPage, totalPages) {
+            let pages = [],
+                oldPage;
+            for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+                const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
+                const pagesAfterSelectedPage = currentPage <= selectedPage + 2;
+                const pagesBeforeSelectedPage = currentPage >= selectedPage - 2;
+                if (firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage) {
+                    if (oldPage && currentPage - oldPage > 2) {
+                        pages.push("...")
+                    }
+                    if (oldPage && currentPage - oldPage == 2) {
+                        pages.push(oldPage + 1)
+                    }
+                    pages.push(currentPage);
+                    oldPage = currentPage;
+                }
+            }
+            return pages;
+        }
+        function createPagination(pagination) {
+            const filter = pagination.dataset.filter;
+            const page = Number(pagination.dataset.page);
+            const total = Number(pagination.dataset.total);
+            const pages = paginate(page, total);
+            let elements = "";
+            for (let page of pages) {
+                if (String(page).includes("...")) {
+                    elements += `<span>${page}</span>`
+                } else {
+                    if (filter) {
+                        elements += `<a href="?page=${page}&filter={{filter}}">${page}</a>`
+                    } else {
+                        elements += `<a href="?page=${page}">${page}</a>`
+                    }
+                }
+            }
+            pagination.innerHTML = elements;
+        }
+        const pagination = document.querySelector('.pagination')
+        if (pagination) {
+            createPagination(pagination);
+        }
+    </script>
 
 {% endblock %}

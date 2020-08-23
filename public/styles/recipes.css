@@ -124,6 +124,7 @@ input::placeholder {
 }
 /*=== Footer ===*/
 footer {
+    width: 100%;
     background-color: #EEEEEE;
     margin-top: 50px;
     padding: 23px;
@@ -141,3 +142,32 @@ footer p {
     display: none;
     visibility: hidden;
   }
+
+
+ /*==============PAGINAÇÃO=========*/
+.pagination {
+    height: 40px;
+    text-align: center;
+    margin: 42px auto 220px;
+   
+  }
+  
+  .pagination a,
+  .pagination span {
+    margin-right: 16px;
+    font-weight: bold;
+    
+  }
+  
+  .pagination a {
+    border: 1px solid var(--color-placeholder);
+    padding: 5px;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .pagination a:hover {
+    background-color: var(--color-placeholder);
+    color: #FFF;
+    
+  }
+  

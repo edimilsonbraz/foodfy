@@ -181,8 +181,9 @@ a.filtered:hover {
 /*=== Footer ===*/
 footer {
     background-color: #EEEEEE;
-    margin-top: 50px;
+    margin-top: 220px;
     padding: 23px;
+    width: 100%;
     
 }
 footer p {
@@ -190,3 +191,4 @@ footer p {
     color: var(--color-placeholder);
     font-size: 14px;
 } 
+

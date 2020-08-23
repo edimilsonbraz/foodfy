@@ -69,10 +69,21 @@ module.exports = {
                 return res.send('Please, fill all fields!')
             }
         }
+        const { chef_id, image, title, ingredients, preparation, information, id } = req.body;
+
+        const data = [
+          chef_id,
+          image,
+          title,
+          ingredients,
+          preparation,
+          information,
+          id
+        ];
 
         Recipe.update(req.body, function () {
 
-            return res.redirect(`/admin/recipes/${req.body.id}`)
+            return res.redirect(`/admin/recipes/${id}`)
         })
             
     },
