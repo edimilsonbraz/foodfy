@@ -5,6 +5,8 @@
         {% block head %}       
         {% endblock %}
         <meta charset="UTF8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <link rel="stylesheet" href="/styles/style.css">
         <link rel="stylesheet" href="/styles/recipesAdmin.css">
     </head>
@@ -25,9 +27,6 @@
 
     {% block content %} {% endblock %}
 
-    <footer>
-        <p class="copy">Todos os direitos reservados, receitas Foodfy.</p>
-    </footer>
-            <script src="/scripts.js"></script>
+    {% include "parts/footer.njk" %}
 </body>
 </html>

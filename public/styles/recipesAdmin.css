@@ -1,3 +1,5 @@
+
+
 /*====NAV MENU====*/
 header {
     background: #111111;
@@ -81,6 +83,94 @@ img.logo {
     margin-top: 20px;
 }
 
+/*==== IMAGES UPLOAD ====*/
+card__form .item #images-upload {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+}
+.item #images-upload input {
+    width: 380px ;
+    position: absolute;
+
+    display: block;
+    overflow: hidden;
+    width: 180px;
+    height: 180px;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.card__form .item #images-upload .box {
+    width: 180px;
+    height: 150px;
+    background-color: rgb(243, 240, 240);
+    border: 1px solid #999;
+
+    text-align: center;
+    
+}
+.card__form .item #images-upload .box p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.card__form .item #images-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 8px;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.card__form .item #images-preview img {
+    width: 100%;
+    height: 150px;
+    
+    object-fit: cover;
+}
+#images-preview .image {
+    position: relative;
+}
+#images-preview .image i {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(255, 255, 255, 0.8);
+
+    color: red;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 300%;
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition: opacity 200ms;
+}
+#images-preview .image:hover i {
+    opacity: 1;
+}
+
+
+
+
+
+
+
 /* === Cards ===*/
 .cards {
     display: grid;
@@ -148,7 +238,7 @@ select option {
 }
 textarea {
     width: 940px;
-    height: 157px;
+    min-height: 150px;
     background: #FFFFFF;
     font-family: roboto;
     font-size: 16px;
@@ -160,7 +250,7 @@ textarea {
     outline: none;
 }
 
-button {
+button, .button {
     font-size: 16px;
     color: var(--color-rocket);
     text-align: right;
@@ -214,18 +304,7 @@ h2.title2 {
     margin-top: 55px;
 }
 
-/*=== Footer ===*/
-footer {
-    background-color: #EEEEEE;
-    margin-top: 50px;
-    padding: 23px;
-    
-}
-footer p {
-    text-align: center;
-    color: #999999;
-    font-size: 14px;
-} 
+
 
 /* ============== SHOW-HIDE ============== */
 
@@ -240,8 +319,31 @@ footer p {
 .card__form h3 {
     margin: 10px 0 10px;
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #333;
+    
 }
+/* form .item h3 > div:nth-child(1) {
+    color: #777;
+    text-transform: uppercase;
+    font-size: 14px;
+} */
 
+form .item select {
+    /*Permitir estilizacao no select*/
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* trazer de volta o icone lateral */
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
 
 .card a {
     font-family: Roboto-Bold;
@@ -249,3 +351,22 @@ footer p {
     color: var(--color-rocket);
     font-weight: bold;
 }
+
+
+
+
+
+
+
+/*=== Footer ===*/
+footer {
+    background-color: #EEEEEE;
+    margin-top: 50px;
+    padding: 23px;
+    
+}
+footer p {
+    text-align: center;
+    color: #999999;
+    font-size: 14px;
+} 

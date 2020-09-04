@@ -4,37 +4,31 @@ const { date } = require('../../lib/utils')
 
 
 module.exports = {
-    all(callback) {
+    all() {
 
-        db.query(`
+        return db.query(`
         SELECT recipes.*, chefs.name AS chef_name
         FROM recipes
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         ORDER BY name
-        `, function(err, results) {
-            if (err) return res.send("Database error! All") 
-            
-            callback(results.rows)
-        })
+        `)
 
     },
-    create(data, callback ) {
+    create(data) {
 
         const query = `
             INSERT INTO recipes (
                 chef_id,
-                image,
                 title,
                 ingredients,
                 preparation,
                 information,
                 created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+            ) VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id
         `
         const values = [
             data.chef,
-            data.image,
             data.title,
             data.ingredients,
             data.preparation,
@@ -42,11 +36,8 @@ module.exports = {
             date(Date.now()).format
         ]
     
-        db.query(query, values, function(err, results) {
-            if (err) return res.send("Database error! Post") 
-            
-            callback(results.rows[0])
-        })  
+        return db.query(query, values) 
+
     },
     find(id, callback) {
         db.query (`
@@ -110,12 +101,10 @@ module.exports = {
         })
         
     },
-    chefsSelectOptions(callback) {
-        db.query(`SELECT name, id FROM chefs`, function(err, results) {
-            if(err) throw 'Database Error! SelectOpt'
-
-            callback(results.rows)
-        })
+    chefsSelectOptions() {
+        return db.query(`
+        SELECT name, id FROM chefs
+        `)
     },
     paginate(params) {
     const { limit, offset, callback } = params;

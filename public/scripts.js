@@ -130,3 +130,66 @@ function showHide(esconder, change) {
       createPagination(pagination)
   }
   
+
+  const ImagesUpload = {
+    preview: document.querySelector('#images-preview'),
+    uploadLimit: 5,
+    handleFileInput(event) {
+        const { files: fileList } = event.target
+        
+        if (ImagesUpload.hasLimit(event)) return
+
+        Array.from(fileList).forEach(file => {
+          const reader = new FileReader() 
+
+          reader.onload = () => {
+              const image = new Image()
+              image.src = String(reader.result)
+
+              const div = ImagesUpload.getContainer(image)
+              ImagesUpload.preview.appendChild(div)
+          }
+
+          reader.readAsDataURL(file)
+
+        })
+
+    },
+    hasLimit(event) {
+      const { uploadLimit } = ImagesUpload
+      const { files: fileList } = event.target
+
+        if (fileList.length > uploadLimit) {
+          alert(`Envie no máximo ${uploadLimit} imagens`)
+          event.preventDefault()
+          return true;
+        }
+
+        return false;
+    },
+    getContainer(image) {
+      const div = document.createElement('div')
+        div.classList.add('image')
+
+        div.onclick = ImagesUpload.removeImage
+
+        div.appendChild(image)
+
+        div.appendChild(ImagesUpload.getRemoveButton()) //inserindo elemento "i"
+
+        return div
+    },
+    getRemoveButton() {
+      const button = document.createElement('i') //adiciona os icones 
+      button.classList.add('material-icons')
+      button.innerHTML = "close"
+      return button
+    },
+    removeImage(event) {
+      const imageDiv = event.target.parentNode
+      const imagesArray = Array.from(ImagesUpload.preview.children)
+      const index = imagesArray.indexOf(imageDiv)
+
+      imageDiv.remove();
+    }
+  }

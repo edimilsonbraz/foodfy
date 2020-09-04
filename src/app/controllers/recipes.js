@@ -1,27 +1,37 @@
 const { date } = require('../../lib/utils')
-const Recipe = require('../models/Recipe')
+const Recipe = require('./../models/Recipe')
 
 
 module.exports = {
     index(req, res) {
 
-        Recipe.all(function(recipes) {
-           
-            return res.render("admin/recipes/index", {recipes})
-    
-        })
+        Recipe.all() 
+        .then(function(results) {
 
+
+            return res.render("admin/recipes/index", {recipes})
+
+        }).catch(function(err) {
+            throw new Error(err)
+
+        })
+           
+    
     },
     create(req, res) {
-
-        Recipe.chefsSelectOptions(function(options) {
-            return res.render("admin/recipes/create", { chefOptions: options })
+        //Pega Chefs
+        Recipe.chefsSelectOptions() 
+        .then(function(results) {
+            const chefs = results.rows
+            return res.render("admin/recipes/create.njk", { chefs })
+        }).catch(function(err) {
+            throw new Error(err)
 
         })
 
     },
-    post(req, res) {
-
+    async post(req, res) {
+        //Logica de salvar recipes
         const keys = Object.keys(req.body)
     
         for(key of keys) {
@@ -30,10 +40,15 @@ module.exports = {
             }
         }
 
-        Recipe.create(req.body, function(recipe) {
-            return res.redirect(`/admin/recipes/${recipe.id}`)
+        let results = await Recipe.create(req.body) 
+        const recipeId = results.rows[0]
 
-        })
+        results = await Recipe.all()
+        const chefs = results.rows
+        
+            return res.redirect("/admin/recipes/create.njk", { recipeId, chefs })
+            // return res.redirect(`/admin/recipes/${recipe.id}`)
+
     },
     show(req, res) {
 

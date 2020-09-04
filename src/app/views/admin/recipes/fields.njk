@@ -6,9 +6,20 @@
                     <div class="item">
                         <h3>Imagem da receita</h3>
                         <div id="images">
-                            <div class="image">
-                                <input type="text" name="image" placeholder="/image.png" value=" {{ recipe.image }}">
+                            <div id="images-upload">
+                                <input 
+                                    type="file" 
+                                    name="image" 
+                                    multiple
+                                    accept="image/*"
+                                    onchange="ImagesUpload.handleFileInput(event)"
+                                >
+                                <div class="box">
+                                    <p class="icon">+</p>
+
+                                </div>
                             </div>
+                            <div id="images-preview"></div>
                         </div>
                     </div>
 
@@ -25,7 +36,7 @@
                         <h3>Chef</h3>
                             <select name="chef">
                                 <option value="">Selecione um Chef</option>
-                                {% for chef in chefOptions %}
+                                {% for chef in chefs %}
                                     <option 
                                         value="{{chef.id}}" 
                                         placeholder="Selecione um chef"  
@@ -68,10 +79,7 @@
                         <h3>Informações adicionais</h3>
                         <div id="informations">
                             <div class="information">
-                                <textarea 
-                                    name="information" 
-                                    value=" {{ recipe.information }}">
-                                    {{ recipe.information }} 
+                                <textarea name="information" value=" {{ recipe.information }}">{{ recipe.information }} 
                                 </textarea>
                             </div>
                         </div>
