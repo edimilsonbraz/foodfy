@@ -1,5 +1,6 @@
 const { date } = require('../../lib/utils')
 const Recipe = require('./../models/Recipe')
+const File = require('./../models/File')
 
 
 module.exports = {
@@ -39,14 +40,20 @@ module.exports = {
                 return res.send("Por favor, preencha todos os campos")
             }
         }
+        
+        if (req.files.length == 0)
+            return res.send("Por favor, envie pelo menos 1 imagem")
 
         let results = await Recipe.create(req.body) 
-        const recipeId = results.rows[0]
+        const recipeId = results.rows[0].id
 
         results = await Recipe.all()
         const chefs = results.rows
+
+        const filesPromise = req.files.map(file => File.create ({...file, recipe_id: recipeId}))
+        await Promise.all(filesPromise)//array de promessas
         
-            return res.redirect("/admin/recipes/create.njk", { recipeId, chefs })
+            return res.redirect(`/admin/recipes/${recipeId}`, { recipeId, chefs })
             // return res.redirect(`/admin/recipes/${recipe.id}`)
 
     },

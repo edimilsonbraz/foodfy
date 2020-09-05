@@ -132,14 +132,20 @@ function showHide(esconder, change) {
   
 
   const ImagesUpload = {
+    input: "",
     preview: document.querySelector('#images-preview'),
     uploadLimit: 5,
+    files: [],
     handleFileInput(event) {
         const { files: fileList } = event.target
+        ImagesUpload.input = event.target
         
         if (ImagesUpload.hasLimit(event)) return
 
         Array.from(fileList).forEach(file => {
+
+          ImagesUpload.files.push(file)
+
           const reader = new FileReader() 
 
           reader.onload = () => {
@@ -154,10 +160,13 @@ function showHide(esconder, change) {
 
         })
 
+          ImagesUpload.input.files = ImagesUpload.getAllFiles()
+
     },
     hasLimit(event) {
-      const { uploadLimit } = ImagesUpload
-      const { files: fileList } = event.target
+      const { uploadLimit, input, preview } = ImagesUpload
+      const { files: fileList } = input
+      
 
         if (fileList.length > uploadLimit) {
           alert(`Envie no máximo ${uploadLimit} imagens`)
@@ -165,7 +174,29 @@ function showHide(esconder, change) {
           return true;
         }
 
-        return false;
+        const imagesDiv = []
+        preview.childNodes.forEach(item => {
+            if(item.classList && item.classList.value == "image")
+                imagesDiv.push(item)
+        })
+
+        const totalPhotos = fileList.length + imagesDiv.length
+            if(totalPhotos > uploadLimit) {
+                alert("Você atingiu o limite máximo de fotos")
+                event.preventDefault()
+                return true
+            }
+
+        return false
+    },
+    getAllFiles() {
+
+      const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()  //Cria um array "Files" de imagens no Mozila e Chrome que pode ser manipuladas
+
+      ImagesUpload.files.forEach(file =>  dataTransfer.items.add(file))
+
+      return dataTransfer.files
+
     },
     getContainer(image) {
       const div = document.createElement('div')
@@ -186,10 +217,13 @@ function showHide(esconder, change) {
       return button
     },
     removeImage(event) {
-      const imageDiv = event.target.parentNode
+      const imageDiv = event.target.parentNode  //div class="image"
       const imagesArray = Array.from(ImagesUpload.preview.children)
       const index = imagesArray.indexOf(imageDiv)
 
-      imageDiv.remove();
+        ImagesUpload.files.splice(index, 1)
+        ImagesUpload.input.files = ImagesUpload.getAllFiles()
+
+        imageDiv.remove();
     }
   }

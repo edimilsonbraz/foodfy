@@ -32,4 +32,6 @@ ALTER TABLE "files" ADD FOREIGN KEY ("id") REFERENCES "recipe_files" ("file_id")
 
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
 
+ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
+
 ALTER TABLE "recipes" ADD FOREIGN KEY ("chefs_id") REFERENCES "chefs" ("id");
