@@ -19,5 +19,11 @@ module.exports = {
         return db.query(query, values) 
     
     },
+    find() {
+        return db.query(`
+            SELECT * FROM files WHERE recipe_files = $1
+        `, [id])
+    
+    },
 
 }

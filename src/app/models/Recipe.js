@@ -1,5 +1,6 @@
 const db = require('../../config/db')
 const { date } = require('../../lib/utils')
+const File = require("../models/File")
 
 
 
@@ -39,27 +40,35 @@ module.exports = {
         return db.query(query, values) 
 
     },
-    find(id, callback) {
-        db.query (`
+    createRecipeFiles(file_id, recipe_id) {
+        const query = `
+            INSERT INTO recipe_files (
+                recipe_id,
+                file_id
+            )VALUES ($1, $2)
+            RETURNING id    
+        `
+        const values = [
+            recipe_id, 
+            file_id
+        ]
+
+        return db.query(query, values)
+    },
+    find(id) {
+        return db.query (`
             SELECT recipes.*, chefs.name AS chef_name
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            WHERE recipes.id = $1`, [id], function(err, results){
-                if(err) throw `Database error! ${err}`
-
-                callback(results.rows[0])
-            })
+            WHERE recipes.id = $1`, [id])
     },
-    findBy(filter, callback){
-        db.query(`
+    findBy(filter){
+        return db.query(`
         SELECT recipes.*, chefs.name AS chef_name
         FROM recipes
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         WHERE recipes.title ILIKE '%${filter}%'
-        ORDER BY chef_name`, function(err, results){
-          if(err) throw `Database Error! ${err}`;
-          callback(results.rows)
-        });
+        ORDER BY chef_name`);
     },
     update(data, callback) {
 
