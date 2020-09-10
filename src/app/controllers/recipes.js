@@ -1,6 +1,7 @@
 const { date } = require('../../lib/utils')
 const Recipe = require('./../models/Recipe')
 const File = require('./../models/File')
+const RecipeFiles = require('./../models/RecipeFiles')
 
 
 module.exports = {
@@ -44,28 +45,19 @@ module.exports = {
         if (req.files.length == 0)
             return res.send("Por favor, envie pelo menos 1 imagem")
 
-        let results = await Recipe.create(req.body)
+        const results = await Recipe.create(req.body)
         const recipeId = results.rows[0].id
 
-        results = await Recipe.all()
-        const chefs = results.rows
-
-        const filesPromise = req.files.map(file => File.create ({...file, recipe_id: recipeId}))
-        await Promise.all(filesPromise)//array de promessas
-
-        const files_id = await Promise.all(filesPromise)
-        const file = await Promise.all(filesPromise)
-
-        const recipeFilePromise = files_id.map((file_id) => {
-            Recipe.createRecipeFiles({recipe_id: recipeId, file_id: file.rows[0].id})
-        })
-        await Promise.all(recipeFilePromise)
-
-
-       
+        const filesPromise = req.files.map(file => File.create ({...file}))
         
+        const filesResults = await Promise.all(filesPromise)
+        const recipeFiles = filesResults.map((file) => {
+            const fileId = file.rows[0].id
+            RecipeFiles.create(recipeId, fileId)
+        })
+        await Promise.all(recipeFiles)
             return res.redirect(`/admin/recipes/${recipeId}`)
-            // return res.redirect(`/admin/recipes/${recipe.id}`)
+           
 
     },
     async show(req, res) {

@@ -1,6 +1,6 @@
 const db = require('../../config/db')
 const { date } = require('../../lib/utils')
-const File = require("../models/File")
+
 
 
 
@@ -39,21 +39,6 @@ module.exports = {
     
         return db.query(query, values) 
 
-    },
-    createRecipeFiles(file_id, recipe_id) {
-        const query = `
-            INSERT INTO recipe_files (
-                recipe_id,
-                file_id
-            )VALUES ($1, $2)
-            RETURNING id    
-        `
-        const values = [
-            recipe_id, 
-            file_id
-        ]
-
-        return db.query(query, values)
     },
     find(id) {
         return db.query (`
