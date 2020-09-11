@@ -20,7 +20,22 @@
 
                                 </div>
                             </div>
-                            <div id="images-preview"></div>
+
+                            <div id="images-preview">
+                                {% if files %}
+                                    {% for image in files %}
+                                        <div 
+                                            class="image" 
+                                            id="{{image.file_id}}" >
+                                            <img src="{{image.src}}" alt="{{image.name}}">
+                                            <i class="material-icons"
+                                                onclick="ImagesUpload.removeOldImage(event)"
+                                            >close</i>
+                                        </div>
+                                    {% endfor %}
+                                    <input type="hidden" removed_files>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
 
@@ -50,29 +65,29 @@
 
                     <div class="item">
                         <h3>Ingredientes</h3>
-                            <div id="ingredients">
-                                <div class="ingredient">
-                                    <input 
-                                        type="text" 
-                                        name="ingredients[]" 
-                                        placeholder="Ingrediente"
-                                    >
+                        {% if recipe.ingredients %}
+                            {% for ingredient in recipe.ingredients %}
+                                <div id="ingredients">
+                                    <div class="ingredient">
+                                        <input type="text" name="ingredients[]" value="{{ingredient}}" placeholder="Ingrediente">
+                                    </div>
                                 </div>
-                            </div>
+                            {% endfor %} 
+                        {% endif%}  
                         <button type="button" class="add-ingredient">Adicionar novo</button>
                     </div>
 
                     <div class="item">
                         <h3>Modo de preparo</h3>
-                            <div id="preparations">
-                                <div class="preparation">
-                                    <input 
-                                        type="text" 
-                                        name="preparation[]" 
-                                        placeholder="Preparation"
-                                    > 
+                        {% if recipe.preparation %}
+                            {% for preparation in recipe.preparation %}
+                                <div id="preparations">
+                                    <div class="preparation">
+                                        <input type="text" name="preparation[]" value="{{preparation}}" placeholder="Preparation"> 
+                                    </div>
                                 </div>
-                            </div>
+                            {% endfor %} 
+                        {% endif%} 
                         <button type="button" class="add-preparation">Adicionar novo</button>
                     </div>
 

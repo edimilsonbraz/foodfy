@@ -225,5 +225,17 @@ function showHide(esconder, change) {
         ImagesUpload.input.files = ImagesUpload.getAllFiles()
 
         imageDiv.remove();
-    }
+    },
+    removeOldImage(event) {
+      const imageDiv = event.target.parentNode
+
+      if(imageDiv.id) {
+          const removedFiles = document.querySelector('input[name="removed_files"')
+          if (removedFiles) {
+              removedFiles.value += `${imageDiv.id},` //1,2,3,
+          }
+      }
+
+      imageDiv.remove()
+  }
   }

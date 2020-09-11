@@ -55,21 +55,19 @@ module.exports = {
         WHERE recipes.title ILIKE '%${filter}%'
         ORDER BY chef_name`);
     },
-    update(data, callback) {
+    update(data) {
 
         const query = `
             UPDATE recipes SET 
-                image=($1),
-                title=($2),
-                chef_id=($3),
-                ingredients=($4),
-                preparation=($5),
-                information=($6)
-             WHERE id = $7
+                title=($1),
+                chef_id=($2),
+                ingredients=($3),
+                preparation=($4),
+                information=($5)
+             WHERE id = $6
             `
 
         const values = [
-            data.image,
             data.title,
             data.chef,
             data.ingredients,
@@ -78,12 +76,7 @@ module.exports = {
             data.id
         ]
 
-        db.query(query, values, function(err, results) {
-            if(err) throw `Database Error! ${err}`
-
-
-            callback()
-        })
+        return db.query(query, values)
     },
     delete(id, callback) {
 

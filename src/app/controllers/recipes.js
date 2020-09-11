@@ -74,52 +74,70 @@ module.exports = {
 
     },
     async edit(req, res) {
+        try {
+            const { id } = req.params;
 
-        let results = await Recipe.find(req.params.id) 
-        const recipe = results.rows[0]
+            let results = await Recipe.find(req.params.id) 
+            const recipe = results.rows[0]
 
-            if (!recipe) return res.send("Recipe not found")
+                if (!recipe) return res.send("Recipe not found")
 
-        //get chefs
-        results = await Recipe.chefsSelectOptions() 
-        const chefs = results.rows
+            //get chefs
+            results = await Recipe.chefsSelectOptions() 
+            const chefs = results.rows
 
-            return res.render("admin/recipes/edit", { recipe, chefs });
-            
-
+             //get images
+            results = await File.findByRecipe(id);
+            let files = results.rows
+            files = files.map((file) => ({   //map devolve um novo Array como resultado.
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path_file.replace("public", "")}`
+            }))
+            console.log(files)
+            return res.render("admin/recipes/edit", {recipe, chefs, files })
+        } catch (err) {
+            console.error(err)
+        }
     },
-    update(req, res) {
+    async update(req, res) {
 
         const keys = Object.keys(req.body) 
 
         for (key of keys) {
-            if (req.body[key] == "") {
+            if (req.body[key] == "" && key != "removed_files") {
                 return res.send('Please, fill all fields!')
             }
         }
-        const { chef_id, image, title, ingredients, preparation, information, id } = req.body;
 
-        const data = [
-          chef_id,
-          image,
-          title,
-          ingredients,
-          preparation,
-          information,
-          id
-        ];
+        if (req.files.length != 0) {
+            const newFilesPromise = req.files.map(file =>
+                File.create({...file}))// tentar pegar o id aqui
 
-        Recipe.update(req.body, function () {
+            await Promise.all(newFilesPromise)
+        }
+
+        if (req.body.removed_files) {
+            const removedFiles = req.body.removed_files.split(",") //[1,2,3,]
+            const lastIndex = removedFiles.length -1
+            removedFiles.splice(lastIndex, 1) //[1,2,3]
+
+            const removedFilesPromise = removedFiles.map(id => File.delete(id))
+            
+            await Promise.all(removedFilesPromise)
+        }
+
+        
+        await Recipe.update(req.body)
     
-            return res.redirect(`/admin/recipes/${id}`)
-        })
+        return res.redirect(`/admin/recipes/${id}`)
+    
             
     },
-    delete(req, res) {
+    async delete(req, res) {
 
-        Recipe.delete(req.body.id, function () {
+        await Recipe.delete(req.body.id)
 
             return res.redirect("/admin/recipes")
-        })
-    },
+        
+    }
 }
