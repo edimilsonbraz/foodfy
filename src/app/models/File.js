@@ -32,6 +32,13 @@ module.exports = {
         return db.query(query, [recipeId])
         
     },
+    findAllImages(recipe_id) {
+        return db.query (
+            `SELECT * FROM files
+                JOIN recipe_files ON (recipe_files.file_id = files.id)
+            WHERE recipe_id = $1
+            ORDER BY recipe_files.id ASC`, [recipe_id])
+    },
     async delete(id) {
         try {
             const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
@@ -47,6 +54,7 @@ module.exports = {
     }
 
         
-    }
+    },
+    
 
 }

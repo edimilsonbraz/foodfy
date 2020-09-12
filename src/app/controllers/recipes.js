@@ -5,31 +5,31 @@ const RecipeFiles = require('./../models/RecipeFiles')
 
 
 module.exports = {
-    index(req, res) {
-
-        Recipe.all() 
-        .then(function(results) {
-
+    async index(req, res) {
+        try {
+            let results = await Recipe.all() 
             const recipes = results.rows
+
+            if(!recipes) return res.send('Recipes Not Found!')
+
+           
             return res.render("admin/recipes/index", {recipes})
 
-        }).catch(function(err) {
-            throw new Error(err)
-
-        })
-           
+            
+        }catch (err) {
+            console.error (err)
+        }
     
     },
-    create(req, res) {
+    async create(req, res) {
         //Pega Chefs
-        Recipe.chefsSelectOptions() 
-        .then(function(results) {
-            const chefs = results.rows
+        try {
+            const results = await Recipe.chefsSelectOptions()
+            const chefs = results.rows;
             return res.render("admin/recipes/create.njk", { chefs })
-        }).catch(function(err) {
-            throw new Error(err)
-
-        })
+        }catch (err) {
+            console.error (err)
+        }
 
     },
     async post(req, res) {
@@ -61,17 +61,24 @@ module.exports = {
 
     },
     async show(req, res) {
-
-        let results = await Recipe.find(req.params.id)
-        const recipe = results.rows[0]
+        try {
+            let results = await Recipe.find(req.params.id)
+            const recipe = results.rows[0]
             
             if(!recipe) return res.send("Recipe not found")
 
-            recipe.created_at = date(recipe.created_at).format
+            results = await File.findAllImages(recipe.id)
+            const files = results.rows.map(file => ({
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+            }))
 
-            return res.render("admin/recipes/show", { recipe })
+            return res.render("admin/recipes/show", { recipe, files })
+
+        }catch (err) {
+            console.error (err)
+        }
         
-
     },
     async edit(req, res) {
         try {
