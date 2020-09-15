@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "Attach to Process",
+            "request": "attach",
+            "protocol": "inspector",
+            "address": "localhost",
+            "port": 9229
+        }
+    ]
+}

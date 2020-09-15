@@ -140,7 +140,7 @@ module.exports = {
 
         if (req.files.length != 0) {
             const newFilesPromise = req.files.map(file =>
-                File.create({...file, recipe_id: req.body.id}))// tentar pegar o id aqui
+                File.create({...file, recipe_id: req.body.id}))
 
             await Promise.all(newFilesPromise)
         }
@@ -151,7 +151,6 @@ module.exports = {
             removedFiles.splice(lastIndex, 1) //[1,2,3]
 
             const removedFilesPromise = removedFiles.map(id => File.delete(id))
-            
             await Promise.all(removedFilesPromise)
         }
 

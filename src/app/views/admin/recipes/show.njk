@@ -10,14 +10,33 @@
 
     <section class="content">
         <div class="card__title">
-            <h2 class="title2">Receita: {{recipe.title}}</h2>
+            <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
             <a class="buttons" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
         </div>
 
 
-        <div class="card__image">
-            <img src="{{files[0].src}}" alt="">
+        <div class="gallery">
+            <div class="highlight">
+                {% if not files[0] %}
+                <img src="http://placehold.it/500x500?text=RECIPE SEM FOTO"/>
+                {% else %}
+                <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                {% endif %}
+            </div>
+            <div class="gallery-preview">
+                {% for image in files %}
+                    <img 
+                        src="{{image.src}}" 
+                        alt="{{image.name}}"
+                        {% if loop.index0 == 0 %}
+                        class="active"
+                        {% endif %}
+                        onClick="ImageGallery.setImage(event)"
+                    >
+                {% endfor %}
+            </div>
         </div>
+
         <div class="card__title">
             <h1>{{recipe.title}}</h1>
             <p>{{recipe.chef_name}}</p>

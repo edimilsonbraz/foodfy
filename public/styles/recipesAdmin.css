@@ -35,11 +35,45 @@ img.logo {
 }
 
 /*====CONTEUDO====*/
-.card__image img {
+.gallery {
+    width: 100%;
+}
+.gallery img {
     border-radius: 15px;
     height: 280px;
-    margin: 24px 0 50px;
+    margin: 24px 0 8px;
     width: 940px;
+    
+}
+.gallery .highlight > img {
+    
+    /* object-fit: none;
+    object-position: 100% 100%; */
+
+    cursor: zoom-in;
+}
+.gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 4px
+}
+
+.gallery .gallery-preview img {
+    height: 100px;
+    width: 100%; 
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+.content .gallery-preview img:hover,
+.content .gallery-preview img.active {
+    opacity: 1;
 }
 .card__title h1 {
     text-align: center;

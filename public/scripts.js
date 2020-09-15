@@ -224,18 +224,30 @@ function showHide(esconder, change) {
         ImagesUpload.files.splice(index, 1)
         ImagesUpload.input.files = ImagesUpload.getAllFiles()
 
-        imageDiv.remove();
+        imageDiv.remove()
     },
     removeOldImage(event) {
-      const imageDiv = event.target.parentNode
+        const imageDiv = event.target.parentNode
 
-      if(imageDiv.id) {
-          const removedFiles = document.querySelector('input[name="removed_files"')
-          if (removedFiles) {
-              removedFiles.value += `${imageDiv.id},` //1,2,3,
-          }
-      }
+        if(imageDiv.id) {
+            const removedFiles = document.querySelector('input[name="removed_files"')
+            if (removedFiles) {
+                removedFiles.value += `${imageDiv.id},` //1,2,3,
+            }
+        }
 
-      imageDiv.remove()
+        imageDiv.remove()
+    }
   }
+
+  const ImageGallery = {
+    highlight: document.querySelector('.gallery .highlight > img'),
+    previews: document.querySelectorAll('.gallery-preview img'),
+    setImage(e) {
+      const { target } = e
+
+      ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
+      target.classList.add('active')
+      ImageGallery.highlight.src = target.src
+    }
   }

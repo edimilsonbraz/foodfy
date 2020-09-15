@@ -97,14 +97,9 @@ module.exports = {
             console.error (err)
         }
     },
-    delete(id, callback) {
+    delete(id) {
         try {
-            db.query(`DELETE FROM recipes WHERE id = $1`, [id], function(err, results) {
-                if(err) throw `Database Error! ${err}`
-    
-                return callback()
-    
-            })
+            return db.query(`DELETE FROM recipes WHERE id = $1`, [id]) 
 
         }catch (err) {
             console.error (err)
