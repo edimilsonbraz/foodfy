@@ -3,33 +3,71 @@ const Chef = require('../models/Chef')
 
 
 module.exports = {
-    index(req, res) {
+    async index(req, res) {
+        try {
+            let { page, limit } = req.query
 
-        Chef.all(function(chefs) {
-            return res.render("admin/chefs/index", {chefs})
-    
+            page = page || 1
+            limit = limit || 6
+            offset = limit * (page - 1)
+
+        const params = {
+            page,
+            limit,
+            offset
+        }
+
+        const chefs = await Chef.paginate(params)
+
+        const pagination = {
+            total: Math.ceil(chefs[0].total / limit),
+            page
+        }
+
+        if (!chefs) return res.send('Chefes não encontrados')
+
+        async function getImage(chefId) {
+            let results = await Chef.getAvatar(chefId)
+
+            return results.path
+        }
+
+        const chefsPromises = chefs.map(async chef => {
+            chef.image = await getImage(chef.id)
+            chef.image = `${req.protocol}://${req.headers.host}${chef.image.replace('public', '')}`
+
+            return chef
         })
 
+        const chefAvatar = await Promise.all(chefsPromises)
+
+                return res.render("admin/chefs/index", {chefs: chefAvatar, pagination})
+
+        }catch (err) {j
+            console.error (err)
+        }
+
     },
-    create(req, res) {
+    async create(req, res) {
 
         return res.render("admin/chefs/create")
 
     },
-    post(req, res) {
+    async post(req, res) {
+        try {
+            if (req.files.length == 0) return res.send('Por favor, insira uma imagem.')
 
-        const keys = Object.keys(req.body)
-    
-        for(key of keys) {
-            if (req.body[key] == "") {
-                return res.send("Por favor, preencha todos os campos")
-            }
+            const filePromise = req.files.map(file => File.create({ ...file }))
+            let results = await filePromise[0]
+            const fileId = results.rows[0].id
+
+            results = await Chef.create(req.body, fileId)
+            const chefId = results.rows[0].id
+
+                return res.redirect(`admin/chefs/${chefId}`)
+            } catch (error) {
+                console.error(error)
         }
-
-        Chef.create(req.body, function(chef) {
-            return res.redirect(`/admin/chefs/${chef.id}`)
-
-        })
     },
     show(req, res) {
 

@@ -22,12 +22,14 @@
                 <div id="images">
                         <div class="image">
                             <input 
-                                type="url" 
-                                name="avatar_url" 
-                                placeholder="http://" 
-                                value=" {{ chef.avatar_url }}"
+                                id="photos-input"
+                                type="file" 
+                                name="photos" 
+                                accept="images/*"
                             >
+                            <p class="buttons" id="button_avatar">Enviar avatar</p>
                         </div>
+                    <input type="hidden" name="id" value="{{ chef.id }}">
                 </div>
             </div>
             

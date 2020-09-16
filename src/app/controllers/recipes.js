@@ -40,7 +40,7 @@ module.exports = {
         //Pega Chefs
         try {
             const results = await Recipe.chefsSelectOptions()
-            const chefs = results.rows;
+            const chefs = results.rows
             return res.render("admin/recipes/create.njk", { chefs })
         }catch (err) {
             console.error (err)

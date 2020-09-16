@@ -103,4 +103,44 @@ module.exports = {
             callback(results.rows[0])
         })
     },
+    async getAvatar(id) {
+        try {
+            const query = `
+            SELECT files.* FROM files 
+            LEFT JOIN chefs ON (chefs.file_id = files.id)
+            WHERE chefs.id = $1
+            `
+
+            const results = await db.query(query, [id])
+
+            return results.rows[0]
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    async paginate({ limit, offset }) {
+        try {
+            let query = '',
+                totalQuery = `(
+                SELECT count(*) FROM chefs
+            ) AS total
+            `
+
+
+            query = `
+        SELECT chefs.*, ${totalQuery}, count(recipes) AS total_recipes
+        FROM chefs
+        LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+        GROUP BY chefs.id
+        ORDER BY updated_at DESC
+        LIMIT $1 OFFSET $2
+        `
+
+            const results = await db.query(query, [limit, offset])
+
+            return results.rows
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }

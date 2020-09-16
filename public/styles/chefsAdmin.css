@@ -197,21 +197,19 @@ button {
 }
 
 button[type="submit"],
-a.buttons {
+a.buttons, .buttons {
     background-color: var(--color-rocket);
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
-    margin: 25px;
+    /* margin: 25px; */
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
     outline: none;
     
-    position: absolute;
-    top: 102px;
-    right: 190px;
+    
     
 }
 button[type="submit"]:hover {
@@ -230,8 +228,42 @@ button.delete:hover {
     background-color: crimson;
 }
 
+form button.button_salvar {
+    position: absolute;
+    top: 102px;
+    right: 190px;
+
+    margin: 25px;
+}
+
 h2.title2 {
     margin-top: 55px;
+}
+
+/*==== INPUT CHEF AVATAR ====*/
+.item .image #photos-input {
+    position: absolute;
+    left: 216px;
+    top: 285px;
+
+    width: 135px;
+    height: 40px;
+    
+    
+    display: block;
+    overflow: hidden;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+.item .image p#button_avatar.buttons {
+    margin-top: 8px;
+    text-align: center;
+
+    width: 140px;
+    cursor: pointer;
+    
 }
 
 /*========== Footer ==========*/
