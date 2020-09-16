@@ -34,15 +34,16 @@ img.logo {
     font-weight: bold;
 }
 
-/*====CONTEUDO====*/
+/*==== GALLERY ====*/
 .gallery {
     width: 100%;
 }
-.gallery img {
+.highlight img {
     border-radius: 15px;
     height: 280px;
     margin: 24px 0 8px;
     width: 940px;
+    
     
 }
 .gallery .highlight > img {
@@ -54,13 +55,17 @@ img.logo {
 }
 .gallery-preview {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 4px
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 10px;
+
+    justify-content: right;
 }
 
 .gallery .gallery-preview img {
-    height: 100px;
+    height: 50px;
     width: 100%; 
+
+    border-radius: 4px;
 
     object-fit: cover;
 
@@ -75,6 +80,57 @@ img.logo {
 .content .gallery-preview img.active {
     opacity: 1;
 }
+
+/*==== LIGHTBOX RECIPE ====*/
+.content .highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+}
+.content .highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+.content .highlight a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background-color: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 400ms;
+}
+
+/*==== CONTEUDO ====*/
 .card__title h1 {
     text-align: center;
 }

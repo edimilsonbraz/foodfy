@@ -13,13 +13,14 @@ routes.get('/', function(req, res) {
     return res.redirect("/foodfy")
 })
 
+// ROTAS DO FOODFY
 routes.get("/foodfy", foodfy.index) 
 routes.get("/about", foodfy.about)
-routes.get("/search", foodfy.index)
+routes.get("/search", foodfy.search)
 routes.get("/recipesList", foodfy.recipesList)
 routes.get("/chefsList", foodfy.chefsList)
 
-
+// ROTAS AREA ADMINISTRATIVA RECEITAS
 routes.get("/admin/recipes", recipes.index)  // Mostrar a Lista de receitas
 routes.get("/admin/recipes/create", recipes.create) // Mostrar formulário de nova receita
 routes.get("/admin/recipes/:id", recipes.show) // Exibir detalhes de uma receita
@@ -28,7 +29,7 @@ routes.post("/admin/recipes", multer.array("image", 5), recipes.post) // Criar u
 routes.put("/admin/recipes", multer.array("image", 5), recipes.update) // Atualizar uma receita
 routes.delete("/admin/recipes", recipes.delete)  // Deletar uma receita
 
-
+// ROTAS AREA ADMINISTRATIVA CHEF
 routes.get("/admin/chefs", chefs.index)  // Mostrar a Lista de chefs
 routes.get("/admin/chefs/create", chefs.create) // Mostrar formulário de novo chef
 routes.get("/admin/chefs/:id", chefs.show) // Exibir detalhes do chefs e suas receitas

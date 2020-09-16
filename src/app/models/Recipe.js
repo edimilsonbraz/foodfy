@@ -58,19 +58,6 @@ module.exports = {
         }
         
     },
-    findBy(filter){
-        try {
-            return db.query(`
-            SELECT recipes.*, chefs.name AS chef_name
-            FROM recipes
-            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            WHERE recipes.title ILIKE '%${filter}%'
-            ORDER BY chef_name`);
-        
-        }catch (err) {
-            console.error (err)
-        }
-    },
     update(data) {
         try {
             const query = `
@@ -143,5 +130,15 @@ module.exports = {
             console.Error (err)
         }
     },
+    search(filter) {
+        return db.query(`
+            SELECT recipes.*, chefs.name AS chef_name 
+            FROM recipes
+            LEFT JOIN chefs ON ( recipes.chef_id = chefs.id )
+            WHERE recipes.title ILIKE '%${filter}%'
+            OR chefs.name ILIKE '%${filter}%'
+            ORDER BY updated_at DESC
+        `)
+    }
     
 }

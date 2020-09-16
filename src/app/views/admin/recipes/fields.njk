@@ -65,29 +65,35 @@
 
                     <div class="item">
                         <h3>Ingredientes</h3>
-                        {% if recipe.ingredients %}
+                        <div id="ingredients">
                             {% for ingredient in recipe.ingredients %}
-                                <div id="ingredients">
-                                    <div class="ingredient">
-                                        <input type="text" name="ingredients[]" value="{{ingredient}}" placeholder="Ingrediente">
-                                    </div>
+                                <div class="ingredient">
+                                    <input type="text" name="ingredients[]" value="{{ ingredient }}">
                                 </div>
-                            {% endfor %} 
-                        {% endif%}  
+                            {% endfor %}
+                            {% if not recipe %}
+                                <div class="ingredient">
+                                    <input type="text" name="ingredients[]">
+                                </div>
+                            {% endif %}
+                        </div>
                         <button type="button" class="add-ingredient">Adicionar novo</button>
                     </div>
 
                     <div class="item">
                         <h3>Modo de preparo</h3>
-                        {% if recipe.preparation %}
+                        <div id="preparations">
                             {% for preparation in recipe.preparation %}
-                                <div id="preparations">
-                                    <div class="preparation">
-                                        <input type="text" name="preparation[]" value="{{preparation}}" placeholder="Preparation"> 
-                                    </div>
+                                <div class="preparation">
+                                    <input type="text" name="preparation[]" value="{{ preparation }}">
                                 </div>
-                            {% endfor %} 
-                        {% endif%} 
+                            {% endfor %}
+                            {% if not recipe %}
+                                <div class="preparation">
+                                    <input type="text" name="preparation[]">
+                                </div>
+                            {% endif %}
+                        </div>
                         <button type="button" class="add-preparation">Adicionar novo</button>
                     </div>
 
