@@ -1,52 +1,28 @@
 const { date } = require('../../lib/utils')
 const Chef = require('../models/Chef')
+const File = require('../models/File')
 
 
 module.exports = {
     async index(req, res) {
         try {
-            let { page, limit } = req.query
+            let results = await Chef.all()
+            const chefs = results.rows
 
-            page = page || 1
-            limit = limit || 6
-            offset = limit * (page - 1)
+            if(!chefs) return res.send ('Chefs Not Found!')
 
-        const params = {
-            page,
-            limit,
-            offset
+            const ChefsPromise = chefs.map(async chef => {
+                chef.img = await Chef.getAvatar(req, chef.id)
+
+                return chef
+            })
+            results = await Promise.all(ChefsPromise)
+
+            return res.render('admin/chefs/index', {chefs: results})
+
+        } catch (error) {
+            console.error (error)
         }
-
-        const chefs = await Chef.paginate(params)
-
-        const pagination = {
-            total: Math.ceil(chefs[0].total / limit),
-            page
-        }
-
-        if (!chefs) return res.send('Chefes não encontrados')
-
-        async function getImage(chefId) {
-            let results = await Chef.getAvatar(chefId)
-
-            return results.path
-        }
-
-        const chefsPromises = chefs.map(async chef => {
-            chef.image = await getImage(chef.id)
-            chef.image = `${req.protocol}://${req.headers.host}${chef.image.replace('public', '')}`
-
-            return chef
-        })
-
-        const chefAvatar = await Promise.all(chefsPromises)
-
-                return res.render("admin/chefs/index", {chefs: chefAvatar, pagination})
-
-        }catch (err) {j
-            console.error (err)
-        }
-
     },
     async create(req, res) {
 
@@ -55,19 +31,24 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            if (req.files.length == 0) return res.send('Por favor, insira uma imagem.')
+            const keys = Object.keys(req.body)
+            for(key of keys) {
+                if(req.body[key] == "") return res.send('Please, fill all the fields!')
+            }
+            
+            if(req.file == 0) return res.send('Please, select an avatar')
 
-            const filePromise = req.files.map(file => File.create({ ...file }))
-            let results = await filePromise[0]
+            let results = await File.create({...req.file})
             const fileId = results.rows[0].id
-
+      
             results = await Chef.create(req.body, fileId)
             const chefId = results.rows[0].id
+      
+            return res.redirect(`/admin/chefs/${chefId}`)
 
-                return res.redirect(`admin/chefs/${chefId}`)
-            } catch (error) {
-                console.error(error)
-        }
+          } catch (err) {
+            console.error(err);
+          }
     },
     show(req, res) {
 

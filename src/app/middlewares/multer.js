@@ -15,7 +15,7 @@ const fileFilter = (req, file, cb) => {
     .find(acceptedFormat => acceptedFormat == file.mimetype)
 
     if(isAccepted) {
-        return cb(null, true);
+        return cb(null, true)
     }
 
         return cb(null, false)

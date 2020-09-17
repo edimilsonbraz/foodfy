@@ -22,7 +22,7 @@
                 <div class="cards">
                     {% for chef in chefs %}
                         <div class="card-chefs">
-                            <img class="img-chefs" src="{{ chef.avatar_url }}" alt="">
+                            <img class="img-chefs" src="{{chef.image}}" alt="">
                             <div class="text">   
                                 <span class="chef">{{ chef.name}}</span><br>
                                 <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
@@ -31,6 +31,13 @@
                     {% endfor %}
                 </div>
         </div>
+    <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}" 
+        data-total="{{ pagination.total }}" 
+        data-filter="{{ filter }}"
+    ></div>
+    
     </div>
 
 {% endblock %}

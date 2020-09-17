@@ -241,32 +241,39 @@ h2.title2 {
 }
 
 /*==== INPUT CHEF AVATAR ====*/
-.item .image #photos-input {
-    position: absolute;
-    left: 216px;
-    top: 285px;
-
-    width: 135px;
-    height: 40px;
-    
+.item #photos-upload {
+    position: relative;
     
     display: block;
     overflow: hidden;
 
+    width: 160px;
+    text-align: center;
+
+    cursor: pointer;
+}
+.item #photos-upload p {
+
+    margin-top: 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.item #photos-input {
+    position: absolute;
+    top: -12px;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
     opacity: 0;
 
     cursor: pointer;
 }
-.item .image p#button_avatar.buttons {
-    margin-top: 8px;
-    text-align: center;
 
-    width: 140px;
-    cursor: pointer;
-    
-}
-
-/*========== Footer ==========*/
+/*========== FOOTER ==========*/
 footer {
     background-color: #EEEEEE;
     margin-top: 50px;

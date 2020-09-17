@@ -1,11 +1,12 @@
-const db = require('../../config/db')
 const { date } = require('../../lib/utils')
+const db = require('../../config/db')
+const fs = require('fs')
 
 
 module.exports = {
     all() {
 
-        db.query(`
+        return db.query(`
         SELECT chefs.*, count(recipes) AS total_recipes
         FROM chefs
         LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
@@ -14,29 +15,24 @@ module.exports = {
         `)
 
     },
-    create(data, callback) {
+    create(data, fileId) {
 
         const query = `
             INSERT INTO chefs (
                 name,
-                avatar_url,
-                created_at
+                created_at,
+                file_id
             ) VALUES($1, $2, $3)
             RETURNING id
         `
 
         const values = [
             data.name,
-            data.avatar_url,
-            date(Date.now()).format
+            date(Date.now()).format,
+            fileId
         ]
 
-        db.query(query, values, function(err, results) {
-            if(err) throw `Database Error!Create ${err}`
-
-            callback(results.rows[0])
-            
-        })
+        return db.query(query, values)
     },
     find(id, callback) {
         db.query(`

@@ -1,6 +1,3 @@
-
-
-
 const ImagesUpload = {
   input: "",
   preview: document.querySelector('#images-preview'),

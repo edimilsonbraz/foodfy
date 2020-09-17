@@ -34,8 +34,8 @@ routes.get("/admin/chefs", chefs.index)  // Mostrar a Lista de chefs
 routes.get("/admin/chefs/create", chefs.create) // Mostrar formulário de novo chef
 routes.get("/admin/chefs/:id", chefs.show) // Exibir detalhes do chefs e suas receitas
 routes.get("/admin/chefs/:id/edit", chefs.edit) // Mostrar formulário de edição dos chefs
-routes.post("/admin/chefs", multer.array("image", 1), chefs.post) // Criar um novo chef
-routes.put("/admin/chefs", multer.array("image", 1), chefs.update) // Atualizar um chef
+routes.post("/admin/chefs", multer.single("image"), chefs.post) // Criar um novo chef
+routes.put("/admin/chefs", multer.single("image"), chefs.update) // Atualizar um chef
 routes.delete("/admin/chefs", chefs.delete)  // Deleta um chef
 
 
