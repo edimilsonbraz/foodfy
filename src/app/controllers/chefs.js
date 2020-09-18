@@ -69,49 +69,44 @@ module.exports = {
         }
 
     },
-    edit(req, res) {
+    async edit(req, res) {
+        try {
+            const { id } = req.params;
+            const results = await Chef.find(id);
+            const chef = results.rows[0]
+            console.log(chef)
 
-        Chef.find(req.params.id, function(chef) {
-            if(!chef) return res.send("Chef not found")
-
-            return res.render("admin/chefs/edit", { chef })
-
-        })
+                return res.render("admin/chefs/edit", { chef });
+    
+        }catch (err) {
+            console.error (err)
+        }
 
     },
     async update(req, res) {
-
-            const keys = Object.keys(req.body)//CRIA UM OBJETO QUE TEM VARIAS FUNÇÕES//CRIOU UM ARRAY DE CHAVES -> { }
-            for (key of keys) { 
-                if (req.body[key] == "") {
-                    return res.send('Please, fill all fields!')
-                }
+        try {
+            const keys = Object.keys(req.body)
+            for(key of keys) {
+                if(req.body[key] == "") return res.send('Please, fill all the fields!')
             }
-    
-           Chef.update(req.body, function() {
-               return res.redirect(`/admin/chefs/${req.body.id}`)
-            })
+
+            let fileId
+            if(req.file != 0) {
+                const result = await File.create({...req.file})
+                fileId = result.rows[0].id
+            }
+
+            await Chef.update(req.body, fileId)
+
+            return res.redirect(`/admin/chefs/${req.body.id}`)
+        } catch (error) {
+            console.log(`Database Error => ${error}`)
+        }
     
     },
-    delete(req, res) {
+    async delete(req, res) {
+        await Chef.delete(req.body.id)
 
-        const { id } = req.body
-
-        Chef.TotalRecipesByChefs(id, chef => {
-            let { total_recipes } = chef
-    
-            total_recipes = Number(total_recipes)
-    
-            if (chef.total_recipes <= 0) {
-                Chef.delete(id, () => {
-                    return res.redirect('/admin/chefs')
-                })
-                
-            } else {
-                return res.send("You cannot delete a chef that has recipes!!")
-            }
-        
-        })
-
-    },
+        return res.redirect('/admin/chefs')
+    }
 }

@@ -116,11 +116,12 @@ module.exports = {
              //get images
             results = await File.findByRecipe(id);
             let files = results.rows
+
             files = files.map((file) => ({   //map devolve um novo Array como resultado.
                 ...file,
                 src: `${req.protocol}://${req.headers.host}${file.path_file.replace("public", "")}`
             }))
-            console.log(files)
+            // console.log(files)
             return res.render("admin/recipes/edit", {recipe, chefs, files })
 
         } catch (err) {

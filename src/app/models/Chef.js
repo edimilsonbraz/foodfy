@@ -41,7 +41,7 @@ module.exports = {
         const query = `
         SELECT chefs.*, 
         count(recipes) AS total_recipes,
-        files.path AS avatar
+        files.path AS image
         FROM chefs
         LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
         LEFT JOIN files ON (chefs.file_id = files.id)
@@ -64,35 +64,39 @@ module.exports = {
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         WHERE chefs.id = $1`, [id]);
     },
-    update(data, callback) {
+    update(data, fileId) {
 
         const query = `
-        UPDATE chefs SET
-            name=($1),
-            avatar_url=($2)
-        WHERE id = $3
+            UPDATE chefs SET
+                name = $1,
+                file_id = $2
+            WHERE id = $3
         `
-
         const values = [
             data.name,
-            data.avatar_url,
+            fileId,
             data.id
         ]
-        
-        db.query(query, values, function(err, results) {
-            if(err) throw `Database Error!Update ${err}`
 
-            callback()
-        })
+        return db.query(query, values)
     },
-    delete(id, callback) {
+    async delete(id) {
+        const result = await db.query(`
+            SELECT files.* FROM files 
+            LEFT JOIN chefs ON chefs.file_id = files.id
+            WHERE chefs.id = $1
+        `, [id])
+        const file = result.rows[0]
 
-        db.query(`DELETE FROM chefs WHERE id = $1`, [id], function(err, results) {
-            if(err) throw `Database Error!Delete ${err}`
+        fs.unlinkSync(file.path)
 
-            return callback()
-
-        })
+        await db.query (`
+            DELETE FROM chefs
+            WHERE id = $1`
+        , [id])
+        
+        return db.query(`DELETE FROM files WHERE id =$1`, [file.id])
+    
     },
     async getAvatar(id) {
         try {

@@ -88,6 +88,8 @@ span.chef {
     width: 200px;
     height: 200px;
     margin: 42px 0 32px;
+
+    object-fit: cover;
 }
 .card__title h1 {
     text-align: center;

@@ -81,6 +81,7 @@ module.exports = {
   },
   async chefsList(req, res) {
     try {
+      
       const results = await Chef.all();
       let chefs = results.rows.map((chef) => {
         return {
@@ -90,8 +91,11 @@ module.exports = {
                 "public","")}`: "",
       }
       })
+      let { id } = req.params;
+      const result = await Chef.find(id)
+      const totalRecipes = result.rows[0]
 
-      return res.render("foodfy/chefsList", { chefs })
+      return res.render("foodfy/chefsList", { chefs, totalRecipes })
 
     } catch (err) {
       console.error(err);
