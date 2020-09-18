@@ -6,22 +6,20 @@ const File = require('../models/File')
 module.exports = {
     async index(req, res) {
         try {
-            let results = await Chef.all()
-            const chefs = results.rows
-
-            if(!chefs) return res.send ('Chefs Not Found!')
-
-            const ChefsPromise = chefs.map(async chef => {
-                chef.img = await Chef.getAvatar(req, chef.id)
-
-                return chef
+            const results = await Chef.all();
+            let chefs = results.rows.map((chef) => {
+              return {
+                ...chef,
+                image: chef.image
+                  ? `${req.protocol}://${req.headers.host}${chef.image.replace(
+                      "public","")}`: "",
+            }
             })
-            results = await Promise.all(ChefsPromise)
+      
+            return res.render("admin/chefs/index", { chefs })
 
-            return res.render('admin/chefs/index', {chefs: results})
-
-        } catch (error) {
-            console.error (error)
+          } catch (err) {
+            console.error(err);
         }
     },
     async create(req, res) {
@@ -50,7 +48,7 @@ module.exports = {
             console.error(err);
           }
     },
-    show(req, res) {
+    async show(req, res) {
 
         const { id } = req.params
 
@@ -62,6 +60,7 @@ module.exports = {
             })
         })
     })
+   
             
 
     },
@@ -75,10 +74,9 @@ module.exports = {
         })
 
     },
-    update(req, res) {
+    async update(req, res) {
 
             const keys = Object.keys(req.body)//CRIA UM OBJETO QUE TEM VARIAS FUNÇÕES//CRIOU UM ARRAY DE CHAVES -> { }
-    
             for (key of keys) { 
                 if (req.body[key] == "") {
                     return res.send('Please, fill all fields!')

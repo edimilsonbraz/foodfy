@@ -81,22 +81,20 @@ module.exports = {
   },
   async chefsList(req, res) {
     try {
-      let results = await Chef.all()
-      const chefs = results.rows
-
-      if(!chefs) return res.send ('Chefs Not Found!')
-
-      const ChefsPromise = chefs.map(async chef => {
-          chef.img = await Chef.getAvatar(req, chef.id)
-
-          return chef
+      const results = await Chef.all();
+      let chefs = results.rows.map((chef) => {
+        return {
+          ...chef,
+          image: chef.image
+            ? `${req.protocol}://${req.headers.host}${chef.image.replace(
+                "public","")}`: "",
+      }
       })
-      results = await Promise.all(ChefsPromise)
 
-      return res.render('foodfy/chefsList', {chefs: results})
+      return res.render("foodfy/chefsList", { chefs })
 
-    }catch (error) {
-      console.error (error)
+    } catch (err) {
+      console.error(err);
     }
   },
   async search(req, res) {

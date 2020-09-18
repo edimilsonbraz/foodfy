@@ -32,6 +32,17 @@ module.exports = {
         return db.query(query, [recipeId])
         
     },
+    findChefFile(chefId) {
+        try {
+            return db.query(`
+                SELECT files.* FROM chefs
+                LEFT JOIN files ON chefs.file_id = files.id
+                WHERE chefs.id = $1
+            `, [chefId])
+        } catch (error) {
+            console.log(`Database Error => ${error}`)
+        }
+    },
     findAllImages(recipe_id) {
         return db.query (
             `SELECT * FROM files

@@ -6,14 +6,16 @@ const fs = require('fs')
 module.exports = {
     all() {
 
-        return db.query(`
-        SELECT chefs.*, count(recipes) AS total_recipes
-        FROM chefs
-        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
-        GROUP BY chefs.id
-        ORDER BY total_recipes DESC
-        `)
-
+        try {
+            const query = `
+                  SELECT chefs.*, files.path AS image
+                  FROM chefs
+                  LEFT JOIN files ON (chefs.file_id = files.id)
+                  `;
+            return db.query(query);
+          } catch (err) {
+            console.error(err);
+          }
     },
     create(data, fileId) {
 
@@ -34,16 +36,22 @@ module.exports = {
 
         return db.query(query, values)
     },
-    find(id, callback) {
-        db.query(`
-        SELECT * 
-        FROM chefs 
-        WHERE id = $1`, [id], function(err, results) {
-        if(err) throw `Database Error!Find ${err}`
-
-                callback(results.rows[0])
-
-        })
+    find(id) {
+        return db.query (`
+            SELECT chefs.*,
+            count ( recipes ) AS total_recipes
+            FROM chefs
+            LEFT JOIN recipes ON ( recipes.chef_id = chefs.id )
+            WHERE chefs.id = $1
+            GROUP BY chefs.id`, [id]) 
+    },
+    findRecipes(chefId) {
+        return db.query(`
+            SELECT recipes.* FROM recipes
+            LEFT JOIN chefs ON recipes.chef_id = chefs.id
+            WHERE chefs.id = $1
+            
+        `, [chefId])
     },
     chefRecipes(id, callback) {
         db.query(`
