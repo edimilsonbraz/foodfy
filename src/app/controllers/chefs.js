@@ -1,6 +1,7 @@
 const { date } = require('../../lib/utils')
 const Chef = require('../models/Chef')
 const File = require('../models/File')
+const Recipe = require('../models/Recipe')
 
 
 module.exports = {
@@ -12,9 +13,7 @@ module.exports = {
                 ...chef,
                 image: chef.image
                   ? `${req.protocol}://${req.headers.host}${chef.image.replace(
-                      "public","")}`: "",
-            }
-            })
+                      "public","")}`: "", }})
       
             return res.render("admin/chefs/index", { chefs })
 
@@ -49,19 +48,25 @@ module.exports = {
           }
     },
     async show(req, res) {
+        try {
+            const { id } = req.params;
+                let results = await Chef.find(id);
+                let chef = results.rows[0];
+                chef = {
+                ...chef,
+                image: chef.image
+                    ? `${req.protocol}://${req.headers.host}${chef.image.replace(
+                        "public", "" )}` : "",
+                }
 
-        const { id } = req.params
-
-        Chef.find(req.params.id, function(chef) {
-            Chef.chefRecipes(req.params.id, function(recipes) {
-                Chef.TotalRecipesByChefs(req.params.id, function(recipesByChef) {
-                    
-                    return res.render('admin/chefs/show', { chef, recipes, recipesByChef })
-            })
-        })
-    })
-   
+            results = await Recipe.find(id)
+            const recipes = results.rows
             
+                return res.render("admin/chefs/show", { chef, recipes })
+
+        } catch (err) {
+            console.error (err)
+        }
 
     },
     edit(req, res) {

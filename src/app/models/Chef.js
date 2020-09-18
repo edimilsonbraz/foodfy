@@ -37,13 +37,18 @@ module.exports = {
         return db.query(query, values)
     },
     find(id) {
-        return db.query (`
-            SELECT chefs.*,
-            count ( recipes ) AS total_recipes
-            FROM chefs
-            LEFT JOIN recipes ON ( recipes.chef_id = chefs.id )
-            WHERE chefs.id = $1
-            GROUP BY chefs.id`, [id]) 
+        
+        const query = `
+        SELECT chefs.*, 
+        count(recipes) AS total_recipes,
+        files.path AS avatar
+        FROM chefs
+        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+        LEFT JOIN files ON (chefs.file_id = files.id)
+        WHERE chefs.id = $1
+        GROUP BY chefs.id, files.path`;
+
+            return db.query(query, [id])  
     },
     findRecipes(chefId) {
         return db.query(`
@@ -53,15 +58,11 @@ module.exports = {
             
         `, [chefId])
     },
-    chefRecipes(id, callback) {
-        db.query(`
-        SELECT *
-        FROM recipes
-        WHERE chef_id = $1`, [id], function(err, results) {
-            if(err) throw `Database error: ${err}`
-
-            callback(results.rows)
-        })
+    chefRecipes(id) {
+        return db.query(`SELECT recipes.*, chefs.name AS chef_name 
+        FROM recipes 
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        WHERE chefs.id = $1`, [id]);
     },
     update(data, callback) {
 
@@ -91,20 +92,6 @@ module.exports = {
 
             return callback()
 
-        })
-    },
-    TotalRecipesByChefs(id, callback) {
-        const query = `
-            SELECT chefs.*, count(recipes) AS total_recipes
-            FROM chefs
-            LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
-            WHERE chefs.id = $1
-            GROUP BY chefs.id
-        `
-        db.query(query, [id], function(err, results) {
-            if(err) throw `Database error! ${err}`
-
-            callback(results.rows[0])
         })
     },
     async getAvatar(id) {
