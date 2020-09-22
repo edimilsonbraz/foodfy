@@ -50,6 +50,18 @@ module.exports = {
             WHERE recipe_id = $1
             ORDER BY recipe_files.id ASC`, [recipe_id])
     },
+    // findRecipeFiles(recipeId) {
+    //     try {
+    //         return db.query(`
+    //             SELECT files.* FROM recipes
+    //             INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
+    //             INNER JOIN files ON files.id = recipe_files.file_id
+    //             WHERE recipes.id = $1
+    //         `, [recipeId])
+    //     } catch (error) {
+    //         console.log(`Database Error => ${error}`)
+    //     }  
+    // }, 
     recipeImages(id) {
         try {
             const subquery = `(
@@ -77,19 +89,39 @@ module.exports = {
     },
     async delete(id) {
         try {
-            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
-            const file = result.rows[0]
-    
-            fs.unlinkSync(file.path)
+            let result = await db.query(`SELECT * FROM files WHERE id = $1`, [id]);
+            const file = result.rows[0];
+
+            result = await db.query(`SELECT * FROM recipe_files WHERE recipe_files.file_id = $1`, [id]);
+            const recipe_files = result.rows[0];
+
+        } catch {
+            console.error(err);
+        }
+
+        await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id]);
+
+        return db.query(`DELETE FROM files WHERE id = $1`, [id]);
+        
+    },
+    async deleteRecipeFiles(id) {
+        try {
+            const results = await db.query(`
+                SELECT * FROM files
+                WHERE id = $1
+            `, [id])
+
+            const file = results.rows[0]
 
             await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id])
 
+            fs.unlinkSync(file.path)
+
             return db.query(`DELETE FROM files WHERE id = $1`, [id])
 
-        }catch(err) {
-            console.error(err)
+        } catch (error) {
+            console.log(`Database Error => ${error}`)
         }
-        
     },
 
 }

@@ -34,6 +34,22 @@ img.logo {
     font-weight: bold;
 }
 
+/*==== BUTTONS ====*/
+.container-buttons {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+   
+}
+.container-buttons.delete {
+    justify-content: flex-end;
+}
+.container-buttons a#editar.buttons {
+    margin: 25px 0 25px 0;
+}
+
 /*==== GALLERY ====*/
 .gallery {
     width: 100%;
@@ -174,6 +190,9 @@ img.logo {
 }
 
 /*==== IMAGES UPLOAD ====*/
+.item #images {
+    display: flex;
+}
 card__form .item #images-upload {
     position: relative;
 
@@ -182,16 +201,18 @@ card__form .item #images-upload {
 
 }
 .item #images-upload input {
-    width: 380px ;
-    position: absolute;
+    /* width: 380px ; */
+    /* position: absolute; */
 
     display: block;
     overflow: hidden;
     width: 180px;
-    height: 180px;
+    
     opacity: 0;
 
     cursor: pointer;
+
+    margin: -14px 4px;
 }
 
 .card__form .item #images-upload .box {
@@ -203,12 +224,11 @@ card__form .item #images-upload {
     text-align: center;
     
 }
-.card__form .item #images-upload .box p {
+.card__form .item #images-upload .box p { /*icone de upload*/
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
 }
 
 .card__form .item #images-preview {
@@ -256,11 +276,6 @@ card__form .item #images-upload {
 }
 
 
-
-
-
-
-
 /* === Cards ===*/
 .cards {
     display: grid;
@@ -278,9 +293,10 @@ card__form .item #images-upload {
     margin-left: 20px;
 }
 .container h2 {
-    margin: 50px 0 30px;
+    margin-right: auto;
    
 }
+
 .card img {
     width: 100%;
     border-radius: 15px;
@@ -339,6 +355,9 @@ textarea {
 
     outline: none;
 }
+.container a#cadastrar.buttons {
+    margin-bottom: 25px;
+}
 
 button, .button {
     font-size: 16px;
@@ -362,16 +381,12 @@ a.buttons {
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
-    margin: 25px;
+    margin: 25px 0 ;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
     outline: none;
-    
-    position: absolute;
-    top: 102px;
-    right: 178px;
     
 }
 button[type="submit"]:hover {
@@ -382,18 +397,15 @@ a.buttons:hover {
 }
 button.delete {
     background-color: rgb(231, 90, 90);
-    /* position: absolute;
-    top: 110px; */
-    right: 330px;
+    margin-left: 4px;
 }
 button.delete:hover {
     background-color: crimson;
 }
 
 h2.title2 {
-    margin-top: 55px;
+    margin: 25px 0 25px 0;
 }
-
 
 
 /* ============== SHOW-HIDE ============== */
@@ -414,12 +426,9 @@ h2.title2 {
     color: #333;
     
 }
-/* form .item h3 > div:nth-child(1) {
-    color: #777;
-    text-transform: uppercase;
-    font-size: 14px;
-} */
-
+i.material-icons {
+    /* justify-content: center; */
+}
 form .item select {
     /*Permitir estilizacao no select*/
     -moz-appearance: none;
@@ -441,12 +450,6 @@ form .item select {
     color: var(--color-rocket);
     font-weight: bold;
 }
-
-
-
-
-
-
 
 /*=== Footer ===*/
 footer {

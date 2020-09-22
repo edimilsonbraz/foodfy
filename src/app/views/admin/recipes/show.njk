@@ -9,9 +9,9 @@
 {% block content %}
 
     <section class="content">
-        <div class="card__title">
+        <div class="container-buttons">
             <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
-            <a class="buttons" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
+            <a class="buttons" id="editar" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
         </div>
 
 
@@ -56,7 +56,7 @@
 
         <div class="card__title">
             <h1>{{recipe.title}}</h1>
-            <p>{{recipe.chef_name}}</p>
+            <p>por {{recipe.chef_name}}</p>
         </div>
 
         <div class="recipe__content">

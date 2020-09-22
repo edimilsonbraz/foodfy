@@ -11,8 +11,10 @@
 
 {% block content %}
     <form class="content" method="POST" action="/admin/chefs" enctype="multipart/form-data">
-                            <button class="button_salvar" type="submit">Salvar Chef</button><br><br><br><br>
-                            
+        <div class="container-buttons">
+            <p></p>
+            <button id="button_salvar" type="submit">Salvar Chef</button>
+        </div>                    
        {% include 'admin/chefs/fields.njk' %}
 
     </form>

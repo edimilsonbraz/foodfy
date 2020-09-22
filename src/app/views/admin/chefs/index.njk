@@ -14,10 +14,11 @@
 {% block content %}
     <div class="content">
         <div class="container">
+            <div class="container-buttons">
+                <h2>Gerenciar Chefs</h2>
 
-            <h2>Gerenciar Chefs</h2>
-
-            <a class="buttons" href="/admin/chefs/create">Cadastrar chef</a>
+                <a class="buttons" id="cadastrar" href="/admin/chefs/create">Cadastrar chef</a>
+            </div>
 
                 <div class="cards">
                     {% for chef in chefs %}

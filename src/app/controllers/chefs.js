@@ -60,7 +60,16 @@ module.exports = {
                 }
 
             results = await Recipe.find(id)
-            const recipes = results.rows
+            // const recipes = results.rows
+            const recipesPromise = results.rows.map(async recipe=>{
+                const recipePath = await File.findByRecipe(recipe.id);
+                  const path = recipePath.rows[0].path_file;
+                  recipe.path = `${req.protocol}://${req.headers.host}${path.replace(
+                    "public", "" )}`;
+                  return recipe
+              })
+              
+              const recipes = await Promise.all(recipesPromise)
             
                 return res.render("admin/chefs/show", { chef, recipes })
 

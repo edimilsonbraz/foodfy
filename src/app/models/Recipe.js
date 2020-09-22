@@ -84,15 +84,48 @@ module.exports = {
             console.error (err)
         }
     },
-    delete(id) {
+    async delete(recipeId) {
         try {
-            return db.query(`DELETE FROM recipes WHERE id = $1`, [id]) 
+            let results = await db.query(`
+                SELECT * FROM recipe_files
+                WHERE recipe_files.recipe_id = $1
+            `, [recipeId])
+
+            const recipeFiles = results.rows
+            const recipeFilesPromise = recipeFiles.map(async recipe_file => {
+                let results = await db.query(`
+                    SELECT files.*
+                    FROM recipe_files
+                    LEFT JOIN files ON recipe_files.file_id = files.id
+                    WHERE recipe_files.id = $1
+                `, [recipe_file.id])
+                const file = results.rows[0]
+    
+                await db.query(`DELETE FROM recipe_files WHERE id = $1`, [recipe_file.id])
+    
+                fs.unlinkSync(file.path)
+    
+                await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
+            })
+            await Promise.all(recipeFilesPromise)
+    
+            return db.query(`
+                DELETE FROM recipes WHERE id = $1
+            `, [recipeId])
 
         }catch (err) {
             console.error (err)
         }
-        
     },
+    files(id) {
+        return db.query(`
+            SELECT files.* 
+            FROM files 
+            LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+            LEFT JOIN recipes ON (recipes.id = recipe_files.recipe_id) 
+            WHERE recipes.id = $1
+        `, [id]);
+    },  
     chefsSelectOptions() {
         try {
             return db.query(`

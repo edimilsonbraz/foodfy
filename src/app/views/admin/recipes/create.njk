@@ -11,7 +11,10 @@
 
 {% block content %}
     <form class="content" method="POST" action="/admin/recipes" enctype="multipart/form-data">
-                            <button type="submit">Salvar receita</button>
+        <div class="container-buttons">
+            <p></p>
+            <button id="salvar" type="submit">Salvar receita</button>
+        </div>
                             
         <div class="container">
             <h2>Criando Receita {{recipeId}}</h2>

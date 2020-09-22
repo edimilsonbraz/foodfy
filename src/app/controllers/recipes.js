@@ -129,49 +129,49 @@ module.exports = {
         }
     },
     async update(req, res) {
-        try {
-
-        const keys = Object.keys(req.body) 
+        const keys = Object.keys(req.body);
 
         for (key of keys) {
-            if (req.body[key] == "" && key != "removed_files") {
-                return res.send('Please, fill all fields!')
+            if (req.body[key] == "" && key != "information" && key != "removed_files") {
+                return res.send("Please, fill all fields!");
             }
         }
 
-        if (req.files.length != 0) {
-            const newFilesPromise = req.files.map(file =>
-                File.create({...file, recipe_id: req.body.id}))
+        if(req.body.removed_files) {
+            const removedFiles = req.body.removed_files.split(",");
+            const lastIndex = removedFiles.length - 1;
+            removedFiles.splice(lastIndex, 1);
 
-            await Promise.all(newFilesPromise)
+            const removedFilesPromise = removedFiles.map(id => File.delete(id));
+
+            await Promise.all(removedFilesPromise);
         }
 
-        if (req.body.removed_files) {
-            const removedFiles = req.body.removed_files.split(",") //[1,2,3,]
-            const lastIndex = removedFiles.length -1
-            removedFiles.splice(lastIndex, 1) //[1,2,3]
+        if(req.files.length != 0) {
+            const oldFiles = await Recipe.files(req.body.id);
+            const totalFiles = oldFiles.rows.length + req.files.length;
 
-            const removedFilesPromise = removedFiles.map(id => File.delete(id))
-            await Promise.all(removedFilesPromise)
+            if (totalFiles <= 5) {
+                const newFilesPromise = req.files.map(file => 
+                    File.create({...file, recipe_id: req.body.id}));
+                
+                await Promise.all(newFilesPromise);
+            }
         }
 
-        
-        await Recipe.update(req.body)
-    
-        return res.redirect(`/admin/recipes/${req.body.id}`)
+        await Recipe.update(req.body);
 
-        }catch (err) {
-            console.error (err)
-        }
+        return res.redirect(`/admin/recipes/${req.body.id}`);
             
     },
     async delete(req, res) {
         try {
-        await Recipe.delete(req.body.id)
+            await Recipe.delete(req.body.id)
 
-            return res.redirect("/admin/recipes")
-        }catch (err) {
-            console.error (err) 
+            return res.redirect('/admin/recipes')
+            
+        } catch (error) {
+            console.log(`Database Error => ${error}`)
         }
     }
 }

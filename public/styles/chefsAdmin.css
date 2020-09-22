@@ -87,7 +87,6 @@ span.chef {
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    margin: 42px 0 32px;
 
     object-fit: cover;
 }
@@ -102,7 +101,17 @@ span.chef {
 
 
 /*==== CARD RECIPES BY CHEFS ====*/
+.container-buttons {
+    display: flex;
 
+    justify-content: space-between;
+
+    align-items: center;
+   
+}
+.container-buttons.delete {
+    justify-content: flex-end;
+}
 
 .cards__recipes  {
     display: grid;
@@ -126,8 +135,9 @@ span.chef {
 }
 
 .container h2 {
-    margin: 50px 0 62px;
+    margin: 12px 0 62px;
     color: #111111;
+    margin-right: auto;
 }
 .card__recipes h3 {
     margin: 20px 5px 0px;
@@ -212,9 +222,6 @@ a.buttons, .buttons {
     text-decoration: none;
     cursor: pointer;
     outline: none;
-    
-    
-    
 }
 button[type="submit"]:hover {
     background-color: #4a3f9e;
@@ -222,26 +229,30 @@ button[type="submit"]:hover {
 a.buttons:hover {
     background-color: #4a3f9e;
 }
+
+a#cadastrar.buttons,
+a#editar.buttons  {
+    justify-content: center;
+    margin: 12px 4px 62px;
+} 
 button.delete {
     background-color: rgb(231, 90, 90);
-    position: absolute;
-    top: 102px;
-    right: 330px;
+    margin: 12px 4px 62px;    
 }
 button.delete:hover {
     background-color: crimson;
 }
 
-form button.button_salvar {
-    position: absolute;
-    top: 102px;
-    right: 190px;
-
-    margin: 25px;
+button#button_salvar {
+    
+    margin: 25px 0 25px;
+}
+button#salvar {
+    margin: 12px 0 62px;
 }
 
 h2.title2 {
-    margin-top: 55px;
+    margin: 12px 0 62px;
 }
 
 /*==== INPUT CHEF AVATAR ====*/
