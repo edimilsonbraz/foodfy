@@ -81,21 +81,11 @@ module.exports = {
         return db.query(query, values)
     },
     async delete(id) {
-        const result = await db.query(`
-            SELECT files.* FROM files 
-            LEFT JOIN chefs ON chefs.file_id = files.id
-            WHERE chefs.id = $1
-        `, [id])
-        const file = result.rows[0]
 
-        fs.unlinkSync(file.path)
-
-        await db.query (`
-            DELETE FROM chefs
-            WHERE id = $1`
-        , [id])
+        await db.query(`DELETE FROM recipe_files WHERE recipe_files.recipe_id = $1`, [id]);
         
-        return db.query(`DELETE FROM files WHERE id =$1`, [file.id])
+        return db.query(`DELETE FROM chefs WHERE id=$1`, [id]);
+        
     
     },
     async getAvatar(id) {

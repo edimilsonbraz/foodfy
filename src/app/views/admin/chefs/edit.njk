@@ -2,27 +2,33 @@
 
 {% block content %}
 
-<form class="content" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
 
-        
-    <div class="container">
-         <div class="container-buttons delete">
-            <h2>Editando chef</h2>
-            <button id="salvar" type="submit">Salvar chef</button>
+    <form class="content" action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data">
+            
+                <h2>Editando chef</h2>
+                <button id="salvar" type="submit">Salvar chef</button>
+                <input type="hidden" name="id" value="{{ chef.id }}">
 
-            <form action="/admin/chefs?_method=DELETE" method="post">
-                <input type="hidden" name="id" value={{ chef.id }}>
-                <button class="delete" type="submit">Deletar</button>
-            </form>
-                                    
+                
+            {% include 'admin/chefs/fields.njk' %}
+
         </div>
+    </form> 
 
-        {% include 'admin/chefs/fields.njk' %}
+    <form action="/admin/chefs?_method=DELETE" method="POST" id="delete-chef">
+        <input type="hidden" name="id" value="{{ chef.id }}">
+        <button class="delete" type="submit">Deletar</button>
+    </form>   
 
-        <input type="hidden" name="id" value={{ chef.id }}>
-
-    </div>
-</form>   
+    <script>
+        const formDelete = document.querySelector("#delete-chef")
+        formDelete.addEventListener("submit", function(event) {
+            const confirmation = confirm("Deseja Deletar?")
+            if(!confirmation) {
+                event.preventDefault()
+            }
+        })
+    </script>
 
 
 {% endblock %}

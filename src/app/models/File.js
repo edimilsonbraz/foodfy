@@ -50,18 +50,55 @@ module.exports = {
             WHERE recipe_id = $1
             ORDER BY recipe_files.id ASC`, [recipe_id])
     },
-    // findRecipeFiles(recipeId) {
-    //     try {
-    //         return db.query(`
-    //             SELECT files.* FROM recipes
-    //             INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
-    //             INNER JOIN files ON files.id = recipe_files.file_id
-    //             WHERE recipes.id = $1
-    //         `, [recipeId])
-    //     } catch (error) {
-    //         console.log(`Database Error => ${error}`)
-    //     }  
-    // }, 
+    findRecipeFiles(recipeId) {
+        try {
+            return db.query(`
+                SELECT files.* FROM recipes
+                INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
+                INNER JOIN files ON files.id = recipe_files.file_id
+                WHERE recipes.id = $1
+            `, [recipeId])
+        } catch (error) {
+            console.log(`Database Error => ${error}`)
+        }  
+    },
+    async createRecipeFiles({filename, path, recipe_id}) {
+        try {
+            let query = `
+                INSERT INTO files (
+                    name,
+                    path            
+                ) VALUES ($1, $2)
+                RETURNING id
+                `
+
+            let values = [
+                filename,
+                path
+            ]
+
+            const results = await db.query(query, values)
+            const file_id = results.rows[0].id
+
+            query = `
+            INSERT INTO recipe_files (
+                recipe_id,
+                file_id
+            ) VALUES ($1, $2)
+            RETURNING id
+
+            `
+            
+            values = [
+                recipe_id, 
+                file_id
+            ]
+
+            return db.query(query, [recipe_id, file_id])
+        } catch (error) {
+            console.error(error)
+        }
+    }, 
     recipeImages(id) {
         try {
             const subquery = `(
@@ -89,39 +126,19 @@ module.exports = {
     },
     async delete(id) {
         try {
-            let result = await db.query(`SELECT * FROM files WHERE id = $1`, [id]);
-            const file = result.rows[0];
-
-            result = await db.query(`SELECT * FROM recipe_files WHERE recipe_files.file_id = $1`, [id]);
-            const recipe_files = result.rows[0];
-
-        } catch {
-            console.error(err);
-        }
-
-        await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id]);
-
-        return db.query(`DELETE FROM files WHERE id = $1`, [id]);
-        
-    },
-    async deleteRecipeFiles(id) {
-        try {
-            const results = await db.query(`
-                SELECT * FROM files
-                WHERE id = $1
-            `, [id])
-
+            const results = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
             const file = results.rows[0]
 
-            await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id])
+            fs.unlinkSync(file.path) 
 
-            fs.unlinkSync(file.path)
+            await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id])
 
             return db.query(`DELETE FROM files WHERE id = $1`, [id])
 
         } catch (error) {
-            console.log(`Database Error => ${error}`)
+            console.error(error)
         }
+        
     },
-
+   
 }

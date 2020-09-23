@@ -108,14 +108,26 @@ module.exports = {
             await Chef.update(req.body, fileId)
 
             return res.redirect(`/admin/chefs/${req.body.id}`)
+
         } catch (error) {
             console.log(`Database Error => ${error}`)
         }
     
     },
     async delete(req, res) {
-        await Chef.delete(req.body.id)
+        try {
+            
+        let results = await Chef.find(req.body.id);
 
-        return res.redirect('/admin/chefs')
+            if (results.rows[0].total_recipes == 0) {
+                await Chef.delete(req.body.id);
+                return res.redirect("/admin/chefs")         
+            } else {
+                return res.send("Chefs who have recipes on our website cannot be deleted");
+            }
+     
+        }catch (err) {
+            console.error (err)
+        }
     }
 }

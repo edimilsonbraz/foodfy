@@ -108,7 +108,7 @@ module.exports = {
 
         let results = await Recipe.search(filter)
         const RecipesPromise = results.rows.map(async recipe => {
-            recipe.img = await File.findAllImages(req, recipe.id)
+            recipe.image = await File.findAllImages(req, recipe.id)
 
             return recipe
         })
