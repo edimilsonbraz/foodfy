@@ -11,6 +11,7 @@ CREATE TABLE "recipes" (
   "information" text,
   "status" text,
   "created_at" timestamp DEFAULT (now())
+  "updated_at" timestamp DEFAULT (now())
 );
 CREATE TABLE "chefs" (
   "id" SERIAL PRIMARY KEY,
@@ -35,17 +36,19 @@ ALTER TABLE "chefs" DROP COLUMN "avatar_url"
 ALTER TABLE "chefs" ADD "file_id" int REFERENCES "files" ("id")
 ALTER TABLE "recipes" ADD "updated_at" timestamp DEFAULT (now())
 
--- CREATE FUNCTION trigger_set_timestamp()
--- RETURNS TRIGGER AS $$
--- BEGIN
---   NEW.updated_at =NOW();
---   RETURN NEW;
--- END
--- $$ LANGUAGE plpgsql;
 
--- CREATE TRIGGER set_timestamp
--- BEFORE UPDATE ON recipes
--- FOR EACH ROW
--- EXECUTE PROCEDURE trigger_set_timestamp()
+
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at =NOW();
+  RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON recipes
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp()
 
 -- ALTER TABLE "files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipe_files" ("recipe_id");

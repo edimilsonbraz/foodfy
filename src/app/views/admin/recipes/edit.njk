@@ -4,17 +4,18 @@
            
             <form action="/admin/recipes?_method=DELETE" method="POST">
                 <input type="hidden" name="id" value="{{ recipe.id }}">
+                <button class="delete" type="submit">Deletar</button>
             </form>
         
 
 
-<form class="content" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
+<form class="content" action="/admin/recipes?_method=PUT" method="POST"  enctype="multipart/form-data">
     <div class="container">
         <div class="container-buttons delete">
             <h2>Editando Receita</h2>
             <input type="hidden" name="id" value="{{ recipe.id }}">
             <button type="submit">Salvar receita</button>
-            <button class="delete" type="submit">Deletar</button>
+            
         </div>
 
         

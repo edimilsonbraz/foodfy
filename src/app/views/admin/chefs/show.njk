@@ -20,16 +20,24 @@
         </div>
         <div class="card__title">
             <h1>{{chef.name}}</h1>
-            <p>{{chef.total_recipes}} Receita(s)</p>
+            <p>
+                {% if chef.total_recipes > 1 %}
+                    {{ chef.total_recipes }} receitas
+                {% elif chef.total_recipes == 0 %}
+                    Nenhuma receita cadastrada.
+                {% else %}
+                    {{ chef.total_recipes }} receita
+                {% endif %}
+            </p>
         </div>
 
         <div class="recipe__content">
-
+        {% if chef.total_recipes > 0 %}
             <h3>Receitas</h3>
-           <div class="cards__recipes">
+            <div class="cards__recipes">
                 {% for recipe in recipes %}
                     <div class="card__recipes">
-                        <img src="{{ recipe.path }}" alt="">
+                        <img src="{{ recipe.image }}" alt="">
                         <div class="card__text">
                             <h4>{{ recipe.title }}</h4>
                             <span class="autor">por {{ chef.name }}</span><br><br>
@@ -38,7 +46,7 @@
                     </div>
                 {% endfor %}
             </div>   
-
+        {% endif %}
         </div>
 
     </section>

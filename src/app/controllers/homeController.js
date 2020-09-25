@@ -10,7 +10,7 @@ module.exports = {
 
       if( filter ){
       await Recipe.findBy(filter, function(recipes){
-        return res.render('foodfy/search', { recipes, filter })
+        return res.render('home/search', { recipes, filter })
 
       })
 
@@ -36,7 +36,7 @@ module.exports = {
     
             const recipesImage = await Promise.all(recipesPromises)
         
-        return res.render("foodfy/index", {recipes, recipesImage})
+        return res.render("home/index", {recipes, recipesImage})
       
     }
     }catch (err){
@@ -46,7 +46,7 @@ module.exports = {
   async about(req, res) {
 
     // const results = await.about()
-    return res.render("foodfy/about")
+    return res.render("home/about")
 
   },
   async recipesList(req, res) {
@@ -73,7 +73,7 @@ module.exports = {
             const recipesImage = await Promise.all(recipesPromises)
       
 
-        return res.render('foodfy/recipesList', { recipes, recipesImage })
+        return res.render('home/recipesList', { recipes, recipesImage })
 
     }catch (err){
         console.error(err)
@@ -95,7 +95,7 @@ module.exports = {
       const result = await Chef.find(id)
       const totalRecipes = result.rows[0]
 
-      return res.render("foodfy/chefsList", { chefs, totalRecipes })
+      return res.render("home/chefsList", { chefs, totalRecipes })
 
     } catch (err) {
       console.error(err);
@@ -114,9 +114,9 @@ module.exports = {
         })
         const recipes = await Promise.all(RecipesPromise)
 
-        return res.render('foodfy/search', {filter, recipes})
+        return res.render('home/search', {filter, recipes})
     } catch (error) {
-        console.log(`Database Error => ${error}`)
+        console.log(`Database Error ${error}`)
     }
     
   }

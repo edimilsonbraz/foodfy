@@ -20,7 +20,7 @@
             {% for recipe in recipes %}
                 <div class="card">
                     <img 
-                        src="{{ recipe.image if recipe.image else '//placehold.it/500x500?text=Receita Sem Foto' }}" alt="">
+                        src="{{ recipe.image }}" alt="">
                     <div class="card__text">
                         <h3>{{ recipe.title }}</h3>
                         <span class="autor">por {{recipe.chef_name}} </span><br><br>

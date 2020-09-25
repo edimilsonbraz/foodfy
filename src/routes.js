@@ -1,24 +1,24 @@
 const express = require('express')
 const routes = express.Router()
 const multer = require('./app/middlewares/multer')
-const recipes = require('./app/controllers/recipes')
-const foodfy = require('./app/controllers/foodfy')
-const chefs = require('./app/controllers/chefs')
+const recipes = require('./app/controllers/recipesController')
+const home = require('./app/controllers/homeController')
+const chefs = require('./app/controllers/chefsController')
 
 
 
 
 routes.get('/', function(req, res) {
 
-    return res.redirect("/foodfy")
+    return res.redirect("/home")
 })
 
 // ROTAS DO FOODFY
-routes.get("/foodfy", foodfy.index) 
-routes.get("/about", foodfy.about)
-routes.get("/search", foodfy.search)
-routes.get("/recipesList", foodfy.recipesList)
-routes.get("/chefsList", foodfy.chefsList)
+routes.get("/home", home.index) 
+routes.get("/about", home.about)
+routes.get("/search", home.search)
+routes.get("/recipesList", home.recipesList)
+routes.get("/chefsList", home.chefsList)
 
 // ROTAS AREA ADMIN RECEITAS
 routes.get("/admin/recipes", recipes.index)  // Mostrar a Lista de receitas

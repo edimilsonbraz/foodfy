@@ -12,6 +12,15 @@ module.exports = {
 
             if(!recipes) return res.send('Recipes Not Found!')
 
+        //     const recipe = req.body
+
+        //         const { day, month } = date(recipe.created_at)
+
+        //         recipe.created_at = {
+        //             day: `${day}/${month}`,
+            
+        // }
+
             async function getImage(recipeId) {
                 let results = await File.recipeImages(recipeId)
                 result = results.rows.map(recipe => 

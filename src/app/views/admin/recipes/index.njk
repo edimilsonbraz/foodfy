@@ -26,6 +26,10 @@
                         <div class="card__text">
                             <h3>{{ recipe.title }}</h3>
                             <span class="autor">por {{recipe.chef_name}} </span><br><br>
+
+                            <div class="published">
+                                {# <p>Criado em {{recipe.created_at}} </p>     #}
+                            </div>
                             <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a> 
                         </div>                      
                     </div>
