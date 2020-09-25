@@ -126,16 +126,19 @@ input::placeholder {
 footer {
     width: 100%;
     background-color: #EEEEEE;
-    margin-top: 50px;
+    margin-top: auto;
     padding: 23px;
     
 }
-footer p {
+footer p.copy, a.copy {
     text-align: center;
     color: #999999;
     font-size: 14px;
+    
 } 
-
+footer a.copy {
+    text-decoration: underline;
+}
 /* ============== SHOW-HIDE ============== */
 
 .hide {

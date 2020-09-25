@@ -11,23 +11,12 @@
         <link rel="stylesheet" href="/styles/recipesAdmin.css">
     </head>
 <body>
-    <header>
-        <nav>
-            <a href="/"><img class="logo" src="/images/logo_Branca.png" alt="logo FoodFy"></a>  <!--LOGO -->
-            <ul class="nav__links">
-                <li><a href="/admin/recipes/">RECEITAS</a></li>
-                <li><a href="/admin/chefs/">CHEFS</a></li>
-            </ul>
-        </nav>
-    </header>
+    {% include 'parts/headerAdmin.njk' %}
 
-    <div class="content">
-    
-    </div> 
 
     {% block content %} {% endblock %}
 
     {% include "parts/footer.njk" %}
-   
+
 </body>
 </html>

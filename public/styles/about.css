@@ -60,26 +60,26 @@ h2 {
 p {
     line-height: 28px;
     color: #444444;
-    
 }
-
-
-
-
+.content-texto p:nth-last-child(1) {
+    margin-bottom: 62px;
+}
 
 
 /*=== Footer ===*/
 footer {
+    width: 100%;
     background-color: #EEEEEE;
-    margin-top: 50px;
+    margin-top: auto;
     padding: 23px;
-    position: absolute;
-    right: 0;
-    left: 0;
- 
+    
 }
-footer p {
+footer p.copy, a.copy {
     text-align: center;
     color: #999999;
     font-size: 14px;
+    
 } 
+footer a.copy {
+    text-decoration: underline;
+}

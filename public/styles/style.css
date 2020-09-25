@@ -12,7 +12,10 @@
     border: 0;
     box-sizing: border-box;
 }
-
+.nav__links li a.active {
+    color: var(--color-secundary);
+    font-weight: bold;
+}
 
 body {
     color: #111111;

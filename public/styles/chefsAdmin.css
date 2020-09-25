@@ -31,13 +31,17 @@ img.logo {
     color: var(--color-secundary);
     font-weight: bold;
 }
+.nav__links li a.active {
+    color: var(--color-secundary);
+    font-weight: bold;
+}
 
 /*=========== CHEFS ===========*/
 .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
 }
 .card-chefs {
     display: grid;
@@ -291,16 +295,19 @@ h2.title2 {
 /*========== FOOTER ==========*/
 footer {
     background-color: #EEEEEE;
-    margin-top: 50px;
+    margin-top: auto;
     padding: 23px;
     
 }
-footer p {
+footer p.copy, a.copy {
     text-align: center;
     color: #999999;
     font-size: 14px;
+    
 } 
-
+footer a.copy {
+    text-decoration: underline;
+}
 
 /* ============== SHOW-HIDE ============== */
 

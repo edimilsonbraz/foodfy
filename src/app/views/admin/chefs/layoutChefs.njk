@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        {% block head %}       
+        {% endblock %}
+        <meta charset="UTF8">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/chefsAdmin.css">
+    </head>
+<body>
+    {% include 'parts/headerAdmin.njk' %}
+
+    {% block content %} {% endblock %}
+
+    {% include "parts/footer.njk" %}
+
+</body>
+</html>
