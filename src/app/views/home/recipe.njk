@@ -1,0 +1,103 @@
+{% extends "./layoutRecipes.njk" %}
+
+{% block head %}
+    <title>{{ recipe.title }}</title>
+    <link rel="stylesheet" href="/styles/recipesAdmin.css">
+    <link rel="stylesheet" href="/styles/style.css">
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container-buttons">
+            <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
+        </div>
+
+        <div class="gallery">
+            <div class="highlight">
+                {% if not files[0] %}
+                    <img src="http://placehold.it/500x500?text=RECIPE SEM FOTO"/>
+                {% else %}
+                    <img 
+                        src="{{files[0].src}}" 
+                        alt="{{files[0].name}}"
+                        onclick="Lightbox.open()"
+                    >
+                {% endif %}
+
+                 {# zoom image #}
+                <div class="lightbox-target">
+                    <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                    <a 
+                        href="#" 
+                        class="lightbox-close"
+                        onclick="Lightbox.close()"
+                    >
+                        <i class="material-icons">close</i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="gallery-preview">
+                {% for image in files %}
+                    <img 
+                        src="{{image.src}}" 
+                        alt="{{image.name}}"
+                        {% if loop.index0 == 0 %}
+                        class="active"
+                        {% endif %}
+                        onclick="ImageGallery.setImage(event)"
+                    >
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card__title">
+            <h1>{{recipe.title}}</h1>
+            <p>por {{recipe.chef_name}}</p>
+        </div>
+
+        <div class="recipe__content">
+
+            <!-- INGREDIENTES -->
+            <div class="ingredient">
+                <h4>Ingredientes</h4>
+                <a onClick='showHide(".ingredients-list", this)' >ESCONDER</a>
+            </div>
+            <div class="card-text">    
+                <ul class="ingredients-list">                    
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!-- MODO DE PREPARO -->
+            <div class="preparation">
+                <h4>Modo de preparo</h4>
+                <a onClick='showHide(".preparations-list", this)'>ESCONDER</a>
+            </div>
+            <div class="card-text">    
+                <ul class="preparations-list">
+                    {% for item in recipe.preparation %}
+                        <li>{{item}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- INFORMAÇÕES -->
+            <div class="information">
+                <h4>Informações adicionais</h4>
+                <a onClick='showHide(".information-p", this)'>ESCONDER</a>
+            </div>
+            <div class="card-text">
+                <p class="information-p">{{ recipe.information }}</p>
+            </div>    
+
+        </div>
+
+    </section>
+    
+    
+{% endblock %}
+{% block script %} {% endblock script %}

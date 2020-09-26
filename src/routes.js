@@ -8,6 +8,7 @@ const chefs = require('./app/controllers/chefsController')
 
 
 
+
 routes.get('/', function(req, res) {
 
     return res.redirect("/home")
@@ -19,6 +20,7 @@ routes.get("/about", home.about)
 routes.get("/search", home.search)
 routes.get("/recipesList", home.recipesList)
 routes.get("/chefsList", home.chefsList)
+routes.get("/recipe/:id", home.recipeDetails)
 
 // ROTAS AREA ADMIN RECEITAS
 routes.get("/admin/recipes", recipes.index)  // Mostrar a Lista de receitas

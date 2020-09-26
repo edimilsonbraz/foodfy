@@ -103,10 +103,29 @@ module.exports = {
         console.error(err)
       }
   },
+  async recipeDetails(req, res) {
+    try {
+      let results = await Recipe.find(req.params.id)
+      const recipe = results.rows[0]
+      
+      if(!recipe) return res.send("Recipe not found")
+
+      results = await File.findAllImages(recipe.id)
+      const files = results.rows.map(file => ({
+          ...file,
+          src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+      }))
+
+      return res.render("home/recipe.njk", { recipe, files })
+
+    }catch (err) {
+      console.error (err)
+    }
+},
   async chefsList(req, res) {
     try {
       
-      const results = await Chef.all();
+      let results = await Chef.all();
       let chefs = results.rows.map((chef) => {
         return {
           ...chef,
@@ -115,9 +134,10 @@ module.exports = {
                 "public","")}`: "",
       }
       })
+
       let { id } = req.params;
-      const result = await Chef.find(id)
-      const totalRecipes = result.rows[0]
+          results = await Chef.find(id)
+      let totalRecipes = results.rows[0]
 
       return res.render("home/chefsList", { chefs, totalRecipes })
 

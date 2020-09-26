@@ -80,9 +80,9 @@ module.exports = {
     },
     async edit(req, res) {
         try {
-            const { id } = req.params;
-            const results = await Chef.find(id);
-            const chef = results.rows[0]
+            let { id } = req.params;
+            let results = await Chef.find(id);
+            let chef = results.rows[0]
             console.log(chef)
 
                 return res.render("admin/chefs/edit", { chef });

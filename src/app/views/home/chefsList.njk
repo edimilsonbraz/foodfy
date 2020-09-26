@@ -20,7 +20,15 @@
                         <img class="img-chefs" src="{{ chef.image }}" alt="">
                         <div class="text">   
                             <span class="chef">{{ chef.name}}</span>
-                            <p class="chef">{{chef.total_recipes}} receita(s)</p>
+                            <p class="chef">
+                                {% if chef.total_recipes > 1 %}
+                                    {{ chef.total_recipes }} receitas
+                                {% elif chef.total_recipes == 1 %}
+                                    {{ chef.total_recipes }} receita
+                                {% else %}
+                                    Nenhuma receita cadastrada.
+                                {% endif %}
+                            </p>
                         </div> 
                     </div>
                 {% endfor %}

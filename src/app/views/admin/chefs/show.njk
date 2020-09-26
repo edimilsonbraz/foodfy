@@ -32,21 +32,21 @@
         </div>
 
         <div class="recipe__content">
-        {% if chef.total_recipes > 0 %}
-            <h3>Receitas</h3>
-            <div class="cards__recipes">
-                {% for recipe in recipes %}
-                    <div class="card__recipes">
-                        <img src="{{ recipe.image }}" alt="">
-                        <div class="card__text">
-                            <h4>{{ recipe.title }}</h4>
-                            <span class="autor">por {{ chef.name }}</span><br><br>
-                            <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>  
+            {% if chef.total_recipes > 0 %}
+                <h3>Receitas</h3>
+                <div class="cards__recipes">
+                    {% for recipe in recipes %}
+                        <div class="card__recipes">
+                            <img src="{{ recipe.image }}" alt="">
+                            <div class="card__text">
+                                <h4>{{ recipe.title }}</h4>
+                                <span class="autor">por {{ chef.name }}</span><br><br>
+                                <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>  
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>   
-        {% endif %}
+                    {% endfor %}
+                </div>   
+            {% endif %}
         </div>
 
     </section>
