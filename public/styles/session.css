@@ -1,0 +1,14 @@
+section.login {
+    max-width: 500px;
+}
+
+section.login .fields {
+    margin-bottom: 32px;
+}
+
+section.login .fields .footer {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+        
