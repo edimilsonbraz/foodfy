@@ -1,0 +1,48 @@
+<div class="cards">
+    <div class="card">
+
+        <div class="item">
+            <h3>Nome</h3>
+            <div id="titles">
+                <div class="title">
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Nome do usuário" 
+                        value="{{ user.name }}" 
+                        required="required"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Email</div>
+            <div class="input">
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Digite seu email" 
+                    value="{{ user.email }}" 
+                    onblur="Validate.apply(this, 'isEmail')"
+                >
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Senha</div>
+            <div class="input">
+                <input 
+                    type="password" 
+                    name="password" 
+                    {% if not user.id %} 
+                        placeholder="Escolha uma senha segura"
+                    {% else %} 
+                        placeholder="Digite sua senha para atualizar seu cadastro"
+                    {% endif %}
+                >
+            </div>
+        </div>
+
+    </div>
+</div>

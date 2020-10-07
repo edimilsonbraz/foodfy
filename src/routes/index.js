@@ -19,7 +19,7 @@ routes.get('/', function(req, res) {
 routes.use('/', home)
 routes.use('/admin', recipes)
 routes.use('/admin', chefs)
-routes.use('/users', users)
+routes.use('/admin', users)
 
 
 

@@ -1,0 +1,33 @@
+{% extends "./layoutUsers.njk" %}
+
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            <title>Foodfy</title>
+        {% endblock %}
+    </head>
+
+{% block content %}
+    <form class="content" method="POST" action="/admin/users">
+        <div class="container-buttons">
+            <p></p>
+            <button id="button_salvar" type="submit">Salvar</button>
+            <button id="button_cancelar" type="submit">Cancelar</button>
+        </div>
+
+        <div class="container">
+            <h2>Criar Usuário</h2>
+
+           {% include 'admin/users/fields.njk' %}
+
+           <input type="radio" name="admin" id="">Administrador
+
+        </div>
+    </form>
+{% endblock %}
+    
+    
+
+   

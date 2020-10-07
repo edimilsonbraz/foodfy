@@ -1,0 +1,48 @@
+{% extends "./layoutUsers.njk" %}
+
+
+    <head>
+        {% block head %}
+            <meta charset="UTF8">
+            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+            
+            <title>Foodfy</title>
+        {% endblock %}
+    </head>
+
+    
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="container-buttons">
+                <h2>Usuários</h2>
+
+                <a class="buttons" id="cadastrar" href="/admin/users/create">Novo</a>
+            </div>
+
+                <div class="cards">
+                    {% for user in users %}
+                        <div class="card-users">
+                            <div class="text">   
+                                <span class="chef">{{ user.name}}</span><br>
+                                <a href="/admin/users/{{ user.id }}">Editar</a>
+                                <a href="/admin/users/{{ user.id }}">Remover</a>
+                            </div> 
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+    <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}" 
+        data-total="{{ pagination.total }}" 
+        data-filter="{{ filter }}"
+    ></div>
+    
+    </div>
+
+{% endblock %}
+    
+    
+
+   
