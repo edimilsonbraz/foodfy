@@ -10,9 +10,9 @@
     </head>
 
 {% block content %}
-    <form class="content" method="POST" action="/admin/users">
+<section class="user-create content">
+    <form method="POST" action="/admin/users">
         <div class="container-buttons">
-            <p></p>
             <button id="button_salvar" type="submit">Salvar</button>
             <button id="button_cancelar" type="submit">Cancelar</button>
         </div>
@@ -22,10 +22,9 @@
 
            {% include 'admin/users/fields.njk' %}
 
-           <input type="radio" name="admin" id="">Administrador
-
         </div>
     </form>
+</section>
 {% endblock %}
     
     

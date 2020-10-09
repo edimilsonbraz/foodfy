@@ -20,25 +20,27 @@
                 <a class="buttons" id="cadastrar" href="/admin/users/create">Novo</a>
             </div>
 
-                <div class="cards">
-                    {% for user in users %}
-                        <div class="card-users">
-                            <div class="text">   
-                                <span class="chef">{{ user.name}}</span><br>
-                                <a href="/admin/users/{{ user.id }}">Editar</a>
-                                <a href="/admin/users/{{ user.id }}">Remover</a>
-                            </div> 
-                        </div>
-                    {% endfor %}
-                </div>
+            <div class="cards">
+                {% for user in users %}
+                    <div class="card-users">
+                        <div class="text">   
+                            <p>{{user.name}}</p>
+                            <p>{{user.email}}</p>
+
+                            <div class="links users">
+                                <a href="/admin/users/{{ user.id }}/edit">Editar</a>
+
+                                <form id="delete-user" action="/admin/users?_method=DELETE" method="post">
+                                    <input type="hidden" name="id" value={{user.id}}>
+                                    <button type="submit">Excluir</button>
+                                </form>
+                                
+                            </div>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    <div 
-        class="pagination" 
-        data-page="{{ pagination.page }}" 
-        data-total="{{ pagination.total }}" 
-        data-filter="{{ filter }}"
-    ></div>
-    
     </div>
 
 {% endblock %}

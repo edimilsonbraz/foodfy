@@ -1,0 +1,35 @@
+{% extends "./layoutUsers.njk" %}
+
+<head>
+    {% block head %}
+        <meta charset="UTF8">
+        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+        <title>Foodfy</title>
+    {% endblock %}
+</head>
+
+{% block content %}
+    <section class="user-create content">
+
+        <div class="container-buttons">
+            <form action="/admin/users?_method=DELETE" method="post" id="delete-user">
+                <div class="button_delete">
+                    <button class="delete" type="submit">Deletar</button>
+                </div>
+                <input type="hidden" name="id" value="{{user.id}}">
+            </form>
+
+        </div>
+
+        <form method="POST" action="/admin/users?_method=PUT">
+            <button id="button_salvar" type="submit">Salvar</button>
+
+            <div class="container">
+                <h2>Atualizar Usuário</h2>
+
+                {% include 'admin/users/fields.njk' %}
+
+            </div>
+        </form>
+    </section>
+{% endblock content %}

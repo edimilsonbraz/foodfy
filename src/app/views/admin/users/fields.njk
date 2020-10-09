@@ -1,48 +1,56 @@
-<div class="cards">
-    <div class="card">
+<section class="container form">
 
-        <div class="item">
-            <h3>Nome</h3>
-            <div id="titles">
-                <div class="title">
-                    <input 
-                        type="text" 
-                        name="name" 
-                        placeholder="Nome do usuário" 
-                        value="{{ user.name }}" 
-                        required="required"
-                    >
-                </div>
-            </div>
+    <div class="item">
+        <h4>Nome</h4>
+        <div class="input name">
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Nome do usuário" 
+                value="{{ user.name }}" 
+                required="required"
+            >
         </div>
-
-        <div class="item">
-            <div>Email</div>
-            <div class="input">
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Digite seu email" 
-                    value="{{ user.email }}" 
-                    onblur="Validate.apply(this, 'isEmail')"
-                >
-            </div>
-        </div>
-
-        <div class="item">
-            <div>Senha</div>
-            <div class="input">
-                <input 
-                    type="password" 
-                    name="password" 
-                    {% if not user.id %} 
-                        placeholder="Escolha uma senha segura"
-                    {% else %} 
-                        placeholder="Digite sua senha para atualizar seu cadastro"
-                    {% endif %}
-                >
-            </div>
-        </div>
-
     </div>
-</div>
+
+    <div class="item">
+        <h4>Email</h4>
+        <div class="input email">
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Digite seu email" 
+                value="{{ user.email }}" 
+                onblur="Validate.apply(this, 'isEmail')"
+            >
+        </div>
+    </div>
+
+    {# <div class="item">
+        <h4>Senha</h4>
+        <div div="div" class="input">
+            <input 
+                type="password" 
+                name="password" 
+                {% if not user.id %} 
+                    placeholder="Escolha uma senha segura" 
+                {% else %} 
+                    placeholder="Digite sua senha para atualizar seu cadastro"
+                {% endif %}
+            >
+        </div>
+    </div> #}
+
+    <div class="input checkbox">
+        <input 
+            type="checkbox" 
+            name="is_admin" 
+            id="checkbox" 
+            value="true" 
+            {% if user.is_admin %} 
+                checked="checked"
+            {% endif %} 
+        >
+        <h4>Administrador</h4>
+    </div>
+</section>
