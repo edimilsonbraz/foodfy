@@ -1,24 +1,10 @@
 const express = require('express')
 const routes = express.Router()
 
-const Validator = require('../app/validators/user')
+const UserValidator = require('../app/validators/user')
 
 // const ProfileController = require('../app/controllers/admin/ProfileController')
 const UserController = require('../app/controllers/UserController')
-const SessionController = require('../app/controllers/SessionController')
-
-
-//  login / logout
-routes.get('/login', SessionController.loginForm)
-routes.post('/login', SessionController.login)
-routes.post('/logout', SessionController.logout)
-
-// // reset password / forgot
-// routes.get('/forgot-password', SessionController.forgotForm)
-// routes.get('/password-reset', SessionController.resetForm)
-// routes.post('/forgot-password', SessionValidator.forgot, SessionController.forgot)
-// routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
-
 
 
 // Rotas de perfil de um usuário logado
@@ -28,10 +14,10 @@ routes.post('/logout', SessionController.logout)
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users', UserController.list) //Mostrar a lista de usuários cadastrados
 routes.get("/users/create", UserController.create) // Mostrar formulário de novo usuário
-routes.get('/users/:id', Validator.show,/*onlyAdmins,*/ UserController.show) // Mostar um user em edição
+routes.get('/users/:id', UserValidator.show,/*onlyAdmins,*/ UserController.show) // Mostar um user em edição
 
-routes.post('/users', Validator.post, UserController.post) //Cadastrar um usuário
-routes.put('/users', Validator.put, UserController.put) // Editar um usuário
+routes.post('/users', UserValidator.post, UserController.post) //Criar um usuário
+routes.put('/users', UserValidator.put, UserController.put) // Editar um usuário
 // routes.delete('/admin/users', UserController.delete) // Deletar um usuário
 
 

@@ -9,7 +9,7 @@ function checkAllFields(body) {
         if (body[key] == "") {
             return {
                user: body,
-               error: 'Por favor, preencha todos os camposS.'
+               error: 'Por favor, preencha todos os campos.'
            }
         }
     }
@@ -32,29 +32,34 @@ async function show(req, res, next) {
 }
 
 async function post(req, res, next) {
-    //check if has all fields
-    const fillAllFields = checkAllFields(req.body)
+    try {
+        //check if has all fields
+        const fillAllFields = checkAllFields(req.body)
+        
+        if(fillAllFields) {
+            return res.render("admin/users/create", fillAllFields)
+        }
+        
+         //check is user exists [email]
+         let { email } = req.body
     
-    if(fillAllFields) {
-        return res.render("admin/users/create", fillAllFields)
+         const user = await User.findOne({
+             where: { email }
+             
+         })
+    
+         if (user) {
+             return res.render('admin/users/create', {
+                 user: req.body,
+                 error: 'Usuário já cadastrado.'
+             })
+        }
+    
+        next()
+
+    }catch(err) {
+        console.error(err)
     }
-    
-     //check is user exists [email]
-     let { email } = req.body
-
-     const user = await User.findOne({
-         where: { email }
-         
-     })
-
-     if (user) return res.render('admin/users/create', {
-         user: req.body,
-         error: 'Usuário já cadastrado.'
-     })
-
-
-    next()
-
 }
 
 async function put(req, res, next) {

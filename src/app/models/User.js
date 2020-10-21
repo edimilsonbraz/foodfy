@@ -5,15 +5,15 @@ const { hash } = require('bcryptjs')
 module.exports = {
     async list() {
         const query = `
-            SELECT * FROM users
-        `;
+        SELECT * FROM users
+        ORDER BY updated_at DESC
+        `
 
-        const results = await db.query(query);
-
-        return results.rows;        
+        const results = await db.query(query)
+        return results.rows        
     },
     async findOne(filters) {
-        let query = "SELECT * FROM users"
+        let query = `SELECT * FROM users`
 
        Object.keys(filters).map(key => {
            //where | or | and
@@ -38,7 +38,6 @@ module.exports = {
                  email,
                  password,
                  is_admin
-                 
              ) VALUES ($1, $2, $3, $4)    
              RETURNING id
              `

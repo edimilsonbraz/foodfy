@@ -13,33 +13,31 @@
     
 {% block content %}
     <div class="content">
-        <div class="container">
-            <div class="container-buttons">
-                <h2>Usuários</h2>
+        <div class="container-buttons">
+            <h2>Usuários</h2>
+            <a class="buttons" id="cadastrar" href="/admin/users/create">Novo</a>
+        </div>
 
-                <a class="buttons" id="cadastrar" href="/admin/users/create">Novo</a>
-            </div>
+        <div class="cards-users">
+              
+            {% for user in users %}
+                <div class="card-users">
+                    <div class="info">   
+                        <p class="name">{{user.name}}</p>
+                        <p>{{user.email}}</p>
 
-            <div class="cards">
-                {% for user in users %}
-                    <div class="card-users">
-                        <div class="text">   
-                            <p>{{user.name}}</p>
-                            <p>{{user.email}}</p>
+                        <div class="links users">
+                            <a id="editar" href="/admin/users/{{ user.id }}/edit">Editar</a>
+                            <a id="remover" href="/admin/users/{{ user.id }}/edit">Remover</a>
 
-                            <div class="links users">
-                                <a href="/admin/users/{{ user.id }}/edit">Editar</a>
-
-                                <form id="delete-user" action="/admin/users?_method=DELETE" method="post">
-                                    <input type="hidden" name="id" value={{user.id}}>
-                                    <button type="submit">Excluir</button>
-                                </form>
-                                
-                            </div>
-                        </div> 
-                    </div>
-                {% endfor %}
-            </div>
+                            {# <form id="delete-user" action="/admin/users?_method=DELETE" method="post">
+                                <input type="hidden" name="id" value={{user.id}}>
+                                <button class="buttons" type="submit">Remover</button>
+                            </form> #}
+                        </div>
+                    </div> 
+                </div> 
+            {% endfor %}
         </div>
     </div>
 
