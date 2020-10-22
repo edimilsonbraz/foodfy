@@ -15,22 +15,6 @@ function checkAllFields(body) {
     }
 }
 
-async function show(req, res, next) {
-    const { userId: id } = req.session
-        const user = await User.findOne({
-            where: { id }
-        })
-
-        if (!user) return res.render("admin/users/show", {
-            error: "Usuário nã encontrado!"
-        })
-
-    req.user = user    
-    
-    next()
-
-}
-
 async function post(req, res, next) {
     try {
         //check if has all fields
@@ -82,6 +66,5 @@ async function put(req, res, next) {
 
 module.exports = {
     post,
-    show,
-    put
+    put,
 }

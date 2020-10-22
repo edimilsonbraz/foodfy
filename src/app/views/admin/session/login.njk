@@ -12,18 +12,18 @@
 
 <section class="login content">
 
-    <form method="POST" action="/admin/users/login">
+    <form method="POST" action="/admin/login">
 
         <div class="header">
             <h3>Iniciar Sessão</h3>
         </div>
 
         <div class="fields">
-            {% include 'session/fields.njk' %}
+            {% include 'admin/session/fields.njk' %}
         </div>
 
         <div class="footer">
-            <a href="/users/forgot-password">Perdeu a senha ?</a>
+            <a href="forgot-password">Perdeu a senha ?</a>
             <button class="button" type="submit">Acessar</button>
         </div>
 

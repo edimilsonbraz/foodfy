@@ -84,4 +84,11 @@ module.exports = {
             console.log(`Database PUT Error => ${error}`)
         }
     },
+    async delete(id) {
+        const query = `
+            DELETE FROM users WHERE id = $1
+        `;
+
+        return db.query(query, [id]);
+    }
 }

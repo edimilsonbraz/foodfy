@@ -3,7 +3,7 @@ const routes = express.Router()
 
 const UserValidator = require('../app/validators/user')
 
-// const ProfileController = require('../app/controllers/admin/ProfileController')
+// const ProfileController = require('../app/controllers/ProfileController')
 const UserController = require('../app/controllers/UserController')
 
 
@@ -14,11 +14,11 @@ const UserController = require('../app/controllers/UserController')
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users', UserController.list) //Mostrar a lista de usuários cadastrados
 routes.get("/users/create", UserController.create) // Mostrar formulário de novo usuário
-routes.get('/users/:id', UserValidator.show,/*onlyAdmins,*/ UserController.show) // Mostar um user em edição
+routes.get('/users/:id/edit',/*onlyAdmins,*/ UserController.edit) // Mostar um user em edição
 
 routes.post('/users', UserValidator.post, UserController.post) //Criar um usuário
 routes.put('/users', UserValidator.put, UserController.put) // Editar um usuário
-// routes.delete('/admin/users', UserController.delete) // Deletar um usuário
+routes.delete('/users', UserController.delete) // Deletar um usuário
 
 
 
