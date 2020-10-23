@@ -55,32 +55,36 @@ module.exports = {
     async resetPassword(req, res, next) {
         const { email, password, passwordRepeat, token } = req.body;
 
+        //Verifica se o usuario existe no db
         const user = await User.findOne({ Where: { email }});
 
         if (!user) {
             return res.render("admin/session/reset-password", {
                 user: req.body,
                 token,
-                error: "Email não cadastrado!"
+                error: "Usuário não cadastrado!"
             })
         }
 
+        //verificar se a senha bate
         if (password != passwordRepeat) {
-            return res.render("admin/session/forgot-password", {
+            return res.render("admin/session/reset-password", {
                 user: req.body,
                 token,
-                error: "Preencha as senhas da mesma maneira!"
+                error: "A senha e a repetição da senha estão incorretas!"
             })
         }
 
+        //verificar se o token bate
         if (token != user.reset_token) {
-            return res.render("admin/session/forgot-password", {
+            return res.render("admin/session/reset-password", {
                 user: req.body,
                 token,
                 error: "Token inválido! Solicite uma nova recuperação de senha."
             })
         }
 
+        //Verificar se o token não expirou
         let now = new Date()
         now = now.setHours(now.getHours())
 

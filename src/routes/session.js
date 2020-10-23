@@ -14,10 +14,10 @@ routes.post('/login', SessionValidator.login, SessionController.login)
 routes.post('/logout', SessionController.logout)
 
 // reset password / forgot
-routes.get('/forgot-password', SessionController.forgotPasswordToForm)
+routes.get('/forgot-password', SessionController.forgotPasswordForm)
 routes.post('/forgot-password', SessionValidator.forgotPassword, SessionController.forgotPassword)
 
-routes.get('/reset-password', SessionController.resetPasswordToForm)
+routes.get('/reset-password', SessionController.resetPasswordForm)
 routes.post('/reset-password', SessionValidator.resetPassword, SessionController.resetPassword)
 
 

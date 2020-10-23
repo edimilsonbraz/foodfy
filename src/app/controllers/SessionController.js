@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const crypto = require('crypto')
+const { hash } = require('bcryptjs'); 
 const mailer = require('../../lib/mailer')
 
 module.exports = {
@@ -24,29 +25,28 @@ module.exports = {
         req.session.destroy()
         return res.redirect('/')
     },
-    forgotPasswordToForm(req, res) {
+    forgotPasswordForm(req, res) {
         return res.render('admin/session/forgot-password')
     },
     async forgotPassword(req, res) {
-        try {
+        const { user } = req.user
 
-            let { email, is_admin } = req.body
-    
-            //um token para esse usuário
+        try {
+            //Cria um token para esse usuário
             const token = crypto.randomBytes(20).toString('hex')
     
-            const randomPassword = crypto.randomBytes(4).toString("hex")
-            req.body.password = randomPassword
+            // const randomPassword = crypto.randomBytes(4).toString("hex")
+            // req.body.password = randomPassword
     
-            const userId = await User.create(req.body)
-            req.session.userId = userId
-            const { userId: id } = req.session
+            // const userId = await User.create(req.body)
+            // req.session.userId = userId
+            // const { userId: id } = req.session
     
-            //criar um expiração
+            //criar um token q expira
             let now = new Date();
             now = now.setHours(now.getHours() + 48)
     
-            await User.put(id, {
+            await User.put(user.id, {
                 reset_token: token,
                 reset_token_expires: now
             })
@@ -56,14 +56,14 @@ module.exports = {
                 to: user.email,
                 from: 'no-reply@foodfy.com.br',
                 subject: 'Recuperação de senha',
-                    html: `<h2>Esqueceu da Senha?</h2>
-                    <p>Não se preocupe, clique no link abaixo para recuperar!</p>
-                    <p>
-                        <a href="http://localhost:3000/admin/reset-password?token=${token}" target="_blank">
+                html: `<h2>Esqueceu da Senha?</h2>
+                <p>Não se preocupe, clique no link abaixo para recuperar sua senha!</p>
+                <p>
+                    <a href="http://localhost:3000/admin/reset-password?token=${token}" target="_blank">
                         RECUPERAR SENHA
-                        </a>
-                    </p>
-                    `
+                    </a>
+                </p>
+                `,
             })
     
             //avisar o usuário que enviamos o email
@@ -74,28 +74,28 @@ module.exports = {
             console.error(err)
 
             return res.render("admin/session/forgot-password", {
-                error: "Um erro ocorreu, tente novamente!"
+                error: "Um erro ocorreu, Atualize sua senha padrão - E tente novamente!"
             })
-
         }
-
     },
-    resetPasswordToForm(req, res) {
+    resetPasswordForm(req, res) {
         return res.render('admin/session/reset-password', { token: req.query.token });
     },
     async resetPassword(req, res) {
+
         const user = req.user
+
         const { password, token } = req.body
 
         try {
             //cria um nov hash de senha
-            const newPassowrd = await hash(password, 8);
+            const newPassword = await hash(password, 8);
 
             //Atualiza o usuário
             await User.put(user.id, {
-                password: newPassowrd,
+                password: newPassword,
                 reset_token: "",
-                reset_token_expires: ""
+                reset_token_expires: "",
             })
 
             //Avisa o usuário que ele tem uma nova senha!
@@ -109,7 +109,7 @@ module.exports = {
             return res.render("admin/session/reset-password", {
                 user: req.body,
                 token,
-                error: "Um erro ocorreu, tente novamente!"
+                error: "Um erro ocorreu, tente novamente!!!"
             })
         }
     }

@@ -408,6 +408,18 @@ button.delete:hover {
     background-color: crimson;
 }
 
+button.button-sair {
+    background-color: #111111;
+    font-weight: normal;
+    padding: 0px;
+    margin: 0 0 0 380px;
+    transition: 200ms;
+}
+
+button.button-sair:hover {
+    font-weight: bold;
+}
+
 h2.title2 {
     margin: 25px 0 25px 0;
 }

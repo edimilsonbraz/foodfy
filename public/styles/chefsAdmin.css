@@ -255,6 +255,18 @@ button#salvar {
     margin: 12px 0 62px;
 }
 
+button.button-sair {
+    background-color: #111111;
+    font-weight: normal;
+    padding: 0px;
+    margin: 0 0 0 380px;
+    transition: 200ms;
+}
+
+button.button-sair:hover {
+    font-weight: bold;
+}
+
 h2.title2 {
     margin: 12px 0 62px;
 }
