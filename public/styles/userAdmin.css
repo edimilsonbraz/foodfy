@@ -142,7 +142,7 @@ select option {
     display: flex;
 
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
    
 }
 .container-buttons.delete {
@@ -153,7 +153,7 @@ button {
     font-size: 16px;
     color: var(--color-rocket);
     text-align: right;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin: 10px 0 30px;
     outline: none;
 
@@ -173,7 +173,7 @@ a.buttons, .buttons {
     border-radius: 4px;
     /* margin: 25px; */
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: none;
     cursor: pointer;
     outline: none;
@@ -201,12 +201,13 @@ button.delete:hover {
 button#button_salvar {
    margin-right: 8px;
 }
-button#button_cancelar {
+a.buttons.cancel {
     background-color: #777777;
+    padding: 8px 18px;
 
     transition: 200ms;
 }
-button#button_cancelar:hover {
+a.buttons.cancel:hover {
     background-color: #615f5f;
 }
 

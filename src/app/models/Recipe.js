@@ -59,6 +59,18 @@ module.exports = {
         }
         
     },
+    async findRecipeWithChef(id) {
+        try {
+            const results = await db.query(`SELECT recipes.*, 
+                chefs.name AS author FROM recipes
+                LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+                WHERE recipes.id=$1`, [id]);
+
+            return results.rows[0];
+        } catch (err) {
+            console.error(err);
+        }
+    },
     update(data) {
         try {
             const query = `

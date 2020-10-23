@@ -34,7 +34,7 @@ module.exports = {
             req.session.userId = userId
             const { userId: id } = req.session
     
-            //criar um expiração
+            //criar uma expiração
             let now = new Date();
             now = now.setHours(now.getHours() + 48)
     
@@ -43,7 +43,7 @@ module.exports = {
                 reset_token_expires: now
             })
     
-            //enviar um email com um link de recuperação de senha
+            //enviar um email com um link da senha
             await mailer.sendMail({
                 to: email,
                 from: 'no-reply@foodfy.com.br',
@@ -58,30 +58,31 @@ module.exports = {
                     <p>Este email com o link de alteração de senha é válido apenas para as próximas 48 horas.</p>
                 </p>
                 `
-            });
+            })
     
             if (is_admin != 'true') {
-                is_admin = false;
+                is_admin = false
             }
     
-            const users = await User.list();
+            const users = await User.list()
     
             //avisar o usuário que enviamos o email
-            return res.render('admin/users', { 
+            return res.render('admin/users/index', { 
                 users,
                 success: "Usuário cadastrado com sucesso! Confire o e-mail cadastrado!"
-            });
+            })
+            
         }catch(err) {
             console.error(err)
         }
     },
     async edit(req, res) {
         try {
-            const { id } = req.params;
+            const { id } = req.params
     
             const user = await User.findOne({ Where: { id } })
             
-            return res.render('admin/users/edit', { user });
+            return res.render('admin/users/edit', { user })
 
         }catch(err) {
             console.error(err)

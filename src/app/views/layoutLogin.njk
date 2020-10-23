@@ -6,9 +6,12 @@
         {% endblock %}
         <meta charset="UTF8">
         <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/messages.css">
         <link rel="stylesheet" href="/styles/session.css">
     </head>
 <body>
+    {% include 'parts/messages.njk' %}
+    
     {% include 'parts/headerLogin.njk' %}     
 
     {% block content %} {% endblock %}

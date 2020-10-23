@@ -11,6 +11,7 @@ module.exports = {
             })
 
             if (!user) return res.render('admin/session/login', {
+                user: req.body,
                 error: 'Usuário não cadastrado!'
             })
 
@@ -31,70 +32,70 @@ module.exports = {
         }
     },
     async forgotPassword(req, res, next) {
-        const { email } = req.body;
+        const { email } = req.body
 
         try {
-            let user = await User.findOne({ where: { email }});
+            let user = await User.findOne({ where: { email }})
 
             if (!user) {
                 return res.render("admin/session/forgot-password", {
                     user: req.body,
                     error: "Email não cadastrado!"
-                });
+                })
             }
 
-            req.user = user;
+            req.user = user
 
-            next();
+            next()
 
         } catch(err) {
             console.error(err);
         }
     },
-    // async resetPassword(req, res, next) {
-    //     const { email, password, passwordRepeat, token } = req.body;
+    async resetPassword(req, res, next) {
+        const { email, password, passwordRepeat, token } = req.body;
 
-    //     const user = await User.findOne({ Where: { email }});
+        const user = await User.findOne({ Where: { email }});
 
-    //     if (!user) {
-    //         return res.render("admin/session/reset-password", {
-    //             user: req.body,
-    //             token,
-    //             error: "Email não cadastrado!"
-    //         });
-    //     }
+        if (!user) {
+            return res.render("admin/session/reset-password", {
+                user: req.body,
+                token,
+                error: "Email não cadastrado!"
+            })
+        }
 
-    //     if (password != passwordRepeat) {
-    //         return res.render("admin/session/forgot-password", {
-    //             user: req.body,
-    //             token,
-    //             error: "Preencha as senhas da mesma maneira!"
-    //         });
-    //     }
+        if (password != passwordRepeat) {
+            return res.render("admin/session/forgot-password", {
+                user: req.body,
+                token,
+                error: "Preencha as senhas da mesma maneira!"
+            })
+        }
 
-    //     if (token != user.reset_token) {
-    //         return res.render("admin/session/forgot-password", {
-    //             user: req.body,
-    //             token,
-    //             error: "Token inválido! Solicite uma nova recuperação de senha."
-    //         });
-    //     }
+        if (token != user.reset_token) {
+            return res.render("admin/session/forgot-password", {
+                user: req.body,
+                token,
+                error: "Token inválido! Solicite uma nova recuperação de senha."
+            })
+        }
 
-    //     let now = new Date();
-    //     now = now.setHours(now.getHours());
+        let now = new Date()
+        now = now.setHours(now.getHours())
 
-    //     if (now > user.reset_token_expires) {
-    //         return res.render('admin/session/password-reset', {
-    //             user: req.body, 
-    //             token,
-    //             error: 'Token expirado! Solicite uma nova recuperação de senha.'
-    //         });
-    //     }
+        if (now > user.reset_token_expires) {
+            return res.render('admin/session/reset-password', {
+                user: req.body, 
+                token,
+                error: 'Token expirado! Solicite uma nova recuperação de senha.'
+            })
+        }
 
-    //     req.user = user;
+        req.user = user
 
-    //    next();
-    // }
+       next()
+    }
 
 
 }

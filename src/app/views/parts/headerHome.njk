@@ -7,7 +7,9 @@
                 <li><a href="/recipesList">Receitas</a></li>
                 <li><a href="/chefsList">Chefs</a></li>
                 <li><a href="/admin/login">Login</a></li>
-                <li><a href="/admin/recipes">Gerenciar</a></li>
+                {% if session.is_admin %}
+                <li><a href="/admin/login">Gerenciar</a></li>
+                {% endif %}
             </ul>
         </nav>
 

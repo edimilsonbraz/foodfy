@@ -19,6 +19,10 @@ nav {
     justify-content: center;
     margin-bottom: 36px;
 }
+.header  {
+    display: flex;
+    justify-content: center;
+}
 
 section.login .fields {
     margin-bottom: 32px;
