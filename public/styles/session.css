@@ -19,9 +19,17 @@ nav {
     justify-content: center;
     margin-bottom: 36px;
 }
-.header  {
+.header {
     display: flex;
-    justify-content: center;
+    /* justify-content: space-evenly; */
+}
+.header img {
+    margin-right: 50px;
+
+    transition: opacity 0.2s;
+}
+.header img:hover {
+    opacity: 0.6;
 }
 
 section.login .fields {
