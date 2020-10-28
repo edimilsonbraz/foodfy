@@ -2,32 +2,23 @@
 
 {% block content %}
            
-            <form action="/admin/recipes?_method=DELETE" method="POST">
+    <form action="/admin/recipes?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{ recipe.id }}">
+        <button class="delete" type="submit">Deletar</button>
+    </form>
+        
+    <form class="content" action="/admin/recipes?_method=PUT" method="POST"  enctype="multipart/form-data" id="delete-user">
+        <div class="container">
+            <div class="container-buttons delete">
+                <h2>Editando Receita</h2>
                 <input type="hidden" name="id" value="{{ recipe.id }}">
-                <button class="delete" type="submit">Deletar</button>
-            </form>
-        
+                <button type="submit">Salvar receita</button>
+            </div>
 
-
-<form class="content" action="/admin/recipes?_method=PUT" method="POST"  enctype="multipart/form-data">
-    <div class="container">
-        <div class="container-buttons delete">
-            <h2>Editando Receita</h2>
-            <input type="hidden" name="id" value="{{ recipe.id }}">
-            <button type="submit">Salvar receita</button>
-            
+            {% include 'admin/recipes/fields.njk' %}
         </div>
+    </form>   
 
-        
-    
-        
-                                
-        {% include 'admin/recipes/fields.njk' %}
-
-    </div>
-</form>   
-
-
+    <script src="/scripts/deleteConfirm.js"></script>
 {% endblock %}
 
-{% block script %} {% endblock script %}

@@ -4,6 +4,7 @@ const routes = express.Router()
 const multer = require('../app/middlewares/multer')
 const recipes = require('../app/controllers/recipesController')
 
+// Controle de sessão
 const { onlyUsers, allowEditRecipe } = require('../app/middlewares/session')
 
 // ROTAS AREA ADMIN RECEITAS

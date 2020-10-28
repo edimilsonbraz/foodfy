@@ -12,13 +12,27 @@ module.exports = {
             return res.render("admin/users/index", { users })
 
         }catch(err) {
-            console.error(err)
+            console.error(err), {
+                error: "Area de administradores, Talvez vc não tenha permição!"
+            }
         }
     },
     async create(req, res) {
 
         return res.render("admin/users/create")
 
+    },
+    async edit(req, res) {
+        try {
+            const { id } = req.params
+    
+            const user = await User.findOne({ Where: { id } })
+            
+            return res.render('admin/users/edit', { user })
+
+        }catch(err) {
+            console.error(err)
+        }
     },
     async post(req, res) {
         try {
@@ -75,18 +89,7 @@ module.exports = {
         }catch(err) {
             console.error(err)
         }
-    },
-    async edit(req, res) {
-        try {
-            const { id } = req.params
-    
-            const user = await User.findOne({ Where: { id } })
-            
-            return res.render('admin/users/edit', { user })
-
-        }catch(err) {
-            console.error(err)
-        }
+        
     },
     async put(req, res) {
         try {
@@ -111,6 +114,7 @@ module.exports = {
 
         } catch (err) {
             console.error(err)
+            
             return res.render('admin/users/index', {
                 users,
                 error: 'Erro ao atualizar o usuário!'
@@ -129,6 +133,11 @@ module.exports = {
 
         }catch(err) {
             console.error(err)
+
+            return res.render('admin/users/index', {
+                user: req.body,
+                error: 'Erro ao tentar deletar sua conta.'
+            })
         }
     }
     

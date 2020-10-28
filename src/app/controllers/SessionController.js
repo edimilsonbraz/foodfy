@@ -12,12 +12,12 @@ module.exports = {
         req.session.userId = req.user.id
 
         //user admin
-        req.session.is_admin = req.user.is_admin
+        req.session.isAdmin = req.user.is_admin
 
         if(req.user.is_admin) {
-            return res.render("admin/users/index")
+            return res.redirect("/admin/users")
         }else {
-            return res.redirect('/home')
+            return res.redirect('/admin/profile')
         }
 
     },
@@ -34,13 +34,6 @@ module.exports = {
         try {
             //Cria um token para esse usuário
             const token = crypto.randomBytes(20).toString('hex')
-    
-            // const randomPassword = crypto.randomBytes(4).toString("hex")
-            // req.body.password = randomPassword
-    
-            // const userId = await User.create(req.body)
-            // req.session.userId = userId
-            // const { userId: id } = req.session
     
             //criar um token q expira
             let now = new Date();

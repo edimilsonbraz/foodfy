@@ -7,6 +7,9 @@ const RecipeFiles = require('./../models/RecipeFiles')
 module.exports = {
     async index(req, res) {
         try {
+            user = req.session.userId 
+            userAdmin = req.session.isAdmin
+
             let results = await Recipe.all() 
             const recipes = results.rows
 
@@ -55,14 +58,21 @@ module.exports = {
     
         for(key of keys) {
             if (req.body[key] == "") {
-                return res.send("Por favor, preencha todos os campos")
+                // return res.send("Por favor, preencha todos os campos")
+
+                req.session.error = 'Por favor, preencha todos os campos.'
+                return res.redirect('/admin/recipes/create')
             }
         }
         
-        if (req.files.length == 0)
-            return res.send("Por favor, envie pelo menos 1 imagem")
+        if (req.files.length == 0) {
+            // return res.send("Por favor, envie pelo menos 1 imagem")
+            req.session.error = 'Por favor, envie pelo menos uma imagem.';
+            return res.redirect('/admin/recipes/create');
+        }
+        const UserId = req.session.userId
 
-        const results = await Recipe.create(req.body)
+        const results = await Recipe.create(req.body, userId)
         const recipeId = results.rows[0].id
 
         const filesPromise = req.files.map(file => File.create ({...file}))
@@ -72,7 +82,10 @@ module.exports = {
             const fileId = file.rows[0].id
             RecipeFiles.create(recipeId, fileId)
         })
+        
         await Promise.all(recipeFiles)
+
+        req.session.success = 'Receita criada com sucesso.'
             return res.redirect(`/admin/recipes/${recipeId}`)
         }catch (err) {
             console.error(err)
@@ -121,7 +134,7 @@ module.exports = {
                 ...file,
                 src: `${req.protocol}://${req.headers.host}${file.path_file.replace("public", "")}`
             }))
-            // console.log(files)
+            
             return res.render("admin/recipes/edit", {recipe, chefs, files })
 
         } catch (err) {
@@ -158,6 +171,7 @@ module.exports = {
 
             await Recipe.update(req.body)
 
+            req.session.success = 'Receita atualizada com sucesso.'
             return res.redirect(`/admin/recipes/${req.body.id}`)
 
         } catch (error) {
@@ -169,6 +183,7 @@ module.exports = {
         try {
             await RecipeFiles.delete(req.body.id)
 
+            req.session.success = 'Receita deletada com sucesso.'
             return res.redirect('/admin/recipes')
             
         } catch (error) {

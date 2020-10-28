@@ -59,7 +59,7 @@ module.exports = {
         }
         
     },
-    async findRecipeWithChef(id) {
+    async findRecipeChef(id) {
         try {
             const results = await db.query(`SELECT recipes.*, 
                 chefs.name AS author FROM recipes

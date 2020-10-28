@@ -1,0 +1,45 @@
+{% extends "admin/users/layoutUsers.njk" %}
+
+<head>
+    {% block head %}
+        <meta charset="UTF8">
+        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+        <title>Foodfy - {{ user.name }}</title>
+    {% endblock %}
+</head>
+
+{% block content %}
+    <section class="user-online content">
+        <form method="POST" action="/admin/profile?_method=PUT">
+            <div class="container-buttons">
+                <h2>Bem vindo {{user.name}}</h2>
+                <button id="button_salvar" type="submit">Salvar</button>
+            </div>
+
+            <div class="container">
+
+                <div class="item">
+                    <h4>Nome</h4>
+                    <div class="input name">
+                        <input type="text" name="name" placeholder="Nome do usuário" value="{{ user.name }}" required="required">
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h4>Email</h4>
+                    <div class="input email">
+                        <input type="email" name="email" placeholder="Digite seu email" value="{{ user.email }}" onblur="Validate.apply(this, 'isEmail')" required="required">
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Senha</div>
+                    <div class="input">
+                        <input type="password" name="password" placeholder="Digite a senha">
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+    </section>
+{% endblock %}

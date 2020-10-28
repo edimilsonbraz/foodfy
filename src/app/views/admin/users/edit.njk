@@ -20,7 +20,7 @@
             </form>
         </div>
 
-        <form method="POST" action="/admin/users?_method=PUT">
+        <form method="POST" action="/admin/users?_method=PUT" id="delete-user>
             <button id="button_salvar" type="submit">Salvar</button>
 
             <div class="container">
@@ -31,5 +31,8 @@
             </div>
             <input type="hidden" name="id" value={{user.id}}>
         </form>
+
+        <script src="/scripts/deleteConfirm.js"></script>
     </section>
+    
 {% endblock content %}

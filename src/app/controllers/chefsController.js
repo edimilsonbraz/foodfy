@@ -7,6 +7,8 @@ const Recipe = require('../models/Recipe')
 module.exports = {
     async index(req, res) {
         try {
+            user = req.session.userId
+
             const results = await Chef.all();
             let chefs = results.rows.map((chef) => {
               return {
@@ -30,7 +32,10 @@ module.exports = {
         try {
             const keys = Object.keys(req.body)
             for(key of keys) {
-                if(req.body[key] == "") return res.send('Please, fill all the fields!')
+                if(req.body[key] == "") 
+                // return res.send('Please, fill all the fields!')
+                req.session.error = 'Por favor, preencha todos os campos.';
+                return res.redirect('/admin/chefs/create');
             }
             
             if(req.file == 0) return res.send('Please, select an avatar')
@@ -41,6 +46,7 @@ module.exports = {
             results = await Chef.create(req.body, fileId)
             const chefId = results.rows[0].id
       
+            req.session.success = 'Chef criado com sucesso.';
             return res.redirect(`/admin/chefs/${chefId}`)
 
           } catch (err) {
@@ -96,7 +102,10 @@ module.exports = {
         try {
             const keys = Object.keys(req.body)
             for(key of keys) {
-                if(req.body[key] == "") return res.send('Please, fill all the fields!')
+                if(req.body[key] == "") 
+                // return res.send('Please, fill all the fields!')
+                req.session.error = 'Por favor, preencha todos os campos.'
+                return res.redirect(`/admin/chefs/${req.body.id}/edit`)
             }
 
             let fileId
@@ -107,6 +116,7 @@ module.exports = {
 
             await Chef.update(req.body, fileId)
 
+            req.session.success = 'Chef atualizado com sucesso.';
             return res.redirect(`/admin/chefs/${req.body.id}`)
 
         } catch (error) {
@@ -120,10 +130,14 @@ module.exports = {
         let results = await Chef.find(req.body.id);
 
             if (results.rows[0].total_recipes == 0) {
-                await Chef.delete(req.body.id);
+
+                await Chef.delete(req.body.id)
+
+                req.session.success = 'Chef deletado com sucesso.'
                 return res.redirect("/admin/chefs")         
             } else {
-                return res.send("Chefs who have recipes on our website cannot be deleted");
+                req.session.error = 'Chefs que têm receitas em nosso site não podem ser excluídos'
+                return rres.redirect("/admin/chefs")
             }
      
         }catch (err) {

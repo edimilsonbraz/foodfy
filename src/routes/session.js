@@ -3,7 +3,9 @@ const routes = express.Router()
 
 
 const SessionController = require('../app/controllers/SessionController')
+
 const { isLoggedRedirectToUsers } = require('../app/middlewares/session')
+
 const SessionValidator = require('../app/validators/session')
 
 

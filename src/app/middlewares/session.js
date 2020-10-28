@@ -1,26 +1,17 @@
-const User = require('../models/User')
+const Recipe = require('../models/Recipe')
 
 async function onlyUsers(req, res, next) {
     if(!req.session.userId)
         return res.redirect("/admin/login")
-
+    
     next()
 }
 
-async function onlyAdmins(req, res, next) {
-    const { userId: id } = req.session
-    
-    const user = await User.findOne({ Where: { id } })
-
-    const users = await User.list()
-
-    if (user.is_admin != true) {
-        return res.redirect('admin/users', {
-            users,
-            error: "Apenas Adminitradores podem efetuar essas operações!"
-        })
+async function onlyAdmin(req, res, next) {
+    if (!req.session.isAdmin) {
+        return res.redirect('/admin/profile')
     }
-    
+
     next()
 }
 
@@ -29,16 +20,18 @@ function isLoggedRedirectToUsers(req, res, next) {
         return res.redirect('/admin/users')
     }
 
-    next();
+    next()
 }
 
 async function allowEditRecipe(req, res, next) {
     const { id } = req.params;
 
-    const recipe = await Recipe.findRecipeWithChef(id);
+    const recipe = await Recipe.findRecipeChef(id);
 
     if (req.session.userId == recipe.user_id || req.session.isAdmin) {
-        next();
+
+        next()
+
     } else {
         return res.redirect(`/admin/recipes/${recipe.id}`);
     }
@@ -46,7 +39,7 @@ async function allowEditRecipe(req, res, next) {
 
 module.exports = {
     onlyUsers,
-    onlyAdmins,
+    onlyAdmin,
     isLoggedRedirectToUsers,
     allowEditRecipe
 }
