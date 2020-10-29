@@ -1,38 +1,61 @@
 {% extends "layoutLogin.njk" %}
 
 <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <link rel="stylesheet" href="/styles/index.css">
-            <title>Foodfy Login</title>
-        {% endblock %}
-        
-    </head>
+    {% block head %}
+        <meta charset="UTF8">
+        <link rel="stylesheet" href="/styles/index.css">
+        <title>Foodfy Login</title>
+    {% endblock %}
+
+</head>
 
 {% block content %}
 
-<section class="login content">
+    <section class="login content">
+        <form method="POST" action="/admin/login">
 
-    <form method="POST" action="/admin/login">
+            <div class="header">
+                <a href="/">
+                    <img src="/images/back.svg" alt="Voltar">
+                </a>
+                <i class="material-icons">account_circle</i>
+                <h3>Iniciar Sessão</h3>
+            </div>
 
-        <div class="header">
-            <a href="/">
-                <img src="/images/back.svg" alt="Voltar">
-            </a>
-            <i class="material-icons">account_circle</i>
-            <h3>Iniciar Sessão</h3>
-        </div>
+            <div class="fields">
+                <div class="item">
+                    <div>Email</div>
+                    <div class="input">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Digite seu email" 
+                            value="{{ user.email }}" 
+                            onblur="Validate.apply(this, 'isEmail')" 
+                            required="required"
+                        >
+                    </div>
+                </div>
 
-        <div class="fields">
-            {% include 'admin/session/fields.njk' %}
-        </div>
+                <div class="item">
+                    <div>Senha</div>
+                    <div class="input">
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Digite sua senha" 
+                            required="required"
+                        >
+                    </div>
+                </div>
+            </div>
 
-        <div class="footer">
-            <a href="forgot-password">Perdeu a senha ?</a>
-            <button class="button" type="submit">Acessar</button>
-        </div>
+            <div class="footer">
+                <a href="forgot-password">Perdeu a senha ?</a>
+                <button class="button" type="submit">Acessar</button>
+            </div>
 
-    </form>
-</section>
+        </form>
+    </section>
 
 {% endblock content %}

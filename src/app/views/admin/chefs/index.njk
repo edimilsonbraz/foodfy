@@ -20,17 +20,17 @@
                 <a class="buttons" id="cadastrar" href="/admin/chefs/create">Cadastrar chef</a>
             </div>
 
-                <div class="cards">
-                    {% for chef in chefs %}
-                        <div class="card-chefs">
-                            <img class="img-chefs" src="{{chef.image}}" alt="">
-                            <div class="text">   
-                                <span class="chef">{{ chef.name}}</span><br>
-                                <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
-                            </div> 
-                        </div>
-                    {% endfor %}
-                </div>
+            <div class="cards">
+                {% for chef in chefs %}
+                    <div class="card-chefs">
+                        <img class="img-chefs" src="{{chef.image}}" alt="">
+                        <div class="text">   
+                            <span class="chef">{{ chef.name}}</span><br>
+                            <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     <div 
         class="pagination" 
@@ -40,7 +40,6 @@
     ></div>
     
     </div>
-
 {% endblock %}
     
     

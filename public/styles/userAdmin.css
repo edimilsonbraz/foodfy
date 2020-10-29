@@ -38,7 +38,7 @@ img.logo {
 
 /*=========== USERS ===========*/
 section.container {
-    /* display: flex; */
+    display: flex;
 
     justify-content: space-between;
 }
@@ -107,7 +107,8 @@ p.user {
 
 /*==== CREATE FORM ====*/
 input, select {
-    width: 440px;
+    
+    width: 460px;
     height: 36px;
     background: #FFFFFF;
     font-size: 16px;
@@ -117,6 +118,7 @@ input, select {
     outline: none;
     
 }
+
 input::placeholder {
     font-size: 16px;
     font-weight: normal;
@@ -140,13 +142,29 @@ select option {
 /*==== BUTTONS ====*/
 .container-buttons {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+.forms-actions {
+    display: flex;
+}
+form button.delete {
+    margin-left: -178px;
+ }
+
+ /* .container-buttons {
+    margin: 25px 0 25px 0;
+} */
+
+.container-buttons-create {
+    display: flex;
 
     align-items: center;
-    justify-content: space-evenly;
-   
-}
-.container-buttons.delete {
+
     justify-content: flex-end;
+
 }
 
 button {
@@ -154,7 +172,6 @@ button {
     color: var(--color-rocket);
     text-align: right;
     /* font-weight: bold; */
-    margin: 10px 0 30px;
     outline: none;
 
     cursor: pointer;
@@ -171,7 +188,6 @@ a.buttons, .buttons {
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
-    /* margin: 25px; */
     font-size: 16px;
     /* font-weight: bold; */
     text-decoration: none;
@@ -181,15 +197,15 @@ a.buttons, .buttons {
     transition: 200ms;
 }
 button[type="submit"]:hover {
-    background-color: #4a3f9e;
+    background-color: var(--color-secundary);
 }
 a.buttons:hover {
-    background-color: #4a3f9e;
+    background-color: var(--color-secundary);
 }
 
 button.delete {
     background-color: rgb(231, 90, 90);
-    margin-right: 8px;  
+    margin-left: 4px;  
     
     transition: 200ms;
 }
@@ -197,12 +213,10 @@ button.delete:hover {
     background-color: crimson;
 }
 
-button#button_salvar {
-   margin-right: 8px;
-}
 a.buttons.cancel {
     background-color: #777777;
     padding: 8px 18px;
+    margin-left: 8px;
 
     transition: 200ms;
 }
@@ -221,6 +235,9 @@ button.button-sair {
 button.button-sair:hover {
     font-weight: bold;
 }
+/* button#salvar {
+    margin: 0 60px 0 0;
+} */
 
 .card-users a#editar {
     font-size: 14px;

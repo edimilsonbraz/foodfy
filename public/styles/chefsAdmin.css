@@ -105,17 +105,10 @@ span.chef {
 
 
 /*==== CARD RECIPES BY CHEFS ====*/
-.container-buttons {
-    display: flex;
 
-    justify-content: space-between;
-
-    align-items: center;
-   
-}
-.container-buttons.delete {
+/* .container-buttons.delete {
     justify-content: flex-end;
-}
+} */
 
 .cards__recipes  {
     display: grid;
@@ -198,12 +191,31 @@ select option {
     
 }
 
+/*==== BUTTONS ====*/
+
+.container-buttons {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.forms-actions {
+    display: flex;
+}
+form button.delete {
+    margin-left: -240px;
+  } 
+
 button {
     font-size: 16px;
     color: var(--color-rocket);
     text-align: right;
     font-weight: bold;
-    margin: 10px 0 30px;
+    /* margin: 10px 0 30px; */
     outline: none;
 
     cursor: pointer;
@@ -220,7 +232,6 @@ a.buttons, .buttons {
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
-    /* margin: 25px; */
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -241,18 +252,14 @@ a#editar.buttons  {
 } 
 button.delete {
     background-color: rgb(231, 90, 90);
-    margin: 12px 4px 62px;    
+    margin-left: 4px;
 }
 button.delete:hover {
     background-color: crimson;
 }
 
-button#button_salvar {
-    
-    margin: 25px 0 25px;
-}
 button#salvar {
-    margin: 12px 0 62px;
+    margin: 0 60px 0 0;
 }
 
 button.button-sair {

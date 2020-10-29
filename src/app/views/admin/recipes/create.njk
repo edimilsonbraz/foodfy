@@ -1,31 +1,24 @@
 {% extends "./layoutRecipes.njk" %}
 
-
-    <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            <title>Foodfy</title>
-        {% endblock %}
-    </head>
+<head>
+    {% block head %}
+        <meta charset="UTF8">
+        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+        <title>Foodfy - Create Recipes</title>
+    {% endblock %}
+</head>
 
 {% block content %}
     <form class="content" method="POST" action="/admin/recipes" enctype="multipart/form-data">
         <div class="container-buttons">
-            <p></p>
+            <h2>Criando Receita</h2>
             <button id="salvar" type="submit">Salvar receita</button>
         </div>
-                            
+
         <div class="container">
-            <h2>Criando Receita {{recipeId}}</h2>
-
-           {% include 'admin/recipes/fields.njk' %}
-
+            {% include 'admin/recipes/fields.njk' %}
         </div>
     </form>
 {% endblock %}
 
-{% block script %} {% endblock script %}
-    
-
-   
+{% block script %}{% endblock script %}

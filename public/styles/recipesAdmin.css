@@ -39,21 +39,6 @@ img.logo {
     font-weight: bold;
 }
 
-/*==== BUTTONS ====*/
-.container-buttons {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-   
-}
-.container-buttons.delete {
-    justify-content: flex-end;
-}
-.container-buttons a#editar.buttons {
-    margin: 25px 0 25px 0;
-}
 
 /*==== GALLERY ====*/
 .gallery {
@@ -360,6 +345,28 @@ textarea {
 
     outline: none;
 }
+
+
+/*==== BUTTONS ====*/
+.container-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.forms-actions {
+    display: flex;
+}
+
+form button.delete {
+    margin-left: -204px;
+  } 
+
+.container-buttons a#editar.buttons {
+    margin: 25px 0 25px 0;
+}
 .container a#cadastrar.buttons {
     margin-bottom: 25px;
 }
@@ -369,7 +376,6 @@ button, .button {
     color: var(--color-rocket);
     text-align: right;
     font-weight: bold;
-    margin: 10px 0 30px;
     outline: none;
 
     cursor: pointer;
@@ -386,7 +392,6 @@ a.buttons {
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
-    margin: 25px 0 ;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -403,9 +408,15 @@ a.buttons:hover {
 button.delete {
     background-color: rgb(231, 90, 90);
     margin-left: 4px;
+
+    transition: 200ms;
 }
 button.delete:hover {
     background-color: crimson;
+}
+
+button#salvar {
+    margin: 0 20px 0 0;
 }
 
 button.button-sair {
@@ -444,7 +455,7 @@ h2.title2 {
     
 }
 i.material-icons {
-    /* justify-content: center; */
+    justify-content: center;
 }
 form .item select {
     /*Permitir estilizacao no select*/

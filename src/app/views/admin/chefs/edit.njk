@@ -1,34 +1,32 @@
 {% extends "./layoutChefs.njk" %}
 
 {% block content %}
+    <div class="content">
+        <div class="forms-actions">
+            <form action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="container-buttons">
+                    <h2>Editando chef</h2>
+                    <button id="salvar" type="submit">Salvar</button>
+                    <input type="hidden" name="id" value="{{ chef.id }}">
+                </div>
 
+                {% include 'admin/chefs/fields.njk' %}
+            </form>
 
-    <form class="content" action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data">
-            
-                <h2>Editando chef</h2>
-                <button id="salvar" type="submit">Salvar chef</button>
+            <form action="/admin/chefs?_method=DELETE" method="POST" id="delete-chef">
                 <input type="hidden" name="id" value="{{ chef.id }}">
+                <button class="delete" type="submit">Deletar</button>
+            </form>
 
-                
-            {% include 'admin/chefs/fields.njk' %}
-
+            <script>
+                const formDelete = document.querySelector("#delete-chef")
+                formDelete.addEventListener("submit", function (event) {
+                    const confirmation = confirm("Deseja Deletar?")
+                    if (!confirmation) {
+                        event.preventDefault()
+                    }
+                })
+            </script>
         </div>
-    </form> 
-
-    <form action="/admin/chefs?_method=DELETE" method="POST" id="delete-chef">
-        <input type="hidden" name="id" value="{{ chef.id }}">
-        <button class="delete" type="submit">Deletar</button>
-    </form>   
-
-    <script>
-        const formDelete = document.querySelector("#delete-chef")
-        formDelete.addEventListener("submit", function(event) {
-            const confirmation = confirm("Deseja Deletar?")
-            if(!confirmation) {
-                event.preventDefault()
-            }
-        })
-    </script>
-
-
+    </div>
 {% endblock %}

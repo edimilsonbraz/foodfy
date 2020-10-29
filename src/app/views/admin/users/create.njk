@@ -1,33 +1,23 @@
 {% extends "./layoutUsers.njk" %}
 
-
-    <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            <title>Foodfy</title>
-        {% endblock %}
-    </head>
+{% block head %}
+    <meta charset="UTF8">
+    <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+    <title>Foodfy - Criar Usuário</title>
+{% endblock %}
 
 {% block content %}
-<section class="user-create content">
-    <form method="POST" action="/admin/users">
-        <div class="container-buttons">
-            <h2>Criar Usuário</h2>
-            <button id="button_salvar" type="submit">Salvar</button>
-            <a class="buttons cancel" href="/admin/users/">Cancelar</a>
-        </div>
+    <section class="user-create content">
+        <form method="POST" action="/admin/users">
+            <div class="container-buttons">
+                <h2>Criar Usuário</h2>
 
-        <div class="container">
-            
-
-           {% include 'admin/users/fields.njk' %}
-
-        </div>
-    </form>
-</section>
+                <div class="container-buttons-create">
+                    <button id="salvar" type="submit">Salvar</button>
+                    <a class="buttons cancel" href="/admin/users/">Cancelar</a>
+                </div>
+            </div>
+            {% include 'admin/users/fields.njk' %}
+        </form>
+    </section>
 {% endblock %}
-    
-    
-
-   
