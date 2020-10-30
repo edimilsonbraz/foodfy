@@ -7,6 +7,8 @@ section.content {
     padding: 22px;
 
     border-radius: 4px;
+
+    margin-top: 120px;
 }
 
 nav {
@@ -36,17 +38,47 @@ section.login .fields {
     margin-bottom: 32px;
 }
 
-/* <-- INPUT --> */
-input[type=text] {
+/* <-- INPUT ICON --> */
+input {
     width: 100%;
-    
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+
+    transition: 2s;
+}
+input:focus {
+    border-color:#DBD0F4;
+    box-shadow: 0 0 8px 0 #DBD0F4 ;
+}
+.inputWithIcon input {
+    padding-left: 40px;
 }
 
-section.login input {
-    
-    margin-top: 8px;
+.inputWithIcon {
+    position: relative;
 }
 
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 8px 8px;
+    color: #aaa;
+    transition: 2s;
+}
+
+.inputWithIcon input:focus + i {
+    color: #DBD0F4;
+}
+
+
+h4 {
+    color: #333;
+}
 
 h3 {
     text-align: center;
@@ -55,6 +87,28 @@ h3 {
     font-weight: bold;
 
     margin-bottom: 35px;
+}
+
+/* BUTTON LOGIN */
+button {
+    font-size: 16px;
+    color: var(--color-rocket);
+    text-align: right;
+    font-weight: bold;
+    outline: none;
+
+    cursor: pointer;
+
+    background-color: var(--color-rocket);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 4px;
+
+    transition: 200ms;
+}
+
+button[type="submit"]:hover {
+    background-color: #4a3f9e;
 }
 
 
@@ -86,4 +140,19 @@ footer {
     margin-top: 82px;
 }
 
-
+footer {
+    width: 100%;
+    background-color: #EEEEEE;
+    margin-top: 290px;
+    padding: 23px;
+    
+}
+footer p.copy, a.copy {
+    text-align: center;
+    color: #999999;
+    font-size: 14px;
+    
+} 
+footer a.copy {
+    text-decoration: underline;
+}

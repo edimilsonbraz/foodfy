@@ -13,6 +13,9 @@ nav {
     justify-content: flex-start;
     margin-bottom: 36px;
 }
+h3 {
+    color: #333;
+}
 
 img.logo {
     margin-right: 50px;
@@ -105,11 +108,6 @@ span.chef {
 
 
 /*==== CARD RECIPES BY CHEFS ====*/
-
-/* .container-buttons.delete {
-    justify-content: flex-end;
-} */
-
 .cards__recipes  {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -277,6 +275,45 @@ button.button-sair:hover {
 h2.title2 {
     margin: 12px 0 62px;
 }
+
+/* <-- INPUT ICON --> */
+input {
+    /* width: 100%; */
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+
+    transition: 2s;
+}
+
+input:focus {
+    border-color:#DBD0F4;
+    box-shadow: 0 0 8px 0 #DBD0F4 ;
+}
+.inputWithIcon input {
+    padding-left: 40px;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 8px 8px;
+    color: #aaa;
+    transition: 2s;
+}
+
+.inputWithIcon input:focus + i {
+    color: #DBD0F4;
+}
+
 
 /*==== INPUT CHEF AVATAR ====*/
 .item #photos-upload {

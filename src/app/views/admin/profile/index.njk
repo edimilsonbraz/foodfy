@@ -4,42 +4,66 @@
     {% block head %}
         <meta charset="UTF8">
         <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-        <title>Foodfy - {{ user.name }}</title>
+        <title>Foodfy -
+            {{ user.name }}</title>
     {% endblock %}
 </head>
 
 {% block content %}
-    <section class="user-online content">
+    <section class="content">
         <form method="POST" action="/admin/profile?_method=PUT">
-            <div class="container-buttons">
-                <h2>Bem vindo {{user.name}}</h2>
-                <button id="button_salvar" type="submit">Salvar</button>
+            <div class="container-button">
+                <h2>Bem vindo:</h2>
+                    <font color="#4a3f9e"><h2> {{user.name}}</h2></font>
+
+                <div class="container-buttons-create">
+                    <p></p>
+                    <button id="salvar" type="submit">Salvar</button>
+                </div>
             </div>
 
             <div class="container">
+                <div class="forms-actions">
+                    <div class="item">
+                        <h4>Nome</h4>
+                        <div class="inputWithIcon">
+                            <input 
+                                type="text" 
+                                name="name" 
+                                placeholder="Nome do usuário" 
+                                value="{{ user.name }}" 
+                                required="required"
+                            >
+                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                    </div>
 
-                <div class="item">
-                    <h4>Nome</h4>
-                    <div class="input name">
-                        <input type="text" name="name" placeholder="Nome do usuário" value="{{ user.name }}" required="required">
+                    <div class="item">
+                        <h4>Email</h4>
+                        <div class="inputWithIcon">
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Digite seu email" 
+                                value="{{ user.email }}" 
+                                onblur="Validate.apply(this, 'isEmail')" 
+                                required="required"
+                            >
+                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
 
-                <div class="item">
-                    <h4>Email</h4>
-                    <div class="input email">
-                        <input type="email" name="email" placeholder="Digite seu email" value="{{ user.email }}" onblur="Validate.apply(this, 'isEmail')" required="required">
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div>Senha</div>
-                    <div class="input">
+                <div class="senha">
+                    <h4>Senha</h4>
+                    <div class="inputWithIcon">
                         <input type="password" name="password" placeholder="Digite a senha">
+                        <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{user.id}}">
         </form>
+        
     </section>
 {% endblock %}

@@ -2,7 +2,7 @@
 
     <div class="item">
         <h4>Nome</h4>
-        <div class="input name">
+        <div class="inputWithIcon">
             <input 
                 type="text" 
                 name="name" 
@@ -10,12 +10,13 @@
                 value="{{ user.name }}" 
                 required="required"
             >
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
         </div>
     </div>
 
     <div class="item">
         <h4>Email</h4>
-        <div class="input email">
+        <div class="inputWithIcon">
             <input 
                 type="email" 
                 name="email" 
@@ -23,12 +24,13 @@
                 value="{{ user.email }}" 
                 onblur="Validate.apply(this, 'isEmail')"
             >
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
         </div>
     </div>
 
     
 </section>
-<div class="input checkbox">
+    <div class="inputWithIcon checkbox">
         <input 
             type="checkbox" 
             name="is_admin" 

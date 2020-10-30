@@ -3,7 +3,8 @@
 <head>
     {% block head %}
         <meta charset="UTF8">
-        <link rel="stylesheet" href="/styles/index.css">
+        {# <link rel="stylesheet" href="/styles/index.css"> #}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
         <title>Foodfy Login</title>
     {% endblock %}
 
@@ -24,8 +25,8 @@
 
             <div class="fields">
                 <div class="item">
-                    <div>Email</div>
-                    <div class="input">
+                    <h4>Email</h4>
+                    <div class="inputWithIcon">
                         <input 
                             type="email" 
                             name="email" 
@@ -34,18 +35,20 @@
                             onblur="Validate.apply(this, 'isEmail')" 
                             required="required"
                         >
+                        <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
                     </div>
                 </div>
 
                 <div class="item">
-                    <div>Senha</div>
-                    <div class="input">
+                    <h4>Senha</h4>
+                    <div class="inputWithIcon">
                         <input 
                             type="password" 
                             name="password" 
                             placeholder="Digite sua senha" 
                             required="required"
                         >
+                        <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
