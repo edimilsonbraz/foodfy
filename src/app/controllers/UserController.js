@@ -111,6 +111,7 @@ module.exports = {
                 users,
                 success: "Usuário atualizada com sucesso!"
             })
+            
 
         } catch (err) {
             console.error(err)

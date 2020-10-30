@@ -12,7 +12,7 @@
                             name="name"
                             placeholder="Nome do chef" 
                             value="{{ chef.name }}"
-                            required
+                            
                         >
                         <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                     </div>
@@ -34,6 +34,6 @@
                     </div>
                 </div>
             </div>
-            
+            <input type="hidden" name="id" value="{{ chef.id }}">
         </div>
     </div>

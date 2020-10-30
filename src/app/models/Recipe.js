@@ -1,5 +1,5 @@
 const db = require('../../config/db')
-const { date } = require('../../lib/utils')
+// const { date } = require('../../lib/utils')
 const fs = require('fs')
 
 
@@ -19,26 +19,26 @@ module.exports = {
         }
 
     },
-    create(data) {
+    create(data, userId) {
         try {
             const query = `
                 INSERT INTO recipes (
                     chef_id,
+                    user_id,
                     title,
                     ingredients,
                     preparation,
-                    information,
-                    created_at
+                    information
                 ) VALUES ($1, $2, $3, $4, $5, $6)
                 RETURNING id
             `
             const values = [
                 data.chef,
+                userId,
                 data.title,
                 data.ingredients,
                 data.preparation,
-                data.information,
-                date(Date.now()).format
+                data.information
             ]
         
             return db.query(query, values) 

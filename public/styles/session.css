@@ -51,8 +51,8 @@ input {
     transition: 2s;
 }
 input:focus {
-    border-color:#DBD0F4;
-    box-shadow: 0 0 8px 0 #DBD0F4 ;
+    border-color: var(--color-rocket);
+    box-shadow: 0 0 8px 0 var(--color-rocket);
 }
 .inputWithIcon input {
     padding-left: 40px;
@@ -72,7 +72,7 @@ input:focus {
 }
 
 .inputWithIcon input:focus + i {
-    color: #DBD0F4;
+    color: var(--color-rocket);
 }
 
 

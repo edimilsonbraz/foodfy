@@ -32,13 +32,15 @@ module.exports = {
         try {
             const keys = Object.keys(req.body)
             for(key of keys) {
-                if(req.body[key] == "") 
-                // return res.send('Please, fill all the fields!')
-                req.session.error = 'Por favor, preencha todos os campos.';
-                return res.redirect('/admin/chefs/create');
+                if (req.body[key] == "") {
+
+                    return res.render('admin/chefs/create', {
+                        error: 'Por favor, preencha todos os campos.'
+                    })
+                }
             }
             
-            if(req.file == 0) return res.send('Please, select an avatar')
+            if(req.file == 0) return res.send('Por favor, relecione um avatar!')
 
             let results = await File.create({...req.file})
             const fileId = results.rows[0].id
@@ -46,8 +48,9 @@ module.exports = {
             results = await Chef.create(req.body, fileId)
             const chefId = results.rows[0].id
       
-            req.session.success = 'Chef criado com sucesso.';
-            return res.redirect(`/admin/chefs/${chefId}`)
+            return res.render('admin/chefs/index', {
+                success:'Chef criado com sucesso!.'
+            })
 
           } catch (err) {
             console.error(err);
@@ -102,10 +105,12 @@ module.exports = {
         try {
             const keys = Object.keys(req.body)
             for(key of keys) {
-                if(req.body[key] == "") 
-                // return res.send('Please, fill all the fields!')
-                req.session.error = 'Por favor, preencha todos os campos.'
-                return res.redirect(`/admin/chefs/${req.body.id}/edit`)
+                if (req.body[key] == "" ) {
+
+                    return res.render('admin/chefs/index', {
+                        error: 'Por favor, preencha todos os campos.'
+                    })
+                }
             }
 
             let fileId
@@ -114,10 +119,13 @@ module.exports = {
                 fileId = result.rows[0].id
             }
 
-            await Chef.update(req.body, fileId)
+            const chefs = await Chef.update(req.body, fileId)
 
-            req.session.success = 'Chef atualizado com sucesso.';
-            return res.redirect(`/admin/chefs/${req.body.id}`)
+            return res.render('admin/chefs/index', {
+                chefs,
+                error: 'Chef atualizado com sucesso!.'
+            })
+            
 
         } catch (error) {
             console.log(`Database Error => ${error}`)
@@ -133,11 +141,14 @@ module.exports = {
 
                 await Chef.delete(req.body.id)
 
-                req.session.success = 'Chef deletado com sucesso.'
-                return res.redirect("/admin/chefs")         
+               
+                return res.render("admin/chefs/index", {
+                    success:'Chef deletado com sucesso.'
+                })         
             } else {
-                req.session.error = 'Chefs que têm receitas em nosso site não podem ser excluídos'
-                return rres.redirect("/admin/chefs")
+                return rres.render("admin/chefs/index", {
+                    error: 'Chefs que têm receitas em nosso site não podem ser excluídos'
+                })
             }
      
         }catch (err) {
