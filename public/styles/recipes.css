@@ -17,9 +17,129 @@ header {
 }
 .nav__links li a {
     transition: all 0.3s ease 0s;
+    /* color: #FFFFFF; */
+    /* margin-right: 30px; */
 }
 .nav__links li a:hover {
     color: var(--color-secundary);
+    font-weight: bold;
+}
+
+.nav__links li a.active {
+    color: var(--color-secundary);
+    font-weight: bold;
+}
+
+
+/*==== GALLERY ====*/
+.gallery {
+    width: 100%;
+}
+.highlight img {
+    border-radius: 15px;
+    height: 280px;
+    margin: 24px 0 8px;
+    width: 940px;
+    
+    
+}
+.gallery .highlight > img {
+    
+    /* object-fit: none;
+    object-position: 100% 100%; */
+
+    cursor: zoom-in;
+}
+.gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 10px;
+
+    justify-content: right;
+}
+
+.gallery .gallery-preview img {
+    height: 50px;
+    width: 100%; 
+
+    border-radius: 4px;
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+.content .gallery-preview img:hover,
+.content .gallery-preview img.active {
+    opacity: 1;
+}
+
+/*==== LIGHTBOX RECIPE ====*/
+.content .highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+}
+.content .highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+.content .highlight a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background-color: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 400ms;
+}
+
+.recipe__content ul li {
+    line-height: 28px;
+    color: #444444;
+    list-style: circle;
+    
+}
+.recipe__content ul {
+    margin-top: 20px;
+}
+.recipe__content p {
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
 }
 
 .button:hover {
@@ -126,8 +246,10 @@ input::placeholder {
 footer {
     width: 100%;
     background-color: #EEEEEE;
-    margin-top: auto;
+    /* margin-top: auto; */
     padding: 23px;
+    position: absolute;
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

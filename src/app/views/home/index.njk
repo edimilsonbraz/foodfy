@@ -6,7 +6,7 @@
             <meta charset="UTF8">
             <meta name="viewport" content="width=device-widht, initial-scale=1.0">
             <link rel="stylesheet" href="/styles/index.css">
-            <title>Foodfy</title>
+            <title>Foodfy - Home</title>
         {% endblock %}
     </head>
 
@@ -30,7 +30,7 @@
 
             <div class="cards">
                 {% for recipe in recipes %}
-                    <div class="card">
+                    <div class="card" id="{{ recipe.id }}">
                         <img src="{{ recipe.image }}" alt="">
                         <div class="card__text">
                             <h3>{{ recipe.title }}</h3>
@@ -39,6 +39,12 @@
                     </div>
                 {% endfor %}
             </div>
+
+             <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+        ></div>
+
         </div>
     </div>
 

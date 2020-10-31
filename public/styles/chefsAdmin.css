@@ -351,8 +351,11 @@ input:focus {
 /*========== FOOTER ==========*/
 footer {
     background-color: #EEEEEE;
-    margin-top: 62px;
+    /* margin-top: 62px; */
+    width: 100%;
     padding: 23px;
+    position: absolute;
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

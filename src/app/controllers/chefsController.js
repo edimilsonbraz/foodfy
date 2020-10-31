@@ -58,9 +58,9 @@ module.exports = {
     },
     async show(req, res) {
         try {
-            const { id } = req.params;
-                let results = await Chef.find(id);
-                let chef = results.rows[0];
+            const { id } = req.params
+                let results = await Chef.find(id)
+                let chef = results.rows[0]
                 chef = {
                 ...chef,
                 image: chef.image
@@ -69,12 +69,13 @@ module.exports = {
                 }
 
             results = await Recipe.find(id)
-            // const recipes = results.rows
+            
             const recipesPromise = results.rows.map(async recipe=>{
-                const recipePath = await File.findByRecipe(recipe.id);
+                const recipePath = await File.findByRecipe(recipe.id)
                   const image = recipePath.rows[0].path_file;
                   recipe.image = `${req.protocol}://${req.headers.host}${image.replace(
-                    "public", "" )}`;
+                    "public", "" )}`
+
                   return recipe
               })
               

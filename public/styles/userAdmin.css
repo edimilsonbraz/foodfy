@@ -321,8 +321,11 @@ button.button-sair:hover {
 /*========== FOOTER ==========*/
 footer {
     background-color: #EEEEEE;
-    margin-top: 62px;
+    /* margin-top: 62px; */
     padding: 23px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

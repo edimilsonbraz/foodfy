@@ -1,15 +1,22 @@
-{% extends "./layoutRecipes.njk" %}
+{% extends "./layout.njk" %}
 
 {% block head %}
     <title>{{ recipe.title }}</title>
-    <link rel="stylesheet" href="/styles/recipesAdmin.css">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/recipes.css">
 {% endblock %}
 
 {% block content %}
 
     <section class="content">
         <div class="container-buttons">
+            <form action="">
+                <a>
+                    <img src="/images/back.svg" alt="Voltar" onClick="history.go(-1)">
+                </a>
+            </form>
+            
+            
             <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
         </div>
 

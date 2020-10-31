@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/styles/receitas.css">
         <link rel="stylesheet" href="/styles/recipes.css">
 
-        <title>Receitas Foodfy</title>
+        <title>Foodfy - Receitas</title>
     {% endblock %}
 </head>
 
@@ -18,7 +18,7 @@
             <div class="cards">
                 {% for recipe in recipes %}
                     <div class="card" id="{{ recipe.id }}" name="{{ recipe.title }}" chef="por {{recipe.chef_id }}">
-                    <a href="/recipe/{{ recipe.id }}">
+                    <a href="/recipe/{{recipe.id}}">
                         <img src="{{ recipe.image }}" alt="">
                     </a>    
                         <h3>{{ recipe.title }}</h3>
