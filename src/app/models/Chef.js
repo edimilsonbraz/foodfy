@@ -8,9 +8,13 @@ module.exports = {
 
         try {
             const query = `
-                  SELECT chefs.*, files.path AS image
-                  FROM chefs
-                  LEFT JOIN files ON (chefs.file_id = files.id)
+            SELECT chefs.*, 
+            count(recipes) AS total_recipes,
+            files.path AS image
+            FROM chefs
+            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+            LEFT JOIN files ON (chefs.file_id = files.id)
+            GROUP BY chefs.id, files.path
                   `;
             return db.query(query);
           } catch (err) {
@@ -22,15 +26,13 @@ module.exports = {
         const query = `
             INSERT INTO chefs (
                 name,
-                created_at,
                 file_id
-            ) VALUES($1, $2, $3)
+            ) VALUES($1, $2)
             RETURNING id
         `
 
         const values = [
             data.name,
-            date(Date.now()).format,
             fileId
         ]
 

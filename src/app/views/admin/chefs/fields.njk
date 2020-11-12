@@ -5,35 +5,46 @@
                 
             <div class="item">
                 <h3>Nome do Chef</h3>
-                <div id="titles">
-                    <div class="inputWithIcon">
-                        <input 
-                            type="text" 
-                            name="name"
-                            placeholder="Nome do chef" 
-                            value="{{ chef.name }}"
-                            
-                        >
-                        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
-                    </div>
+                <div class="inputWithIcon">
+                    <input 
+                        type="text" 
+                        name="name"
+                        placeholder="Nome do chef" 
+                        value="{{chef.name}}"
+                    >
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                 </div>
             </div>
 
             <div class="item">
-                <h3>Avatar do Chef</h3>
-                <div id="images">
+                <h3>Avatar</h3>
+                <div id="photos">
                     <div id="photos-upload">
                         <input 
                             id="photos-input"
                             type="file" 
-                            name="image" 
+                            name="photos" 
+                            multiple="multiple"
                             accept="image/*"
+                            onchange="PhotosUpload.handleFileInput(event)"
                         >
                         <p class="buttons" id="button_avatar">Enviar avatar</p>
 
                     </div>
+
+                    <div id="photos-preview">
+                        {% if file %}
+                            <div class="photo" id="{{file.id}}">
+                                <img src="{{file.src}}" alt="{{file.name}}">
+                                <i class="material-icons"
+                                    onclick="PhotosUpload.removeOldPhoto(event)"
+                                >delete</i>
+                            </div>
+                            <input type="hidden" name="removed_files">
+
+                        {% endif%}
+                    </div>
                 </div>
             </div>
-            <input type="hidden" name="id" value="{{ chef.id }}">
         </div>
     </div>

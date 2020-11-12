@@ -130,23 +130,17 @@ module.exports = {
   },
   async chefsList(req, res) {
     try {
-
-      
-      let results = await Chef.all()
+      results = await Chef.all()
       let chefs = results.rows.map((chef) => {
         return {
           ...chef,
           image: chef.image
             ? `${req.protocol}://${req.headers.host}${chef.image.replace(
                 "public","")}`: "",
-      }
+        }
       })
 
-      let { id } = req.params
-          results = await Chef.find(id)
-      let totalRecipes = results.rows[0]
-
-      return res.render("home/chefsList", { chefs, totalRecipes })
+        return res.render("home/chefsList", { chefs })
 
     } catch (err) {
       console.error(err)

@@ -1,55 +1,58 @@
-const ImagesUpload = {
+/* FUNCINALIDADE FOTOS */
+const PhotosUpload = {
   input: "",
-  preview: document.querySelector('#images-preview'),
+  preview: document.querySelector('#photos-preview'),
   uploadLimit: 5,
   files: [],
+
   handleFileInput(event) {
       const { files: fileList } = event.target
-      ImagesUpload.input = event.target
+      PhotosUpload.input = event.target
+
+      if(PhotosUpload.hasLimit(event)) return
       
-      if (ImagesUpload.hasLimit(event)) return
 
       Array.from(fileList).forEach(file => {
 
-        ImagesUpload.files.push(file)
+          PhotosUpload.files.push(file)
 
-        const reader = new FileReader() 
+          const reader = new FileReader()
 
-        reader.onload = () => {
-            const image = new Image()
-            image.src = String(reader.result)
+          reader.onload = () => {
+              const image = new Image() //<img>
+              image.src = String(reader.result)
 
-            const div = ImagesUpload.getContainer(image)
-            ImagesUpload.preview.appendChild(div)
-        }
+              const div = PhotosUpload.getContainer(image)
+              PhotosUpload.preview.appendChild(div)
 
-        reader.readAsDataURL(file)
+          }
+
+          reader.readAsDataURL(file)
 
       })
-
-        ImagesUpload.input.files = ImagesUpload.getAllFiles()
-
+      
+          PhotosUpload.input.files = PhotosUpload.getAllFiles()
   },
   hasLimit(event) {
-    const { uploadLimit, input, preview } = ImagesUpload
-    const { files: fileList } = input
-    
+      const { uploadLimit, input, preview } = PhotosUpload
+      const { files: fileList } = input
+      
 
-      if (fileList.length > uploadLimit) {
-        alert(`Envie no máximo ${uploadLimit} imagens`)
-        event.preventDefault()
-        return true;
+      if(fileList.length > uploadLimit) {
+          alert(`Envie no máximo ${uploadLimit} fotos`)
+          event.preventDefault()
+          return true
       }
 
-      const imagesDiv = []
+      const photosDiv = []
       preview.childNodes.forEach(item => {
-          if(item.classList && item.classList.value == "image")
-              imagesDiv.push(item)
+          if(item.classList && item.classList.value == "photo")
+              photosDiv.push(item)
       })
 
-      const totalPhotos = fileList.length + imagesDiv.length
+      const totalPhotos = fileList.length + photosDiv.length
           if(totalPhotos > uploadLimit) {
-              alert("Você atingiu o limite máximo de fotos")
+              alert("Você atingiu o limite máximo de fotos(5)")
               event.preventDefault()
               return true
           }
@@ -57,86 +60,85 @@ const ImagesUpload = {
       return false
   },
   getAllFiles() {
+      const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
 
-    const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()  //Cria um array "Files" de imagens no Mozila e Chrome que pode ser manipuladas
+      PhotosUpload.files.forEach(file =>  dataTransfer.items.add(file))
 
-    ImagesUpload.files.forEach(file =>  dataTransfer.items.add(file))
-
-    return dataTransfer.files
-
+      return dataTransfer.files
   },
   getContainer(image) {
-    const div = document.createElement('div')
-      div.classList.add('image')
+      const div = document.createElement('div')
+          div.classList.add('photo')
 
-      div.onclick = ImagesUpload.removeImage
+          div.onclick = PhotosUpload.removePhoto
 
-      div.appendChild(image)
+          div.appendChild(image)
 
-      div.appendChild(ImagesUpload.getRemoveButton()) //inserindo elemento "i"
+          div.appendChild(PhotosUpload.getRemoveButton())
 
-      return div
+          return div
   },
   getRemoveButton() {
-    const button = document.createElement('i') //adiciona os icones 
-    button.classList.add('material-icons')
-    button.innerHTML = "close"
-    return button
+      const button = document.createElement('i')
+      button.classList.add('material-icons')
+      button.innerHTML = "delete"
+      return button
   },
-  removeImage(event) {
-    const imageDiv = event.target.parentNode  //div class="image"
-    const imagesArray = Array.from(ImagesUpload.preview.children)
-    const index = imagesArray.indexOf(imageDiv)
+  removePhoto(event) {
+      const photoDiv = event.target.parentNode //div class="photo"
+      const photosArray = Array.from(PhotosUpload.preview.children)
+      const index = photosArray.indexOf(photoDiv)
 
-      ImagesUpload.files.splice(index, 1)
-      ImagesUpload.input.files = ImagesUpload.getAllFiles()
+      PhotosUpload.files.splice(index, 1) //splice aplica no array pra tirar uma posição do array
+      PhotosUpload.input.files = PhotosUpload.getAllFiles()
 
-      imageDiv.remove()
+      photoDiv.remove()
+
   },
-  removeOldImage(event) {
-      const imageDiv = event.target.parentNode
+  removeOldPhoto(event) {
+      const photoDiv = event.target.parentNode
 
-      if(imageDiv.id) {
-          const removedFiles = document.querySelector('input[name="removed_files"]')
+      if(photoDiv.id) {
+          const removedFiles = document.querySelector('input[name="removed_files"')
           if (removedFiles) {
-              removedFiles.value += `${imageDiv.id},` //1,2,3,
+              removedFiles.value += `${photoDiv.id},` //1,2,3,
           }
       }
 
-      imageDiv.remove()
+      photoDiv.remove()
   }
+
 }
 
-// LÓGICA PARA TROCAR IMAGENS DA GALERIA NA PÁGINA DE DETALHES DAS RECEITAS
 const ImageGallery = {
   highlight: document.querySelector('.gallery .highlight > img'),
   previews: document.querySelectorAll('.gallery-preview img'), //pega toda a lista de imagens
   setImage(e) {
-    const { target } = e
+      const { target } = e
 
-    ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
-    target.classList.add('active')
+      ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
+      target.classList.add('active')
 
-    ImageGallery.highlight.src = target.src
-    Lightbox.image.src = target.src
+      ImageGallery.highlight.src = target.src
+      lightbox.image.src = target.src
   }
 }
 
-const Lightbox = {
+const lightbox = {
   target: document.querySelector('.lightbox-target'),
   image: document.querySelector('.lightbox-target img'),
   closeButton: document.querySelector('.lightbox-target a.lightbox-close'),
   open() {
-      Lightbox.target.style.opacity = 1
-      Lightbox.target.style.top = 0
-      Lightbox.target.style.button = 0
-      Lightbox.closeButton.style.top = 0
+      lightbox.target.style.opacity = 1
+      lightbox.target.style.top = 0
+      lightbox.target.style.button = 0
+      lightbox.closeButton.style.top = 0
   },
   close() {
-      Lightbox.target.style.opacity = 0
-      Lightbox.target.style.top = "-100%"
-      Lightbox.target.style.button = "initial"
-      Lightbox.closeButton.style.top = "-80px"
+      lightbox.target.style.opacity = 0
+      lightbox.target.style.top = "-100%"
+      lightbox.target.style.button = "initial"
+      lightbox.closeButton.style.top = "-80px"
 
   }
 }

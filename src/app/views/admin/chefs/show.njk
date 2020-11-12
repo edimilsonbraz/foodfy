@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-
     <section class="content">
         <div class="container-buttons">
             {# <div class="card__title"> #}
@@ -13,6 +12,12 @@
                 <a class="buttons" id="editar" href="/admin/chefs/{{ chef.id}}/edit">Editar chef</a>
             {# </div> #}
         </div>
+
+        <form action="">
+            <a>
+                <img src="/images/back.svg" alt="Voltar" onClick="history.go(-1)">
+            </a>
+        </form>
 
 
         <div class="card__image">

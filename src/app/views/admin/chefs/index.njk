@@ -26,7 +26,18 @@
                         <img class="img-chefs" src="{{chef.image}}" alt="">
                         <div class="text">   
                             <span class="chef">{{ chef.name}}</span><br>
-                            <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+                                <p class="chef">
+                                    {% if chef.total_recipes > 1 %}
+                                        {{ chef.total_recipes }} receitas
+                                    {% elif chef.total_recipes == 0 %}
+                                        Nenhuma receita cadastrada.
+                                    {% else %}
+                                        {{ chef.total_recipes }} receita
+                                    {% endif %}
+                                </p>
+
+                            <a href="/admin/chefs/{{ chef.id }}">Visualizar
+                            </a>
                         </div> 
                     </div>
                 {% endfor %}

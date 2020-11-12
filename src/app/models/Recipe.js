@@ -3,8 +3,6 @@ const db = require('../../config/db')
 const fs = require('fs')
 
 
-
-
 module.exports = {
     all() {
         try {
@@ -59,6 +57,7 @@ module.exports = {
         }
         
     },
+    // find e findRecipeChef estão iguais
     async findRecipeChef(id) {
         try {
             const results = await db.query(`SELECT recipes.*, 
@@ -158,8 +157,8 @@ module.exports = {
             ) AS total`;
 
         if (filter) {
-            
-            filterQuery = `WHERE recipes.title ILIKE '%${filter}%'`;
+            filterQuery = `
+            WHERE recipes.title ILIKE '%${filter}%'`;
 
             totalQuery = `(
                 SELECT count(*) FROM recipes

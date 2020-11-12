@@ -1,6 +1,6 @@
 
 
-/*====NAV MENU====*/
+/*========== NAV MENU ==========*/
 header {
     background: #111111;
 }
@@ -40,7 +40,7 @@ img.logo {
 }
 
 
-/*==== GALLERY ====*/
+/*========== GALLERY ==========*/
 .gallery {
     width: 100%;
 }
@@ -87,7 +87,7 @@ img.logo {
     opacity: 1;
 }
 
-/*==== LIGHTBOX RECIPE ====*/
+/*========== LIGHTBOX RECIPE ==========*/
 .content .highlight .lightbox-target {
     position: fixed;
     width: 100%;
@@ -136,7 +136,8 @@ img.logo {
     transition: 400ms;
 }
 
-/*==== CONTEUDO ====*/
+/*=========== CONTEUDO ===========*/
+
 .card__title h1 {
     text-align: center;
 }
@@ -179,18 +180,20 @@ img.logo {
     margin-top: 20px;
 }
 
-/*==== IMAGES UPLOAD ====*/
-.item #images {
+
+/*========== IMAGES UPLOAD ==========*/
+
+.item #photos {
     display: flex;
 }
-card__form .item #images-upload {
+card__form .item #photos-upload {
     position: relative;
 
     display: block;
     overflow: hidden;
 
 }
-.item #images-upload input {
+.item #photos-upload input {
     /* width: 380px ; */
     /* position: absolute; */
 
@@ -205,7 +208,7 @@ card__form .item #images-upload {
     margin: -14px 4px;
 }
 
-.card__form .item #images-upload .box {
+.card__form .item #photos-upload .box {
     width: 180px;
     height: 150px;
     background-color: rgb(243, 240, 240);
@@ -214,14 +217,14 @@ card__form .item #images-upload {
     text-align: center;
     
 }
-.card__form .item #images-upload .box p { /*icone de upload*/
+.card__form .item #photos-upload .box p { /*icone de upload*/
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.card__form .item #images-preview {
+.card__form .item #photos-preview {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 8px;
@@ -229,16 +232,16 @@ card__form .item #images-upload {
     margin: 8px 0;
 }
 
-.card__form .item #images-preview img {
+.card__form .item #photos-preview img {
     width: 100%;
     height: 150px;
     
     object-fit: cover;
 }
-#images-preview .image {
+#photos-preview .photo {
     position: relative;
 }
-#images-preview .image i {
+#photos-preview .photo i {
     position: absolute;
     top: 0;
     left: 0;
@@ -261,12 +264,12 @@ card__form .item #images-upload {
 
     transition: opacity 200ms;
 }
-#images-preview .image:hover i {
+#photos-preview .photo:hover i {
     opacity: 1;
 }
 
 
-/* === Cards ===*/
+/* =============== Cards ===============*/
 .cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -289,8 +292,12 @@ card__form .item #images-upload {
 
 .card img {
     width: 100%;
+    height: 140px;
     border-radius: 15px;
+
+    object-fit: cover; 
 }
+
 .card h3 {
     margin: 0 0 5px;
     font-weight: bold;
@@ -312,7 +319,7 @@ card__form .item #images-upload {
 }
 
 
-/*==== CREATE FORM ====*/
+/*========== CREATE FORM ===========*/
 input, select {
     width: 940px;
     height: 36px;
@@ -347,7 +354,7 @@ textarea {
 }
 
 
-/*==== BUTTONS ====*/
+/*=========== BUTTONS ===========*/
 .container-buttons {
     display: flex;
     justify-content: space-between;
@@ -444,7 +451,7 @@ h2.title2 {
   }
 
 
-  /*=====CARD FORM=====*/
+/*=========== CARD FORM ===========*/
 
 .card__form h3 {
     margin: 10px 0 10px;
@@ -479,7 +486,7 @@ form .item select {
     font-weight: bold;
 }
 
-/*=== Footer ===*/
+/*========= Footer =========*/
 footer {
     background-color: #EEEEEE;
     margin-top: auto;
