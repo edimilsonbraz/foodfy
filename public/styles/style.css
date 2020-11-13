@@ -20,6 +20,8 @@
 body {
     color: #111111;
     font-family: 'Roboto', sans-serif;
+    /* position: relative; */
+    padding-bottom: 100px;
 }
 
 li, a, button {

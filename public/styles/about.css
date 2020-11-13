@@ -72,6 +72,9 @@ footer {
     background-color: #EEEEEE;
     margin-top: auto;
     padding: 23px;
+
+    position: absolute;
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

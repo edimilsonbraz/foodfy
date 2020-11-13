@@ -1,0 +1,30 @@
+{% extends "admin/recipes/layoutRecipes.njk" %}
+{% import "parts/card.njk" as cards %}
+
+{% block content %}
+
+    {% call cards.render('', 'order-error content') %}
+        <div class="error-lottie"></div>
+            <h2>Desculpe...</h2>
+            <p>
+                Receita não pôde ser cadastrada, <br>
+                Tente novamente!
+            </p>
+            <a href="#" onClick="history.back()">Tente novamente!</a>
+        
+    {%endcall%}
+
+    <script src="/lottie.min.js"></script>
+    <script>
+        const element = document.querySelector('.error-lottie')
+
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/10960-error.json' 
+            });
+    </script>
+
+{% endblock content %}

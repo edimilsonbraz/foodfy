@@ -99,7 +99,11 @@ input::placeholder {
 }
 .card img {
     width: 100%;
+    height: 140px;
     border-radius: 15px;
+
+    object-fit: cover; 
+    object-position: center center;
 }
 .card h3 {
     margin: 20px 5px 2px;
@@ -309,11 +313,10 @@ a.filtered:hover {
 /*=== Footer ===*/
 footer {
     background-color: #EEEEEE;
-    margin-top: 42px;
     padding: 23px;
     width: 100%;
     position: absolute;
-    /* bottom: 0; */
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

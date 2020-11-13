@@ -1,12 +1,5 @@
 {% extends "./layoutRecipes.njk" %}
 
-<head>
-    {% block head %}
-        <meta charset="UTF8">
-        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-        <title>Foodfy - Create Recipes</title>
-    {% endblock %}
-</head>
 
 {% block content %}
     <form class="content" method="POST" action="/admin/recipes" enctype="multipart/form-data">

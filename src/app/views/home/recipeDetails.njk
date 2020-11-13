@@ -10,12 +10,6 @@
 
     <section class="content">
         <div class="container-buttons">
-            <form action="">
-                <a>
-                    <img src="/images/back.svg" alt="Voltar" onClick="history.go(-1)">
-                </a>
-            </form>
-            
             
             <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
         </div>
@@ -45,6 +39,7 @@
                 </div>
 
             </div>
+            
             <div class="gallery-preview">
                 {% for image in files %}
                     <img 
@@ -57,6 +52,11 @@
                     >
                 {% endfor %}
             </div>
+            <form action="">
+                <a>
+                    <img src="/images/back.svg" alt="Voltar" onClick="history.go(-1)">
+                </a>
+            </form>
         </div>
 
         <div class="card__title">

@@ -1,0 +1,28 @@
+{% extends "admin/recipes/layoutRecipes.njk" %}
+{% import "parts/card.njk" as cards %}
+
+{% block content %}
+
+    {% call cards.render('', 'order-success content') %}
+        <div class="success-lottie"></div>
+            <h2>Receita Cadastrada com Sucesso!!!</h2>
+            
+            <a href="/admin/recipes/index">Receitas cadastradas</a>
+        
+    {%endcall%}
+
+    <script src="/lottie.min.js"></script>
+
+    <script>
+        const element = document.querySelector('.success-lottie')
+
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/37265-success.json' 
+            });
+    </script>
+
+{% endblock content %}

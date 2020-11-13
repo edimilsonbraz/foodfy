@@ -8,7 +8,6 @@ section.content {
 
     border-radius: 4px;
 
-    margin-top: 120px;
 }
 
 nav {
@@ -32,6 +31,14 @@ nav {
 }
 .header img:hover {
     opacity: 0.6;
+}
+
+#logo img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 400px;
 }
 
 section.login .fields {
@@ -135,16 +142,29 @@ section.login .footer a:hover {
     color: black;
 }
 
+/*==== Validate errors ====*/
+input {
+    margin-bottom: 0;
+}
+.input .error {
+    background-color: #e74c3c;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+}
+
 footer {
     width: 100%;
-    margin-top: 82px;
+    /* margin-top: 82px; */
 }
 
 footer {
     width: 100%;
     background-color: #EEEEEE;
-    margin-top: 290px;
+    /* margin-top: 290px; */
     padding: 23px;
+    position: absolute;
+    bottom: 0;
     
 }
 footer p.copy, a.copy {

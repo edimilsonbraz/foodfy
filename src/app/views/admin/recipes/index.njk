@@ -1,17 +1,9 @@
 {% extends "./layoutRecipes.njk" %}
+{% import "parts/card.njk" as cards %}
 
-
-    <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            
-            <title>Foodfy</title>
-        {% endblock %}
-    </head>
-
-    
+     
 {% block content %}
+{% call cards.render('', 'content') %}
     <div class="content">
         <div class="container">
             <div class="container-buttons">
@@ -37,7 +29,7 @@
             </div>
         </div>
     </div>
-
+{%endcall%}
 {% endblock %}
 {% block script %} {% endblock script %}
     

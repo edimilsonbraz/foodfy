@@ -14,12 +14,14 @@
 {% block content %}
     <div class="content">
         <div class="container">
+            {% if session.isAdmin %}
             <div class="container-buttons">
                 <h2>Gerenciar Chefs</h2>
 
                 <a class="buttons" id="cadastrar" href="/admin/chefs/create">Cadastrar chef</a>
             </div>
-
+            {%endif%}
+            
             <div class="cards">
                 {% for chef in chefs %}
                     <div class="card-chefs">

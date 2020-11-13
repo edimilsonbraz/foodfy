@@ -87,11 +87,10 @@ module.exports = {
         
         await Promise.all(recipeFiles)
 
-            return res.render("admin/recipes/create", {
-                success:'Receita criada com sucesso!.'
-            })
+            return res.render("orders/success")
         }catch (err) {
             console.error(err)
+            return res.render('orders/error')
         }
            
 
