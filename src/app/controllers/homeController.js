@@ -158,7 +158,7 @@ module.exports = {
                     "public", "" )}` : "",
             }
 
-        results = await Recipe.find(id)
+            results = await Chef.findRecipesByChefId(chef.id);
         
         const recipesPromise = results.rows.map(async recipe=>{
             const recipePath = await File.findByRecipe(recipe.id)

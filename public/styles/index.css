@@ -315,7 +315,7 @@ footer {
     background-color: #EEEEEE;
     padding: 23px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }

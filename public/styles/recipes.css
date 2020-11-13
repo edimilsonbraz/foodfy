@@ -254,7 +254,7 @@ footer {
     background-color: #EEEEEE;
     margin-top: 42px;
     padding: 23px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }

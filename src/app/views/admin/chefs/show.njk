@@ -6,12 +6,13 @@
 
 {% block content %}
     <section class="content">
-        <div class="container-buttons">
-            {# <div class="card__title"> #}
-                <h2 class="title2">Chef: {{chef.name}}</h2>
-                <a class="buttons" id="editar" href="/admin/chefs/{{ chef.id}}/edit">Editar chef</a>
-            {# </div> #}
-        </div>
+
+        {% if session.isAdmin %}
+            <div class="container-buttons">
+                    <h2 class="title2">Chef: {{chef.name}}</h2>
+                    <a class="buttons" id="editar" href="/admin/chefs/{{ chef.id}}/edit">Editar chef</a>
+            </div>
+        {%endif%}
 
         <form action="">
             <a>
@@ -56,4 +57,4 @@
 
     </section>
     
-{% endblock %}
+{% endblock content %}

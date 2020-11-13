@@ -53,7 +53,6 @@ img.logo {
     
     cursor: zoom-in;
     
-    
 }
 
 .gallery-preview {
@@ -207,7 +206,6 @@ card__form .item #photos-upload {
 }
 
 .card__form .item #photos-upload .box {
-    
     width: 149px;
     height: 149px;
     background-color: rgb(243, 240, 240);
@@ -216,11 +214,6 @@ card__form .item #photos-upload {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    
-    
-
-    
 }
 
 .card__form .item #photos-preview {
@@ -437,10 +430,6 @@ button.button-sair:hover {
     font-weight: bold;
 }
 
-/* h2.title2 {
-    margin: 25px 0 25px 0;
-} */
-
 
 /* ============== SHOW-HIDE ============== */
 
@@ -492,7 +481,7 @@ footer {
     width: 100%;
     padding: 23px;
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }

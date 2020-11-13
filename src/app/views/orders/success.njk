@@ -4,11 +4,12 @@
 {% block content %}
 
     {% call cards.render('', 'order-success content') %}
-        <div class="success-lottie"></div>
-            <h2>Receita Cadastrada com Sucesso!!!</h2>
-            
-            <a href="/admin/recipes/index">Receitas cadastradas</a>
-        
+        <div class="container-success">
+            <div class="success-lottie"></div>
+                <h2>Receita Cadastrada com Sucesso!!!</h2>
+                
+                <a href="/admin/recipes/index">Receitas cadastradas</a>
+        </div>    
     {%endcall%}
 
     <script src="/lottie.min.js"></script>

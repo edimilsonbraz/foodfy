@@ -6,6 +6,8 @@
     text-align: center;
 
     margin: auto;
+
+    max-width: 640px;
 }
 .order-success .success-lottie {
     height: 100px;
@@ -29,25 +31,21 @@
     margin: 80px 0 56px;
 }
 .order-error a {
-    font-weight: bold;
+    position: relative;
+    
+    top: 8px;
+
+    transition: 200ms;
+    
     color: rgb(220, 104, 104);
 }
-
-/*=== Footer ===*/
-footer {
-    width: 100%;
-    background-color: #EEEEEE;
-    padding: 23px;
-    position: absolute;
-    bottom: 0;
-    
+.order-error a:hover {
+    font-weight: bold;
 }
-footer p.copy, a.copy {
-    text-align: center;
-    color: #999999;
-    font-size: 14px;
-    
-} 
-footer a.copy {
-    text-decoration: underline;
+
+.container-success {
+    background-color:  rgb(243, 243, 243);
+    padding: 80px;
+
+    border-radius: 8px;
 }

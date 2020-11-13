@@ -60,11 +60,18 @@ module.exports = {
             
         `, [chefId])
     },
-    chefRecipes(id) {
-        return db.query(`SELECT recipes.*, chefs.name AS chef_name 
-        FROM recipes 
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        WHERE chefs.id = $1`, [id]);
+    findRecipesByChefId(id) {
+        try {
+            const fileQuery = `(SELECT path FROM files 
+                INNER JOIN recipe_files ON recipe_files.file_id = files.id 
+                WHERE recipe_id = recipes.id LIMIT 1) AS file_path`;
+
+            const query = `SELECT recipes.*, ${fileQuery} FROM recipes WHERE chef_id = $1`;
+
+            return db.query(query, [id]);
+        } catch (err) {
+            console.log(err);
+        }
     },
     update(data, fileId) {
 

@@ -411,7 +411,7 @@ footer {
     /* margin-top: 62px; */
     width: 100%;
     padding: 23px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }

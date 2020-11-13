@@ -65,6 +65,7 @@ module.exports = {
     async show(req, res) {
         try {
             const { id } = req.params
+                //busca as imagens dos chefs
                 let results = await Chef.find(id)
                 let chef = results.rows[0]
                 chef = {
@@ -74,9 +75,9 @@ module.exports = {
                         "public", "" )}` : "",
                 }
                 
-
-            results = await Recipe.find(id) //rever essa linha
+                results = await Chef.findRecipesByChefId(chef.id);
             
+            //busca as imagens das receitas
             const recipesPromise = results.rows.map(async recipe=>{
                 const recipePath = await File.findByRecipe(recipe.id)
                   const image = recipePath.rows[0].path_file;

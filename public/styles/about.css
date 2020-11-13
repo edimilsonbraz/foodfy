@@ -73,7 +73,7 @@ footer {
     margin-top: auto;
     padding: 23px;
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }
