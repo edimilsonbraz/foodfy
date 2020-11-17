@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe')
+const Chef = require('../models/Chef')
 
 async function onlyUsers(req, res, next) {
     if(!req.session.userId)
@@ -26,7 +27,7 @@ function isLoggedRedirectToUsers(req, res, next) {
 async function allowEditRecipe(req, res, next) {
     const { id } = req.params;
 
-    const recipe = await Recipe.findRecipeChef(id);
+    const recipe = await Chef.findRecipesByChefId(id);
 
     if (req.session.userId == recipe.user_id || req.session.isAdmin) {
 

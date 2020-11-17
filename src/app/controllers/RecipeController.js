@@ -155,7 +155,7 @@ module.exports = {
         try {
             const keys = Object.keys(req.body)
             for(key of keys) {
-                if (req.body[key] == "") {
+                if (req.body[key] == "" && key != "information" && key != "removed_files") {
 
                     return res.render(`/admin/recipes/${req.body.id}/edit`, {
                         error: 'Por favor, preencha todos os campos.'
@@ -163,28 +163,35 @@ module.exports = {
                 }
             }
 
+            if(req.body.removed_files) {
+                const removedFiles = req.body.removed_files.split(",");
+                const lastIndex = removedFiles.length - 1;
+                removedFiles.splice(lastIndex, 1);
+    
+                const removedFilesPromise = removedFiles.map(file_id => File.delete(file_id));
+    
+                await Promise.all(removedFilesPromise);
+            }
+
+
             if (req.files.length != 0) {
-                const newFilePromises = req.files.map(file =>
-                    File.createRecipeFiles({ ...file, recipe_id: req.body.id }))
 
-                await Promise.all(newFilePromises)
+                //validar se ja existe 5 imagens no total
+                const oldFiles = await Recipe.files(req.body.id)
+                const totalFiles = oldFiles.rows.length + req.files.length
+
+                if(totalFiles <= 6) {
+                    const newFilePromises = req.files.map(file => {
+                        File.createRecipeFiles({ ...file, recipe_id: req.body.id })
+                        })
+    
+                    await Promise.all(newFilePromises)
+                }
             }
 
-            if (req.body.removed_files) {
-                const removedFiles = req.body.removed_files.split(',') //separa por vírgulas [1,2,3,]
-                const lastIndex = removedFiles.length - 1 //tira uma posição do lastIndex [1,2,3]
-                removedFiles.splice(lastIndex, 1) 
-
-                const removedFilesPromises = removedFiles.map(id => File.delete(id))
-
-                await Promise.all(removedFilesPromises)
-                
-            }
-
-            recipes = await Recipe.update(req.body)
-
+                await Recipe.update(req.body)
+            
             return res.render("admin/recipes/create", {
-                recipes,
                 success:'Receita atualizada com sucesso.'
             })
 
@@ -195,7 +202,22 @@ module.exports = {
     },
     async delete(req, res) {
         try {
-            await RecipeFiles.delete(req.body.id)
+            const { id } = req.body;
+
+            let results = await Recipe.files(id); //traz todas img da receita
+
+            const filesPromise = results.rows.map(async file => {
+                const files = {
+                    file_id: file.id,
+                    recipe_id: id
+                }
+
+                    await RecipeFiles.delete(files)
+
+                    await File.delete(file.id);
+            });
+
+            Promise.all(filesPromise);
 
             return res.render('admin/recipes/index', {
                 success: 'Receita Deletada com sucesso!.'
@@ -206,3 +228,4 @@ module.exports = {
         }
     }
 }
+

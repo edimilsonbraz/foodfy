@@ -38,17 +38,20 @@ CREATE TABLE "recipes" (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE "recipe_files" (
+  "id" SERIAL PRIMARY KEY,
+  "recipe_id" int REFERENCES recipes(id) ON DELETE CASCADE,
+  "file_id" int REFERENCES files(id)
+);
+
+
 -- foreign key 
 ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 
 -- foreign key 
 ALTER TABLE "chefs" ADD "file_id" int REFERENCES "files" ("id")
 
-CREATE TABLE "recipe_files" (
-  "id" SERIAL PRIMARY KEY,
-  "recipe_id" int REFERENCES recipes(id) ON DELETE CASCADE,
-  "file_id" int REFERENCES files(id)
-);
+
 
 
 -- create Procedure
@@ -78,3 +81,8 @@ ALTER TABLE "session"
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
+-- ALTER TABLE "recipes"
+-- ADD CONSTRAINT recipes_user_id_fkey
+-- FOREIGN KEY ("user_id")
+-- REFERENCES "users" ("id")
+-- ON DELETE CASCADE;

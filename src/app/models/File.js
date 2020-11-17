@@ -94,7 +94,7 @@ module.exports = {
                 file_id
             ]
 
-            return db.query(query, [recipe_id, file_id])
+            return db.query(query, values)
         } catch (error) {
             console.error(error)
         }
@@ -126,17 +126,17 @@ module.exports = {
     },
     async delete(id) {
         try {
-            const results = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
-            const file = results.rows[0]
+            let result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
+            const file = result.rows[0];
 
-            fs.unlinkSync(file.path) 
+            fs.unlinkSync(file.path) //apaga na pasta images
 
-            await db.query(`DELETE FROM recipe_files WHERE recipe_files.file_id = $1`, [id])
+            await db.query(`DELETE FROM recipe_files WHERE file_id = $1`, [id]);
 
-            return db.query(`DELETE FROM files WHERE id = $1`, [id])
+            return db.query(`DELETE FROM files WHERE id = $1`, [id]);
 
-        } catch (error) {
-            console.error(error)
+        } catch(err) {
+            console.error(err);
         }
         
     },

@@ -221,7 +221,7 @@ card__form .item #photos-upload {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 8px;
     width: 100%;
-    margin: 8px 0;
+    margin-left: 8px;
 }
 
 .card__form .item #photos-preview img {

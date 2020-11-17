@@ -133,6 +133,10 @@ p.chef {
 .card__recipes img {
     width: 100%;
     border-radius: 15px;
+    height: 140px;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .container h2 {

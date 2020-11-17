@@ -137,7 +137,6 @@ module.exports = {
 
             await Chef.update(req.body, fileId)
 
-            // return res.redirect(`/admin/chefs/${id}?success=Chefe atualizado!`)
             return res.render('admin/chefs/create', {
                 success: 'Chef atualizado com sucesso!.'
             })
