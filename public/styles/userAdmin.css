@@ -138,6 +138,7 @@ select option {
     font-weight: bold;
 }
 
+
 /* <-- INPUT ICON --> */
 input {
     /* width: 100%; */
@@ -195,7 +196,7 @@ input:focus {
 .container-button {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 
     margin-bottom: 30px;
 }
@@ -309,11 +310,11 @@ button.button-sair:hover {
 
 /*========== VALIDATE ERROR ==========*/
 .input .error {
-    width: 440px;
+    width: 460px;
 
     background-color: #e74c3c;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 0  0 4px  4px;
     color: white;
 }
 
@@ -324,7 +325,7 @@ footer {
     /* margin-top: 62px; */
     padding: 23px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }

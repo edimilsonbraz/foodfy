@@ -1,4 +1,5 @@
 const User = require('../models/User')
+
 const crypto = require('crypto')
 const { hash } = require('bcryptjs'); 
 const mailer = require('../../lib/mailer')
@@ -15,21 +16,30 @@ module.exports = {
         req.session.isAdmin = req.user.is_admin
 
         if(req.user.is_admin) {
-            return res.redirect("/admin/users")
+            return res.render("admin/users/index", {
+                success:'Bem vindo Administrador.'
+            })
+            
         }else {
-            return res.redirect('/admin/profile')
+            return res.render("admin/profile/index", {
+                success:'Bem vindo usuário.'
+            })
+            // return res.redirect('/admin/profile')
         }
 
     },
     logout(req, res) {
         req.session.destroy()
+        return res.render("admin/session/login", {
+            success:'Deslogado com sucesso!.<br> volte sempre!'
+        })
         return res.redirect('/')
     },
     forgotPasswordForm(req, res) {
         return res.render('admin/session/forgot-password')
     },
     async forgotPassword(req, res) {
-        const { user } = req.user
+        const user = req.user
 
         try {
             //Cria um token para esse usuário

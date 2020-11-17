@@ -34,7 +34,11 @@ async function allowEditRecipe(req, res, next) {
         next()
 
     } else {
-        return res.redirect(`/admin/recipes/${recipe.id}`);
+
+        return res.render("admin/recipes/index", {
+            error:'Somente o criador da receita ou Admin pode editar.'
+        })
+        // return res.redirect(`/admin/recipes/${recipe.id}`);
     }
 }
 

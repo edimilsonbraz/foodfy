@@ -8,7 +8,7 @@ CREATE TABLE "users" (
   "password" text NOT NULL,
   "reset_token" TEXT,
   "reset_token_expires" TEXT,
-  "is_admin" BOOLEAN DEFAULT false,
+  "is_admin" BOOLEAN DEFAULT false NOT NULL,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );
@@ -81,8 +81,8 @@ ALTER TABLE "session"
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
--- ALTER TABLE "recipes"
--- ADD CONSTRAINT recipes_user_id_fkey
--- FOREIGN KEY ("user_id")
--- REFERENCES "users" ("id")
--- ON DELETE CASCADE;
+ALTER TABLE "recipes"
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY ("user_id")
+REFERENCES "users" ("id")
+ON DELETE CASCADE;

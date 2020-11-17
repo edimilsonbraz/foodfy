@@ -49,7 +49,7 @@ module.exports = {
                  data.name,
                  data.email,
                  passwordHash,
-                 data.is_admin,
+                 data.is_admin || false
              ]
  
              const results = await db.query(query, values)

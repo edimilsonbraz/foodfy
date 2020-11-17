@@ -17,6 +17,7 @@
     <div class="item">
         <h4>Email</h4>
         <div class="inputWithIcon">
+            <div class="input">
             <input 
                 type="email" 
                 name="email" 
@@ -24,13 +25,14 @@
                 value="{{ user.email }}" 
                 onblur="Validate.apply(this, 'isEmail')"
             >
+            </div>
             <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
         </div>
     </div>
 
     
 </section>
-    <div class="inputWithIcon checkbox">
+    <div class="checkbox">
         <input 
             type="checkbox" 
             name="is_admin" 
@@ -38,7 +40,7 @@
             value="true" 
             {% if user.is_admin %} 
                 checked="checked"
-            {% endif %} 
+            {% endif %}
         >
         <h4>Administrador</h4>
     </div>
