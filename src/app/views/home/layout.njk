@@ -4,18 +4,18 @@
     <head>
         {% block head %}       
         {% endblock %}
-        <meta charset="UTF8">
-        <link rel="stylesheet" href="/styles/style.css">
-        <link rel="stylesheet" href="/styles/messages.css">
+        
+        {% include 'parts/stylesHome.njk' %} 
+        
     </head>
-<body>
-    {% include 'parts/messages.njk' %}
-    
-    {% include 'parts/headerHome.njk' %}     
+    <body>
+        {% include 'parts/messages.njk' %}
+        
+        {% include 'parts/headerHome.njk' %}     
 
-    {% block content %} {% endblock %}
+        {% block content %} {% endblock %}
 
-    {% include "parts/footer.njk" %}
-    
-</body>
+        {% include "parts/footer.njk" %}
+        
+    </body>
 </html>

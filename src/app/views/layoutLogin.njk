@@ -4,10 +4,9 @@
     <head>
         {% block head %}       
         {% endblock %}
-        <meta charset="UTF8">
-        <link rel="stylesheet" href="/styles/style.css">
-        <link rel="stylesheet" href="/styles/messages.css">
-        <link rel="stylesheet" href="/styles/session.css">
+
+        {% include 'parts/stylesLogin.njk' %} 
+        
     </head>
 <body>
     {% include 'parts/messages.njk' %}

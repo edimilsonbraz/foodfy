@@ -210,13 +210,13 @@ span.chef {
 }
 
 
-.card__image{
+.cards__image{
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
-.card__image img {
+.cards__image img {
     border-radius: 50%;
     width: 200px;
     height: 200px;

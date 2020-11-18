@@ -1,9 +1,8 @@
 {% extends "./layout.njk" %}
 
-{% block head %}
-    <title>{{ chef.title }}</title>
-    <link rel="stylesheet" href="/styles/index.css">
-{% endblock %}
+    {% block head %}
+        <title>{{ chef.name }}</title>
+    {% endblock %}
 
 {% block content %}
 
@@ -14,7 +13,7 @@
             </a>
         </form>
 
-        <div class="card__image">
+        <div class="cards__image">
             <img src="{{chef.image}}" alt="">
         </div>
         <div class="card__title">

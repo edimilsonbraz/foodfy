@@ -2,24 +2,20 @@
 <html lang="pt-br">
 
     <head>
-        {% block head %}       
+        {% block head %}  
+          <title>Foodfy - Chefs Admin</title>     
         {% endblock %}
-        <meta charset="UTF8">
-        <link rel="stylesheet" href="/styles/style.css">
-        <link rel="stylesheet" href="/styles/messages.css">
-        <link rel="stylesheet" href="/styles/chefsAdmin.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+
+        {% include "parts/stylesChefAdmin.njk" %} 
     </head>
-<body>
-     {% include 'parts/messages.njk' %}
+    <body>
+        {% include 'parts/messages.njk' %}
 
-    {% include 'parts/headerAdmin.njk' %}
+        {% include 'parts/headerAdmin.njk' %}
 
-    {% block content %} {% endblock %}
+        {% block content %} {% endblock %}
 
-    {% include "parts/footer.njk" %}
+        {% include "parts/footer.njk" %}
 
-</body>
+    </body>
 </html>
