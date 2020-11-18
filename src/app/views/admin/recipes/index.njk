@@ -17,21 +17,27 @@
                         <img src="{{ recipe.image }}" alt="">
                         <div class="card__text">
                             <h3>{{ recipe.title }}</h3>
-                            <span class="autor">por {{recipe.chef_name}} </span><br><br>
 
-                            <div class="published">
-                                {# <p>Criado em {{recipe.created_at}} </p>     #}
-                            </div>
+                             {% if recipe.creator %}
+                                <span class="creator">Você é o criador da receita</span><br><br>
+                            {% else %}
+                                <span>por {{ recipe.chef_name }}</span><br><br>
+                            {% endif %}                
                             <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a> 
                         </div>                      
                     </div>
                 {% endfor %}
             </div>
         </div>
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+        ></div>
     </div>
 {%endcall%}
 {% endblock %}
-{% block script %} {% endblock script %}
+
     
     
 

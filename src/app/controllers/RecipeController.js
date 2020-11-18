@@ -7,11 +7,39 @@ const RecipeFiles = require('./../models/RecipeFiles')
 module.exports = {
     async index(req, res) {
         try {
+        let { page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 6
+
+        let offset = limit * (page - 1)
+
+        const params = {
+            page,
+            limit,
+            offset
+        }
+
+        let results = await Recipe.paginate(params)
+        let recipes = results.rows
+
+        let mathTotal = recipes[0] == undefined ? 0 : Math.ceil(recipes[0].total / limit )
+
+        const pagination = {
+            total: mathTotal,
+            page
+        }
+
+        if(!recipes){
+            return res.send("Recipes not found");
+        }
+
+
             user = req.session.userId 
             userAdmin = req.session.isAdmin
 
-            let results = await Recipe.all() 
-            const recipes = results.rows
+            results = await Recipe.all() 
+            recipes = results.rows
 
             if(!recipes) {
                 return res.render('admin/recipes/index', {
@@ -29,13 +57,15 @@ module.exports = {
     
             const recipesPromises = recipes.map(async recipe => {
                 recipe.image = await getImage(recipe.id)
+
+                if (recipe.user_id == req.session.userId) recipe.creator = true
     
                 return recipe
             })
     
             const recipesImage = await Promise.all(recipesPromises)
            
-            return res.render("admin/recipes/index", {recipes, recipesImage})
+            return res.render("admin/recipes/index", {recipes, recipesImage, pagination})
 
             
         }catch (err) {

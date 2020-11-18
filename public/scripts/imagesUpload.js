@@ -117,10 +117,6 @@ const PhotosUpload = {
   updateInputFiles() {
     PhotosUpload.input.files = PhotosUpload.getAllFiles()
   }
-  
-
-
-
 }
 
 const ImageGallery = {

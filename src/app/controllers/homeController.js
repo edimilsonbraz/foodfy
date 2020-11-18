@@ -51,7 +51,6 @@ module.exports = {
   },
   async recipesList(req, res) {
     try {
-
       let { filter, page, limit } = req.query
 
         page = page || 1

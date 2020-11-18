@@ -35,7 +35,7 @@ CREATE TABLE "recipes" (
   "status" text,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now()),
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  "user_id" INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE "recipe_files" (
@@ -81,8 +81,8 @@ ALTER TABLE "session"
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
-ALTER TABLE "recipes"
-ADD CONSTRAINT recipes_user_id_fkey
-FOREIGN KEY ("user_id")
-REFERENCES "users" ("id")
-ON DELETE CASCADE;
+-- ALTER TABLE "recipes"
+-- ADD CONSTRAINT recipes_user_id_fkey
+-- FOREIGN KEY ("user_id")
+-- REFERENCES "users" ("id")
+-- ON DELETE CASCADE;

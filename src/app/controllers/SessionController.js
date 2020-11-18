@@ -31,9 +31,9 @@ module.exports = {
     logout(req, res) {
         req.session.destroy()
         return res.render("admin/session/login", {
-            success:'Deslogado com sucesso!.<br> volte sempre!'
+            success:'Sessão encerrada!.<br> Volte sempre!'
         })
-        return res.redirect('/')
+       
     },
     forgotPasswordForm(req, res) {
         return res.render('admin/session/forgot-password')
