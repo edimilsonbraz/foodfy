@@ -27,7 +27,7 @@ CREATE TABLE "files" (
 
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
-  "chef_id" INTEGER,
+  "chef_id" INTEGER REFERENCES chef(id),
   "title" text,
   "ingredients" text[],
   "preparation" text[],
@@ -46,12 +46,7 @@ CREATE TABLE "recipe_files" (
 
 
 -- foreign key 
-ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
-
--- foreign key 
 ALTER TABLE "chefs" ADD "file_id" int REFERENCES "files" ("id")
-
-
 
 
 -- create Procedure
@@ -81,8 +76,18 @@ ALTER TABLE "session"
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
--- ALTER TABLE "recipes"
--- ADD CONSTRAINT recipes_user_id_fkey
--- FOREIGN KEY ("user_id")
--- REFERENCES "users" ("id")
--- ON DELETE CASCADE;
+
+
+--to run seeds
+DELETE FROM recipes;
+DELETE FROM users;
+DELETE FROM chefs;
+DELETE FROM files;
+DELETE FROM recipe_files;
+
+--restart sequence auto_increment from tables ids
+ALTER SEQUENCE recipes_id_seq RESTART WITH 1;
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE chefs_id_seq RESTART WITH 1;
+ALTER SEQUENCE files_id_seq RESTART WITH 1;
+ALTER SEQUENCE recipe_files_id_seq RESTART WITH 1;
