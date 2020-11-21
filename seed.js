@@ -79,8 +79,9 @@ async function createRecipes() {
     }
     //create files 
     const filesPromise = files.map(file => File.create(file))
-    const filesId = await Promise.all(filesPromise)
-
+    const  fileResults= await Promise.all(filesPromise)
+    // let filesId = fileResults.map(result => result.rows)
+    let filesId = fileResults.map(result => result.rows[0].id)
 
     let recipes = []
 
@@ -97,21 +98,22 @@ async function createRecipes() {
     }
 
     const recipesPromises = recipes.map(recipe => Recipe.create(recipe))
-    const recipesId = await Promise.all(recipesPromises)
-    
+    const recipeResults = await Promise.all(recipesPromises)
+    // let recipesId = recipeResults.map(result => result.rows)
+    let recipesId = recipeResults.map(result => result.rows[0].id)
 
        // RecipeFiles
 		let recipe_files = []
 		
 		for (i = 0; i < totalRecipes; i++) {
 			recipe_files.push({
-                recipe_id: recipesId[i].id,
-                file_id: filesId[i].id
+                recipe_id: recipesId[i],
+                file_id: filesId[i]
             })
 		
 		}
 		
-		const recipesFilesPromise = recipe_files.map(recipeFiles => RecipeFiles.create(recipeFiles))
+		const recipesFilesPromise = recipe_files.map(recipeFiles => RecipeFiles.create(recipeFiles.recipe_id, recipeFiles.file_id) )
 		await Promise.all(recipesFilesPromise) 
    
 }
