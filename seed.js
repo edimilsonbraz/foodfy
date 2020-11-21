@@ -103,10 +103,10 @@ async function createRecipes() {
        // RecipeFiles
 		let recipe_files = []
 		
-		for (id = 0; id < totalRecipes; id++) {
+		for (i = 0; i < totalRecipes; i++) {
 			recipe_files.push({
-                recipe_id: recipesId[id],
-                file_id: filesId[id]
+                recipe_id: recipesId[i].id,
+                file_id: filesId[i].id
             })
 		
 		}
