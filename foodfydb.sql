@@ -16,7 +16,8 @@ CREATE TABLE "users" (
 CREATE TABLE "chefs" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp DEFAULT (now()),
+  "file_id" INT NOT NULL
 );
 
 CREATE TABLE "files" (
@@ -27,7 +28,7 @@ CREATE TABLE "files" (
 
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
-  "chef_id" INTEGER REFERENCES chef(id),
+  "chef_id" INTEGER REFERENCES chefs(id),
   "title" text,
   "ingredients" text[],
   "preparation" text[],
@@ -41,12 +42,12 @@ CREATE TABLE "recipes" (
 CREATE TABLE "recipe_files" (
   "id" SERIAL PRIMARY KEY,
   "recipe_id" int REFERENCES recipes(id) ON DELETE CASCADE,
-  "file_id" int REFERENCES files(id)
+  "file_id" int REFERENCES files(id) ON DELETE CASCADE
 );
 
 
 -- foreign key 
-ALTER TABLE "chefs" ADD "file_id" int REFERENCES "files" ("id")
+ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files"("id")
 
 
 -- create Procedure
@@ -55,14 +56,14 @@ RETURNS TRIGGER AS $$
 BEGIN
   NEW.updated_at =NOW();
   RETURN NEW;
-END
+END;
 $$ LANGUAGE plpgsql;
 
 -- Auto updated_at recipes
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON recipes
 FOR EACH ROW
-EXECUTE PROCEDURE trigger_set_timestamp()
+EXECUTE PROCEDURE trigger_set_timestamp();
 
 
 -- Connect pg simple table
@@ -75,7 +76,6 @@ WITH (OIDS=FALSE);
 ALTER TABLE "session" 
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
-
 
 
 --to run seeds
