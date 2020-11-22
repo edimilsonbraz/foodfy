@@ -1,42 +1,68 @@
-/*====NAV MENU====*/
-header {
-    background: #111111;
-}
-nav {
-    max-width: 940px;
-    margin: 0 auto;
-    height: 80px;
-    padding: 38px 0;
+/* <!-- Header --> */
+.header {
     display: flex;
     align-items: center;
-
-    justify-content: flex-start;
-    margin-bottom: 36px;
-}
-h3 {
-    color: #333;
+    justify-content: space-between;
 }
 
-img.logo {
-    margin-right: 50px;
+.header.adm {
+    background-color: #111111;
+    max-width: 100%;
+    width: 100%;
+    padding: 30px 0;
+    margin: 0 0 30px;
+}
+.header.adm form {
+    position: absolute;
+    right: 0;
+    width: fit-content;
 }
 
-.nav__links li {
-    display: inline-block;
-    padding: 0px 10px;
+.header.adm .navbar {
+    max-width: 980px;
+    width: 92%;
+    position: relative;
+    margin: auto;
 }
-.nav__links li a {
-    transition: all 0.3s ease 0s;
-    color: #FFFFFF;
+.header .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.header .navbar .links {
+    margin: 0;
+}
+.header.adm .navbar .links a {
+    color: #ffffff;
+    font-size: 15px;
     margin-right: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    cursor: pointer;
 }
-.nav__links li a:hover {
+
+.header.adm .navbar .links a:hover {
     color: var(--color-secundary);
     font-weight: bold;
 }
-.nav__links li a.active {
+section .links a.active {
     color: var(--color-secundary);
     font-weight: bold;
+}
+
+.header form .logout {
+    padding: 10px 10px;
+    background-color: #111111;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+
+    margin-right: 12px;
+}
+
+.header .navbar .logo {
+    margin-right: 60px;
 }
 
 /*=========== CHEFS ===========*/

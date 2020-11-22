@@ -1,23 +1,24 @@
+<!-- Header -->
+<section class="header adm">
+      <div class="navbar">
 
-<header>
-    <nav>
-        <a href="/"><img class="logo" src="/images/logo_Branca.png" alt="logo FoodFy"></a>  <!--LOGO -->
+          <a href="/">
+            <img class="logo" src="/images/logo_Branca.png" alt="logo FoodFy">
+          </a>
+
+        <div class="links">
+          
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
+          
+            <a href="/admin/profile" >Minha conta</a>
+          
+        </div>
+            
+          <form action="/admin/logout" method="POST">
+            <button class="button-sair logout" type="submit">Sair</button>
+          </form>
         
-        <ul class="nav__links">
-            <li><a href="/admin/recipes/">RECEITAS</a></li>
-            <li><a href="/admin/chefs/">CHEFS</a></li>
-            {% if session.isAdmin %}
-                <li><a href="/admin/users/">USUÁRIOS</a></li>
-            {%else%}
-                <li><a href="/admin/users/">MINHA CONTA</a></li>   
-            {%endif%}
-            <li>
-                <form action="/admin/logout" method="POST">
-                    <button class="button-sair" type="submit">SAIR</button>
-                </form>
-            </li>
 
-        </ul>
-       
-    </nav>
-</header>
+      </div>
+</section>

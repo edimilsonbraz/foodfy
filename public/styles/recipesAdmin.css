@@ -1,3 +1,79 @@
+/* <!-- Header --> */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header.adm {
+    background-color: #111111;
+    max-width: 100%;
+    width: 100%;
+    padding: 30px 0;
+    margin: 0 0 30px;
+}
+.header.adm form {
+    position: absolute;
+    right: 0;
+    width: fit-content;
+}
+
+.header.adm .navbar {
+    max-width: 980px;
+    width: 92%;
+    position: relative;
+    margin: auto;
+}
+.header .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.header .navbar .links {
+    margin: 0;
+    transition: all 0.3s ease 0s;
+}
+.header.adm .navbar .links a {
+    color: #ffffff;
+    font-size: 15px;
+    margin-right: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+.header.adm .navbar .links a:hover {
+    color: var(--color-secundary);
+    font-weight: bold;
+}
+section .links a.active {
+    color: var(--color-secundary);
+    font-weight: bold;
+}
+
+.header form .logout {
+    padding: 10px 10px;
+    background-color: #111111;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+
+    margin-right: 12px;
+}
+.header .navbar .logo {
+    margin-right: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
 /*========== NAV MENU ==========*/
 header {
     background: #111111;
