@@ -74,13 +74,12 @@ async function createRecipes() {
     while (files.length < totalRecipes ) {
         files.push({
             filename: faker.image.image(),
-            path: `https://source.unsplash.com/collection/2013520/640x480`,
+            path: `public/images/placeholder.png`,
         })
     }
     //create files 
     const filesPromise = files.map(file => File.create(file))
     const  fileResults= await Promise.all(filesPromise)
-    // let filesId = fileResults.map(result => result.rows)
     let filesId = fileResults.map(result => result.rows[0].id)
 
     let recipes = []
@@ -99,7 +98,6 @@ async function createRecipes() {
 
     const recipesPromises = recipes.map(recipe => Recipe.create(recipe))
     const recipeResults = await Promise.all(recipesPromises)
-    // let recipesId = recipeResults.map(result => result.rows)
     let recipesId = recipeResults.map(result => result.rows[0].id)
 
        // RecipeFiles
@@ -113,8 +111,8 @@ async function createRecipes() {
 		
 		}
 		
-		const recipesFilesPromise = recipe_files.map(recipeFiles => RecipeFiles.create(recipeFiles.recipe_id, recipeFiles.file_id) )
-		await Promise.all(recipesFilesPromise) 
+    const recipesFilesPromise = recipe_files.map(recipeFiles => RecipeFiles.create(recipeFiles.recipe_id, recipeFiles.file_id))
+    await Promise.all(recipesFilesPromise) 
    
 }
 
@@ -122,7 +120,6 @@ async function init() {
     await createUsers()
     await createChefs()
     await createRecipes()
-    // await createRecipeFiles()
 }
 
 init()

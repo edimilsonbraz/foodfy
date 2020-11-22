@@ -91,10 +91,25 @@ module.exports = {
     },
     async delete(id) {
 
-        await db.query(`DELETE FROM recipe_files WHERE recipe_files.recipe_id = $1`, [id]);
-        
-        return db.query(`DELETE FROM chefs WHERE id=$1`, [id]);
-        
+        try {
+            let result = await db.query(`SELECT files.* FROM FILES
+            LEFT JOIN chefs ON (chefs.file_id = files.id)
+            WHERE chefs.id = $1`, [id])
+            const file = result.rows[0];
+            
+            fs.unlinkSync(file.path) //apaga na pasta images
+            
+            
+            const query = `
+            SELECT files.* FROM FILES
+            LEFT JOIN chefs ON (chefs.file_id = files.id)
+            WHERE chefs.id = $1
+            `
+            return db.query(`DELETE FROM files WHERE id = $1`, [file.id]);
+            
+        } catch (error) {
+            console.error(error)
+        }
     
     },
     async getAvatar(id) {

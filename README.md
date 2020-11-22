@@ -1,17 +1,17 @@
-
 <h1 align="center">
 <br>
-  <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="400">
+  <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="600">
   
 <br>
-<img src="https://ik.imagekit.io/1n1swj1w28/Foodfy02_qbkZct__dy.png" width="400">
+<img src="https://ik.imagekit.io/1n1swj1w28/Foodfy02_qbkZct__dy.png" width="600">
 <br>
   FOODFY
 </h1>
 
-<p align="center">Nesse desafio construi um site completo(front-end e back-end) para uma empresa de receitas chamada Foodfy. Desafio desenvolvido durante o bootcamp LaunchBase da Rocketseat.
+<p align="center">Nesse Bootcamp foi desenvolvido uma aplicação completa(front-end e back-end) que trata-se de um sistema com receitas de diferentes chefs, todas com imagens, ingredientes e passo a passo pra fazer uma receita.</p>
+  
+<p align="center"> Projeto desenvolvido durante o Launchbase Bootcamp da Rocketseat. </p>
 
-</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
@@ -19,10 +19,10 @@
   </a>
 </p>
 
-## Features
-[//]: # (Add the features of your project here:)
+## TECNOLOGIAS
 
 Este aplicação apresenta algumas das mais recentes ferramentas e práticas em desenvolvimento web!!
+Alguns deles estão listados abaixo.
 
 - ⚛️ **HTML5** — 
 - ⚛️ **CSS3** — 

@@ -7,7 +7,7 @@ const RecipeFiles = require('./../models/RecipeFiles')
 module.exports = {
     async index(req, res) {
         try {
-        let { page, limit } = req.query
+        let { page, limit, filter } = req.query
 
         page = page || 1
         limit = limit || 6
@@ -65,7 +65,7 @@ module.exports = {
     
             const recipesImage = await Promise.all(recipesPromises)
            
-            return res.render("admin/recipes/index", {recipes, recipesImage, pagination})
+            return res.render("admin/recipes/index", {recipes, recipesImage, pagination, filter})
 
             
         }catch (err) {
@@ -107,6 +107,7 @@ module.exports = {
         const results = await Recipe.create(req.body, userId)
         const recipeId = results.rows[0].id
 
+
         const filesPromise = req.files.map(file => File.create ({...file}))
         
         const filesResults = await Promise.all(filesPromise)
@@ -142,6 +143,7 @@ module.exports = {
                 ...file,
                 src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
             }))
+
 
             return res.render("admin/recipes/show", { recipe, files })
 
@@ -245,6 +247,8 @@ module.exports = {
                     await RecipeFiles.delete(files)
 
                     await File.delete(file.id);
+
+                    await Recipe.delete(id);
             });
 
             Promise.all(filesPromise);

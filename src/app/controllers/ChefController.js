@@ -3,6 +3,8 @@ const Chef = require('../models/Chef')
 const File = require('../models/File')
 const Recipe = require('../models/Recipe')
 
+const { unlinkSync } = require('fs')
+
 
 module.exports = {
     async index(req, res) {
@@ -156,12 +158,12 @@ module.exports = {
 
                 await Chef.delete(req.body.id)
 
-               
+                              
                 return res.render("admin/chefs/index", {
                     success:'Chef deletado com sucesso.'
                 })         
             } else {
-                return rres.render("admin/chefs/index", {
+                return res.render("admin/chefs/index", {
                     error: 'Chefs que têm receitas em nosso site não podem ser excluídos'
                 })
             }
