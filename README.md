@@ -39,7 +39,7 @@ Alguns deles estão listados abaixo.
 
 1 - Abra o terminal do seu computador e mude para o diretório que deseja manter este aplicativo. Execute o código
 ```
-$ git clone https://github.com/edimilsonbraz/foodfly-launchbase
+$ git clone https://github.com/edimilsonbraz/foodfy-launchbase
 ```
 2 - Acesse o diretório
 ```
