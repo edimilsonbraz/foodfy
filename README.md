@@ -43,7 +43,7 @@ $ git clone https://github.com/edimilsonbraz/foodfy
 ```
 2 - Acesse o diretório
 ```
-$ cd foodfy-launchbase
+$ cd foodfy
 ```
 3 - Na pasta principal execute o comando para instalar todos os pacotes necessários listados no arquivo package.json.
 ```
