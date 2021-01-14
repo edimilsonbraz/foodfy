@@ -46,7 +46,7 @@
     color: var(--color-secundary);
     font-weight: bold;
 }
-section .links a.active {
+.header.adm .navbar .links a.active {
     color: var(--color-secundary);
     font-weight: bold;
 }

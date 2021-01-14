@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
 
-const home = require('../app/controllers/HomeController')
+const home = require('../app/controllers/homeController')
 
 
 // ROTAS DO FOODFY CLIENTE

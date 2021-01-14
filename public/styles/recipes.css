@@ -24,12 +24,6 @@ header {
     font-weight: bold;
 }
 
-.nav__links li a.active {
-    color: var(--color-secundary);
-    font-weight: bold;
-}
-
-
 /*==== GALLERY ====*/
 .gallery {
     width: 100%;
