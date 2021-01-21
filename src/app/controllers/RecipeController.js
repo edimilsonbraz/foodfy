@@ -102,14 +102,16 @@ module.exports = {
                 error: 'Por favor, envie pelo menos uma imagem.'
             });
         }
+        
         const userId = req.session.userId
 
         const results = await Recipe.create(req.body, userId)
         const recipeId = results.rows[0].id
 
 
+        //Logica de salvar imagens das receitas
         const filesPromise = req.files.map(file => File.create ({...file}))
-        
+
         const filesResults = await Promise.all(filesPromise)
         const recipeFiles = filesResults.map((file) => {
             const fileId = file.rows[0].id
@@ -117,7 +119,7 @@ module.exports = {
         })
         
         await Promise.all(recipeFiles)
-
+        
             return res.render("orders/success")
         }catch (err) {
             console.error(err)
@@ -128,9 +130,12 @@ module.exports = {
     },
     async show(req, res) {
         try {
+            const userId = req.session.userId
+            console.log(userId)
+            
             let results = await Recipe.find(req.params.id)
             const recipe = results.rows[0]
-            
+                       
             if(!recipe) {
                 return res.render('admin/recipes/show', {
                     error: 'Receita não encontrada!'
@@ -155,7 +160,7 @@ module.exports = {
     async edit(req, res) {
         try {
             const { id } = req.params;
-
+            
             let results = await Recipe.find(req.params.id) 
             const recipe = results.rows[0]
 

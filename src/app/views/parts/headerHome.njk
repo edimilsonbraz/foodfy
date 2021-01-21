@@ -8,7 +8,9 @@
                 <li><a href="/chefsList">Chefs</a></li>
                 <li><a href="/admin/login">Login</a></li>
                 {% if session.isAdmin %}
-                <li><a href="/admin/users">Gerenciar</a></li>
+                    <li><a href="/admin/users">Gerenciar</a></li>
+                {% elseif session.userId %}
+                    <li><a href="/admin/profile">Minha Conta</a></li>
                 {% endif %}
             </ul>
         </nav>

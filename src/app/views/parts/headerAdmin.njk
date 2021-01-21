@@ -10,8 +10,12 @@
           
             <a href="/admin/recipes">Receitas</a>
             <a href="/admin/chefs">Chefs</a>
-          
-            <a href="/admin/profile" >Minha conta</a>
+            {% if session.isAdmin %}
+              <a href="/admin/users">Usuários</a>
+            {% else %}
+              <a href="/admin/profile" >Minha conta</a>
+            {% endif %}  
+            
           
         </div>
             

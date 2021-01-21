@@ -13,7 +13,7 @@ module.exports = {
 
         }catch(err) {
             console.error(err), {
-                error: "Area de administradores, Talvez vc não tenha permição!"
+                error: "Area de administradores, Talvez vc não tenha permissão!"
             }
         }
     },
@@ -62,9 +62,13 @@ module.exports = {
                 to: email,
                 from: 'no-reply@foodfy.com.br',
                 subject: 'Cadastro com sucesso! Altere sua senha pré definida!',
-                html: `<h2>Criamos um senha pré definida para sua entrada no sistema, e estamos enviando este email para que você atualizar como preferir!!!</h2>
+                html: `
+                <h2>Olá, Criamos um senha pré definida para sua entrada no sistema, e estamos enviando este email para que você atualizar como preferir!!!</h2>
+
                 <h3>Sua senha é: ${randomPassword}</h3>
+
                 <p>Clique no link abaixo para alterá-la!</p>
+                
                 <p>
                     <a href="http://localhost:3000/admin/reset-password?token=${token}" target="_blank">
                     NOVA SENHA

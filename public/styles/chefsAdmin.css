@@ -185,6 +185,12 @@ span.autor {
     color: var(--color-rocket);
     font-weight: bold;
     margin-top: 10px;
+
+    padding: 4px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 4px;
+
+
 }
 .card__recipes a:hover {
     color: #4a3f9e;

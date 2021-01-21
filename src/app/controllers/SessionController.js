@@ -15,6 +15,7 @@ module.exports = {
         //user admin
         req.session.isAdmin = req.user.is_admin
 
+
         if(req.user.is_admin) {
             return res.render("admin/users/index", {
                 success:'Bem vindo Administrador.'

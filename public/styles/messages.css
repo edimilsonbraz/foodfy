@@ -21,6 +21,7 @@
     border-radius: 4px;
 
     animation: hidemessage 400ms 5s ease-out forwards;
+    z-index: 10;
 }
 .messages.error {
     background: #e74c3c;

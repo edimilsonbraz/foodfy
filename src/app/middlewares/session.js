@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe')
+const user = require('../validators/user')
 
 async function onlyUsers(req, res, next) {
     if(!req.session.userId)
@@ -26,14 +27,14 @@ function isLoggedRedirectToUsers(req, res, next) {
 async function isTheOwner(req, res, next) {
     const results = await Recipe.find(req.params.id)
     const recipe = results.rows[0]
-    
-    if (req.session.userId !== recipe.user_id){ 
+
+    if (req.session.userId !== recipe.user_id ){ 
 
         return res.render("admin/recipes/index", {
                 error:'Somente o criador da receita ou Admin pode editar.'
             })
-        }
-
+        } 
+        
         next()
 }
 

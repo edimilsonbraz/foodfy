@@ -32,7 +32,7 @@ module.exports = {
             `
             const values = [
                 data.chef,
-                data.userId,
+                userId,
                 data.title,
                 data.ingredients,
                 data.preparation,

@@ -11,23 +11,26 @@
                 <a class="buttons" id="cadastrar" href="/admin/recipes/create">Cadastrar receita</a>
             </div>
             
-            <div class="cards">
-                {% for recipe in recipes %}
-                    <div class="card">
-                        <img src="{{ recipe.image }}" alt="">
-                        <div class="card__text">
-                            <h3>{{ recipe.title }}</h3>
 
-                             {% if recipe.creator %}
-                                <span class="creator">Você é o criador da receita</span><br><br>
-                            {% else %}
-                                <span>por {{ recipe.chef_name }}</span><br><br>
-                            {% endif %}                
-                            <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a> 
-                        </div>                      
-                    </div>
-                {% endfor %}
-            </div>
+            {# {% if recipe.user_id == session.userId or session.isAdmin %} #}
+                <div class="cards">
+                    {% for recipe in recipes %}
+                        <div class="card">
+                            <img src="{{ recipe.image }}" alt="">
+                            <div class="card__text">
+                                <h3>{{ recipe.title }}</h3>
+
+                                {% if recipe.creator %}
+                                    <span class="creator">Você é o criador da receita</span><br><br>
+                                {% else %}
+                                    <span>por {{ recipe.chef_name }}</span><br><br>
+                                {% endif %}                
+                                <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a> 
+                            </div>                      
+                        </div>
+                    {% endfor %}
+                </div>
+            {# {% endif %} #}
         </div>
 
         <div class="pagination"
