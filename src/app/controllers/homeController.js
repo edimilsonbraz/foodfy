@@ -16,9 +16,9 @@ module.exports = {
 
     } else {
       let results = await Recipe.all()
-      let recipes = results.rows
+      let recipes = results
 
-      if(!recipes) return res.send('Recipes Not Found!')
+      if(!recipes) return res.send('Receita não encontrada')
 
             async function getImage(recipeId) {
                 let results = await File.recipeImages(recipeId)

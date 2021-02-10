@@ -5,17 +5,17 @@
         {% block head %}       
         {% endblock %}
 
-        {% include 'parts/stylesLogin.njk' %} 
+        {% include 'home/parts/stylesLogin.njk' %} 
         
     </head>
 <body>
-    {% include 'parts/messages.njk' %}
+    {% include 'home/parts/messages.njk' %}
     
-    {% include 'parts/headerLogin.njk' %}     
+    {% include 'home/parts/headerLogin.njk' %}     
 
     {% block content %} {% endblock %}
 
-    {% include "parts/footer.njk" %}
+    {% include "home/parts/footer.njk" %}
     
 </body>
 </html>

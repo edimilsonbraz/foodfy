@@ -1,5 +1,5 @@
 {% extends "./layoutRecipes.njk" %}
-{% import "parts/card.njk" as cards %}
+{% import "admin/parts/card.njk" as cards %}
 
      
 {% block content %}
@@ -13,9 +13,9 @@
             
 
             {# {% if recipe.user_id == session.userId or session.isAdmin %} #}
-                <div class="cards">
+                <div class="cards_recipes">
                     {% for recipe in recipes %}
-                        <div class="card">
+                        <div class="card_recipes">
                             <img src="{{ recipe.image }}" alt="">
                             <div class="card__text">
                                 <h3>{{ recipe.title }}</h3>

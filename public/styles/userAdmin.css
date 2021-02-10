@@ -135,21 +135,22 @@ p.user {
 
 
 /*==== CREATE FORM ====*/
+
 input, select {
     
-    width: 465px;
-    height: 36px;
-    background: #FFFFFF;
-    font-size: 16px;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    margin: 10px 8px 0 0;
-    outline: none;
+    width: 465px!important;
+    height: 36px !important;
+    background: #FFFFFF !important;
+    font-size: 16px !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: 4px !important;
+    margin: 10px 8px 0 0 !important;
+    outline: none !important;
     
 }
 
 input::placeholder {
-    font-size: 16px;
+    font-size: 16px ;
     font-weight: normal;
 }
 .checkbox {
@@ -158,8 +159,8 @@ input::placeholder {
     
 }
 input#checkbox {
-    width: 15px;
-    margin: 0 8px 0 0;
+    width: 15px !important;
+    margin: 0 8px 0 0 !important;
 }
 
 select option {

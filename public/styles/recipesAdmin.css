@@ -338,13 +338,13 @@ card__form .item #photos-upload {
 
 
 /* =============== Cards ===============*/
-.cards {
+.cards_recipes {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin: 0 auto 62px;
 }
-.card {
+.card_recipes {
     display: grid;
     grid-template-columns: 1fr 1fr ;
     align-items: center;
@@ -358,7 +358,7 @@ card__form .item #photos-upload {
    
 }
 
-.card img {
+.card_recipes img {
     width: 100%;
     height: 140px;
     border-radius: 15px;
@@ -367,23 +367,23 @@ card__form .item #photos-upload {
     object-position: center center;
 }
 
-.card h3 {
+.card_recipes h3 {
     margin: 0 0 5px;
     font-weight: bold;
 }
-.card span.autor {  /*config autor*/
+.card_recipes span.autor {  /*config autor*/
     font-size: 14px;
     color: #777777;
     margin-bottom: 20px;
 }
 
-.card a {
+.card_recipes a {
     font-family: Roboto-Bold;
     font-size: 14px;
     color: var(--color-rocket);
     font-weight: bold;
 }
-.card a:hover {
+.card_recipes a:hover {
     color: #4a3f9e;
 }
 

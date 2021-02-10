@@ -6,16 +6,16 @@
           <title>Foodfy - Chefs Admin</title>     
         {% endblock %}
 
-        {% include "parts/stylesChefAdmin.njk" %} 
+        {% include "admin/parts/styles.njk" %}  
     </head>
     <body>
-        {% include 'parts/messages.njk' %}
+        {% include 'home/parts/messages.njk' %}
 
-        {% include 'parts/headerAdmin.njk' %}
+        {% include 'admin/parts/headerAdmin.njk' %}
 
         {% block content %} {% endblock %}
 
-        {% include "parts/footer.njk" %}
+        {% include "home/parts/footer.njk" %}
 
     </body>
 </html>
