@@ -1,20 +1,16 @@
 {% extends "./layoutChefs.njk" %}
 
-    
-    {% block head %}
-        <title>Foodfy - Chefs Admin</title>
-    {% endblock %}
-    
-    
 {% block content %}
     <div class="content">
         <div class="container">
             {% if session.isAdmin %}
-            <div class="container-buttons">
-                <h2>Gerenciar Chefs</h2>
-
-                <a class="buttons" id="cadastrar" href="/admin/chefs/create">Cadastrar chef</a>
-            </div>
+                <div class="header-buttons">
+                    <h2>Gerenciar Chefs</h2>
+                    <div class="container-buttons">
+                        <a class="buttons" id="cadastrar" href="/admin/chefs/create">Cadastrar chef</a>
+                    </div>
+                </div> 
+                
             {%endif%}
             
             <div class="cards">

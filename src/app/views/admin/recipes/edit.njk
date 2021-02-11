@@ -3,22 +3,24 @@
 
 {% block content %}
     <div class="content">
-        <div class="forms-actions"> 
-            <form action="/admin/recipes?_method=PUT" method="POST" enctype="multipart/form-data">
-                <div class="container-buttons">
-                    <h2>Editando Receita</h2>
-                    <button type="submit" id="salvar">Salvar</button>
-                    <input type="hidden" name="id" value="{{ recipe.id }}">
-                </div>
+        <div class="header-buttons"> 
+            <h2>Editando Receita</h2>
+            <div class="container-buttons">
+                <button form="delete-user" class="delete" type="submit">Deletar</button>
+                <button form="salvar" type="submit" >Salvar</button>
+            </div>
+        </div> 
 
-                {% include 'admin/recipes/fields.njk' %}
-            </form>
+        <form action="/admin/recipes?_method=PUT" method="POST" id="salvar" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ recipe.id }}">
 
-            <form action="/admin/recipes?_method=DELETE" method="POST" class="delete" id="delete-user">
-                <button class="delete" type="submit">Deletar</button>
-                <input type="hidden" name="id" value="{{ recipe.id }}">
-            </form>
-        </div>  
+            {% include 'admin/recipes/fields.njk' %}
+        </form>
+
+        <form action="/admin/recipes?_method=DELETE" method="POST" class="delete" id="delete-user">
+            <input type="hidden" name="id" value="{{ recipe.id }}">
+        </form>
+         
     </div>
     <script src="/scripts/deleteConfirm.js"></script>
 {% endblock content %}

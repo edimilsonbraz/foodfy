@@ -2,16 +2,19 @@
 
 
 {% block content %}
-    <form class="content" method="POST" action="/admin/recipes" enctype="multipart/form-data">
-        <div class="container-buttons">
+    <div class="content">
+        <div class="header-buttons"> 
             <h2>Criando Receita</h2>
-            <button id="salvar" type="submit">Salvar receita</button>
-        </div>
+            <div class="container-buttons">
+                <button form="salvar" type="submit">Salvar receita</button>
+            </div>
+        </div> 
+        <form class="content" method="POST" id="salvar" action="/admin/recipes" enctype="multipart/form-data">
 
-        <div class="container">
             {% include 'admin/recipes/fields.njk' %}
-        </div>
-    </form>
+            
+        </form>
+    </div>
 {% endblock %}
 
 {% block script %}{% endblock script %}

@@ -6,11 +6,12 @@
 {% call cards.render('', 'content') %}
     <div class="content">
         <div class="container">
-            <div class="container-buttons">
-                <h2>Gerenciar receitas</h2>
-                <a class="buttons" id="cadastrar" href="/admin/recipes/create">Cadastrar receita</a>
+            <div class="header-buttons">
+            <h2>Gerenciar receitas</h2>
+                <div class="container-buttons">
+                    <a class="buttons" id="cadastrar" href="/admin/recipes/create">Cadastrar receita</a>
+                </div>
             </div>
-            
 
             {# {% if recipe.user_id == session.userId or session.isAdmin %} #}
                 <div class="cards_recipes">

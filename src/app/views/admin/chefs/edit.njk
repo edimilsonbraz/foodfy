@@ -2,21 +2,26 @@
 
 {% block content %}
     <div class="content">
-        <div class="forms-actions">
-            <form action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data">
-                <div class="container-buttons">
-                    <h2>Editando chef</h2>
-                    <button id="salvar" type="submit">Salvar</button>
-                    <input type="hidden" name="id" value="{{ chef.id }}">
-                </div>
+        <div class="header-buttons">
+            <h2>Editando chef</h2>
+            <div class="container-buttons">
+                <button form="delete-chef" class="delete" type="submit">Deletar</button>
+                <button form="salvar" type="submit">Salvar</button>
+                
+            </div>
+        </div>
+            <form action="/admin/chefs?_method=PUT" method="POST" id="salvar" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{ chef.id }}">
 
                 {% include 'admin/chefs/fields.njk' %}
             </form>
-
+             
+            
             <form action="/admin/chefs?_method=DELETE" method="POST" id="delete-chef">
+                
                 <input type="hidden" name="id" value="{{ chef.id }}">
-                <button class="delete" type="submit">Deletar</button>
             </form>
+            
 
             <script>
                 const formDelete = document.querySelector("#delete-chef")
@@ -27,6 +32,6 @@
                     }
                 })
             </script>
-        </div>
+        
     </div>
 {% endblock %}

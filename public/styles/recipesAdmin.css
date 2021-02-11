@@ -35,7 +35,7 @@
 }
 .header.adm .navbar .links a {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 16px;
     margin-right: 30px;
     text-decoration: none;
     text-transform: uppercase;
@@ -398,6 +398,7 @@ input, select {
     border-radius: 4px;
     margin: 0px auto 0px;
     outline: none;
+
 }
 input::placeholder {
     font-size: 16px;
@@ -424,24 +425,18 @@ textarea {
 
 
 /*=========== BUTTONS ===========*/
-.container-buttons {
+.header-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    margin-bottom: 42px;
+
+}
+.container-buttons button{
+    margin-left: 8px;
 }
 
-.forms-actions {
-    display: flex;
-}
-
-form button.delete {
-    margin-left: -204px;
-  } 
-
-/* .container-buttons a#editar.buttons {
-    margin: 25px 0 25px 0;
-} */
 .container a#cadastrar.buttons {
     margin-bottom: 25px;
 }
@@ -459,6 +454,8 @@ button, .button {
     color: white;
     padding: 8px 18px;
     border-radius: 4px;
+
+    margin-top: 8px;
 }
 
 button[type="submit"],

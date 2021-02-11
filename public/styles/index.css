@@ -17,7 +17,9 @@ header {
     padding: 0px 10px;
 }
 .nav__links li a {
+    text-transform: uppercase;
     transition: all 0.3s ease 0s;
+    color: #111111;
 }
 .nav__links li a:hover {
     color: var(--color-secundary);

@@ -1,21 +1,15 @@
 {% extends "./layoutChefs.njk" %}
 
-
-    <head>
-        {% block head %}
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-            <title>Foodfy</title>
-        {% endblock %}
-    </head>
-
 {% block content %}
 <div class="content">
-    <form class="content" method="POST" action="/admin/chefs" enctype="multipart/form-data">
+    <div class="header-buttons"> 
+        <h2>Criando chef</h2>
         <div class="container-buttons">
-            <h2>Criando chef</h2>
-            <button id="button_salvar" type="submit">Salvar Chef</button>
-        </div>                    
+            <button form="salvar" type="submit">Salvar Chef</button>
+        </div> 
+    </div>
+    <form class="content" method="POST" id="salvar" action="/admin/chefs" enctype="multipart/form-data">
+                           
        {% include 'admin/chefs/fields.njk' %}
 
     </form>

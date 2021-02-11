@@ -1,15 +1,14 @@
 {% extends "./layoutRecipes.njk" %}
 
-{% block head %}
-    <title>{{ recipe.title }}</title>
-{% endblock %}
 
 {% block content %}
 
     <section class="content">
-        <div class="container-buttons">
+        <div class="header-buttons">
             <h2 class="title2">Receita: <i class="material-icons">restaurant</i> {{recipe.title}}</h2>
-            <a class="buttons" id="editar" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
+            <div class="container-buttons">
+                <a class="buttons" id="editar" href="/admin/recipes/{{ recipe.id}}/edit">Editar receita</a>
+            </div>
         </div>
         
         <div class="gallery">

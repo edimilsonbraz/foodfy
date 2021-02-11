@@ -1,7 +1,7 @@
 /* FUNCINALIDADE FOTOS */
 const PhotosUpload = {
   input: "",
-  preview: document.querySelector('#photos-preview'),
+  preview: document.querySelector('#photos-preview', '#photos-preview-chef'),
   uploadLimit: 5,
   files: [],
 
