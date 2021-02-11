@@ -19,8 +19,8 @@
 }
 
 .header.adm .navbar {
-    max-width: 980px;
-    width: 92%;
+    max-width: 940px;
+    width: 100%;
     position: relative;
     margin: auto;
 }
@@ -57,8 +57,6 @@
     color: #fff;
     font-size: 15px;
     text-transform: uppercase;
-
-    margin-right: 12px;
 }
 
 .header .navbar .logo {
@@ -303,7 +301,7 @@ button.button-sair {
     background-color: #111111;
     font-weight: normal;
     padding: 0px;
-    margin: 0 0 0 380px;
+    /* margin: 0 0 0 380px; */
     transition: 200ms;
 }
 

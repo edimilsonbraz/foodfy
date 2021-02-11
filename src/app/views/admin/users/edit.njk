@@ -9,16 +9,16 @@
                 <button form="salvar" type="submit">Salvar</button>
             </div>
         </div>
-            <form method="POST" id="salvar" action="/admin/users?_method=PUT">
-                <input type="hidden" name="id" value={{user.id}}>
+        <form method="POST" id="salvar" action="/admin/users?_method=PUT">
+            <input type="hidden" name="id" value={{user.id}}>
 
-                {% include 'admin/users/fields.njk' %}
-            </form>
+            {% include 'admin/users/fields.njk' %}
+        </form>
 
-            <form action="/admin/users?_method=DELETE" method="post" id="delete-user" class="delete">
-                
-                <input type="hidden" name="id" value="{{user.id}}">
-            </form>
+        <form action="/admin/users?_method=DELETE" method="post" id="delete-user" class="delete">
+            
+            <input type="hidden" name="id" value="{{user.id}}">
+        </form>
         
     </div>
             <script src="/scripts/deleteConfirm.js"></script>

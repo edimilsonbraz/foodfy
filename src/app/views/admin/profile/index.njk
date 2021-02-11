@@ -1,60 +1,56 @@
 {% extends "admin/users/layoutUsers.njk" %}
 
-
 {% block content %}
-    <section class="content">
-        <form method="POST" action="/admin/profile?_method=PUT">
-            <div class="container-button">
-                <h2>Olá <font color="#4a3f9e">{{user.name}}</font></h2>
+    <div class="content">
+        <div class="header-buttons">
+            <h2>Olá <font color="#4a3f9e">{{user.name}}</font></h2>
 
-                <div class="container-buttons-create">
-                    
-                    <button id="salvar" type="submit">Salvar</button>
-                </div>
+            <div class="container-buttons">
+                <button form="salvar" type="submit">Salvar</button>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="forms-actions">
-                    <div class="item">
-                        <h4>Nome</h4>
-                        <div class="inputWithIcon">
-                            <input 
-                                type="text" 
-                                name="name" 
-                                placeholder="Nome do usuário" 
-                                value="{{ user.name }}" 
-                                required="required"
-                            >
-                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h4>Email</h4>
-                        <div class="inputWithIcon">
-                            <input 
-                                type="email" 
-                                name="email" 
-                                placeholder="Digite seu email" 
-                                value="{{ user.email }}" 
-                                onblur="Validate.apply(this, 'isEmail')" 
-                                required="required"
-                            >
-                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="senha">
-                    <h4>Senha</h4>
-                    <div class="inputWithIcon">
-                        <input type="password" name="password" placeholder="Digite a senha">
-                        <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
+        <form method="POST" id="salvar" action="/admin/profile?_method=PUT">
             <input type="hidden" name="id" value="{{user.id}}">
-        </form>
+        <section class="container form">
+            <div class="item">
+                <h4>Nome</h4>
+                <div class="inputWithIcon">
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Nome do usuário" 
+                        value="{{ user.name }}" 
+                        required="required"
+                    >
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div class="item">
+                <h4>Email</h4>
+                <div class="inputWithIcon">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Digite seu email" 
+                        value="{{ user.email }}" 
+                        onblur="Validate.apply(this, 'isEmail')" 
+                        required="required"
+                    >
+                    <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+            </div>
+        </section>
+            <div class="senha">
+                <h4>Senha</h4>
+                <div class="inputWithIcon">
+                    <input type="password" name="password" placeholder="Digite a senha">
+                    <i class="fa fa-unlock fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+            </div>
+           
         
-    </section>
+        </form>
+    </div>
 {% endblock %}

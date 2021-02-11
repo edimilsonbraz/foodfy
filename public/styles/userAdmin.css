@@ -19,8 +19,8 @@
 }
 
 .header.adm .navbar {
-    max-width: 980px;
-    width: 92%;
+    max-width: 940px;
+    width: 100%;
     position: relative;
     margin: auto;
 }
@@ -57,8 +57,6 @@
     color: #fff;
     font-size: 15px;
     text-transform: uppercase;
-
-    margin-right: 12px;
 }
 .header .navbar .logo {
     margin-right: 60px;
@@ -71,7 +69,6 @@ section.container {
 
     justify-content: space-between;
 }
-
 .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -137,15 +134,14 @@ p.user {
 /*==== CREATE FORM ====*/
 
 input, select {
-    
-    width: 465px!important;
-    height: 36px !important;
-    background: #FFFFFF !important;
-    font-size: 16px !important;
-    border: 1px solid #DDDDDD !important;
-    border-radius: 4px !important;
-    margin: 10px 8px 0 0 !important;
-    outline: none !important;
+    width: 465px;
+    height: 36px;
+    background: #FFFFFF;
+    font-size: 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin: 10px 8px 0 0;
+    outline: none;
     
 }
 
@@ -305,9 +301,6 @@ button.button-sair {
 button.button-sair:hover {
     font-weight: bold;
 }
-/* button#salvar {
-    margin: 0 60px 0 0;
-} */
 
 .card-users a#editar {
     font-size: 14px;
