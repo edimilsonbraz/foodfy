@@ -1,7 +1,14 @@
 <h1 align="center">
-<br>
-<img src="https://ik.imagekit.io/1n1swj1w28/FoodfyPrint_NnQcHYQo4.png" width="900">
-<br>
+  <br>
+    <img src="https://ik.imagekit.io/1n1swj1w28/FoodfyPrint_NnQcHYQo4.png" width="900">
+  <br>
+  
+  <p>
+      <a target="_blank" rel="noopener noreferrer" href="https://ik.imagekit.io/1n1swj1w28/FoodfyVideo_HNW2KfaN1.gif">
+        <img src="https://ik.imagekit.io/1n1swj1w28/FoodfyVideo_HNW2KfaN1.gif" alt="foodfy" height="450px" style="max-width:100%;">
+      </a>
+  </P>
+
   FOODFY
 </h1>
 
