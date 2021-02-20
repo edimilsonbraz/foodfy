@@ -162,6 +162,7 @@ input {
     border: 1px solid #DDDDDD ;
     border-radius: 4px;
     margin-right: 8px;
+    padding: 8px;
 }
 input::placeholder {
     color: var(--color-placeholder);
