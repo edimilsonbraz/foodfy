@@ -98,7 +98,7 @@ pg_ctl -D /usr/local/var/postgres stop
 node seed.js. 
 ```
 - Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
-- 
+- Senha desses usuários Fakes: senha:1234
 - Inicie a aplicação:
 ```
 $ cd Foodfy
@@ -109,7 +109,7 @@ $ npm start
 ```
 
 ## License
-
+[**Edimilson Braz**](https://www.linkedin.com/in/edimilsonbraz/)
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
