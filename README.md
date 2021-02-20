@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-<!--   <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="600"> -->
+<!--   <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="800"> -->
   
 <br>
 <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy02_qbkZct__dy.png" width="600">
