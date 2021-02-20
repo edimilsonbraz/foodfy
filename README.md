@@ -57,9 +57,6 @@ $ cd foodfy
 ```
 $ npm install
 ```
-### Configuração do DB
-- Esta aplicação requer um banco de dados onde todas as informações de receitas, chefs e usuários são armazenadas. DB usado no projeto [PostgresSQL](https://www.postgresql.org/) | (versão que estou usando neste projeto, é a versão 12)<br>
-- Depois de instalar o postgres, você precisará do [Postbird](https://www.electronjs.org/apps/postbird), que é a visualização do BD numa interface gráfica. Use o mesmo login e senha no arquivo src/config/db.js<br>
 
 ### Iniciando o PostgresSQL
 
@@ -76,10 +73,29 @@ $ .\pg_ctl.exe -D "C:\Program Files\PostgreSQL\13\data" start
 ```
 $ .\pg_ctl.exe -D "C:\Program Files\PostgreSQL\13\data" stop
 ```
+- ### Mac:
+1. Iniciar o postgres
+```
+pg_ctl -D /usr/local/var/postgres start
+```
+2. Desligar o postgresql
+```
+pg_ctl -D /usr/local/var/postgres stop
+```
+- ### Linux:
+[Documentação Oficial de Instalação do Postgres](https://www.postgresql.org/download/linux/)
+
+### Usando o Postbird
+- Esta aplicação requer um banco de dados onde todas as informações de receitas, chefs e usuários são armazenadas. DB usado no projeto [PostgresSQL](https://www.postgresql.org/) | (versão que estou usando neste projeto, é a versão 12)<br>
+- Depois de instalar o postgres, você precisará do [Postbird](https://www.electronjs.org/apps/postbird), que é a visualização do BD numa interface gráfica. Use o mesmo login e senha no arquivo src/config/db.js<br>
+- Após ligar o Postgres, abra o Postbird e crie um banco de dados, de nome foodfydb.<br>
+- Abra o arquivo foodfydb.sql e copie toda a query para a sessão de Query do Postbird e clique em Run Query
+
+## Executar a aplicação
 
 - Com a configuração do banco de dados feita, No terminal do VSC execute o comando node seed.js. Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
 
-Atualizando .....
+
 
 
 ## License
