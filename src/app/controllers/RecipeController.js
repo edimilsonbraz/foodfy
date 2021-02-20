@@ -107,7 +107,6 @@ module.exports = {
     async show(req, res) {
         try {
             const userId = req.session.userId
-            console.log(userId)
 
             let results = await Recipe.find(req.params.id)
             const recipe = results.rows[0]

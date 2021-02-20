@@ -6,17 +6,12 @@ const fs = require('fs')
 module.exports = {
     async all() {
         try {
-            // return db.query(`
-            // SELECT recipes.*, chefs.name AS chef_name
-            // FROM recipes
-            // LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            // ORDER BY created_at DESC
-            // `)
+          
             const results = await db.query(`
-            select recipes.*, chefs.name AS chef_name
-            from recipes
-            left join chefs on (recipes.chef_id = chefs.id)
-            order by created_at DESC
+            SELECT recipes.*, chefs.name AS chef_name
+            FROM recipes
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            ORDER BY created_at DESC
             `)
 
             return results.rows
@@ -183,19 +178,6 @@ module.exports = {
             console.error(error)
         }
        
-    },
-    findTeste(id) {
-        try {
-            const fileQuery = `(SELECT path FROM files 
-                INNER JOIN recipe_files ON recipe_files.file_id = files.id 
-                WHERE recipe_id = recipes.id LIMIT 1) AS file_path`;
-
-            const query = `SELECT recipes.*, ${fileQuery} FROM recipes WHERE user_id = $1`;
-
-            return db.query(query, [id]);
-        } catch (err) {
-            console.log(err);
-        }
-    },
+    }
     
 }

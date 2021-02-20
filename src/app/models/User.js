@@ -39,21 +39,43 @@ module.exports = {
                  password,
                  is_admin
              ) VALUES ($1, $2, $3, $4)    
-             RETURNING id
+             RETURNING id, email
              `
-            
+             if(data.seedPassword) {
+                const values = [
+                    data.name,
+                    data.email,
+                    data.seedPassword,
+                    data.is_admin || false
+                ]
+            }
              //hash of password
-             const passwordHash = await hash(data.password, 8)
+             let randomPassword = Math.random().toString(36).slice(-5)
+             const passwordHash = await hash(randomPassword, 8)
  
-             const values = [
+             let values = [
                  data.name,
                  data.email,
                  passwordHash,
                  data.is_admin || false
              ]
+
+             if(data.seedPassword) {
+                values = [
+                    data.name,
+                    data.email,
+                    data.seedPassword,
+                    data.is_admin || false
+                ]
+            }
  
              const results = await db.query(query, values)
-             return results.rows[0].id 
+            //  return results.rows[0].id 
+            return {
+                id: results.rows[0].id,
+                email: results.rows[0].email,
+                password: randomPassword
+            }
  
          } catch (err) {
              console.error (err)

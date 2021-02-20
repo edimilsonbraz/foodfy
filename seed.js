@@ -1,5 +1,6 @@
 const faker = require('faker')
 const { hash } = require('bcryptjs')
+const { random } = require('faker')
 
 const User = require('./src/app/models/User')
 const Chef = require('./src/app/models/Chef')
@@ -7,7 +8,6 @@ const Recipe = require('./src/app/models/Recipe')
 const File = require('./src/app/models/File')
 const RecipeFiles = require('./src/app/models/RecipeFiles')
 
-const { random } = require('faker')
 
 let usersIds = []
 let recipesId = []
@@ -27,7 +27,8 @@ async function createUsers() {
         users.push({
             name: faker.name.firstName(),
             email: faker.internet.email(),
-            password,
+            // password,
+            seedPassword: password,  //linha nova de teste
             is_admin: trueOrFalse[Math.round(Math.random())]
         })
     }
@@ -98,7 +99,7 @@ async function createRecipes() {
 
     const recipesPromises = recipes.map(recipe => Recipe.create(recipe))
     const recipeResults = await Promise.all(recipesPromises)
-    let recipesId = recipeResults.map(result => result.rows[0].id)
+    let recipesId = recipeResults.map(result => result.rows[0].id) // 10 ids de receitas
 
        // RecipeFiles
 		let recipe_files = []

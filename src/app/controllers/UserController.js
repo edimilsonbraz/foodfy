@@ -36,26 +36,9 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            let { email, is_admin } = req.body
-    
-            //um token para esse usuário
-            const token = crypto.randomBytes(20).toString('hex')
-    
-            const randomPassword = crypto.randomBytes(4).toString("hex")
-            req.body.password = randomPassword
-    
-            const userId = await User.create(req.body)
-            req.session.userId = userId
-            const { userId: id } = req.session
-    
-            //criar uma expiração
-            let now = new Date();
-            now = now.setHours(now.getHours() + 48)
-    
-            await User.put(id, {
-                reset_token: token,
-                reset_token_expires: now
-            })
+            const {id, email, password, is_admin} = await User.create(req.body)
+
+            const user = await User.findOne({ where: {id} })
     
             //enviar um email com um link da senha
             await mailer.sendMail({
@@ -63,31 +46,29 @@ module.exports = {
                 from: 'no-reply@foodfy.com.br',
                 subject: 'Cadastro com sucesso! Altere sua senha pré definida!',
                 html: `
-                <h2>Olá, Criamos um senha pré definida para sua entrada no sistema, e estamos enviando este email para que você atualizar como preferir!!!</h2>
+                <h2>Seja bem vindo ao Foodfy, ${user.name}</h2>
 
-                <h3>Sua senha é: ${randomPassword}</h3>
-
-                <p>Clique no link abaixo para alterá-la!</p>
-                
-                <p>
-                    <a href="http://localhost:3000/admin/reset-password?token=${token}" target="_blank">
-                    NOVA SENHA
-                    </a>
-                    <p>Este email com o link de alteração de senha é válido apenas para as próximas 48 horas.</p>
+                <p>Sua conta foi criada com sucesso, e a partir de agora poderá desfrutar
+                dos segredos de nossas deliciosas receitas!
                 </p>
+                <br>
+
+                <p>Aqui estão seus dados de acesso à plataforma:</p>
+                <p>Usuário: ${email}</p>
+                <p>Senha: ${password}</p>
+                <br>
+
+                <p> Lembre-se de que pode alterar sua senha a qualquer momento dentro da plataforma.<p>
+
                 `
             })
-    
-            if (is_admin != 'true') {
-                is_admin = false
-            }
     
             const users = await User.list()
     
             //avisar o usuário que enviamos o email
             return res.render('admin/users/index', { 
                 users,
-                success: "Usuário cadastrado com sucesso! Confire o e-mail cadastrado!"
+                success: "Usuário cadastrado com sucesso! Confira o e-mail cadastrado!"
             })
             
         }catch(err) {

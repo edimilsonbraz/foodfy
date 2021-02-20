@@ -3,13 +3,14 @@ const Recipe = require('../models/Recipe')
 const File = require('../models/File')
 
 
+
 module.exports = {
   async index(req, res) {
     try {
       const { filter } = req.query
 
       if( filter ){
-      await Recipe.findBy(filter, function(recipes){
+      await Recipe.find(filter, function(recipes){
         return res.render('home/search', { recipes, filter })
 
       })
@@ -34,7 +35,7 @@ module.exports = {
                 return recipe
             })
     
-            const recipesImage = await Promise.all(recipesPromises)
+            let recipesImage = await Promise.all(recipesPromises)
         
         return res.render("home/index", { recipes, recipesImage })
       
