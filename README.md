@@ -93,10 +93,20 @@ pg_ctl -D /usr/local/var/postgres stop
 
 ## Executar a aplicação
 
-- Com a configuração do banco de dados feita, No terminal do VSC execute o comando node seed.js. Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
-
-
-
+- Com a configuração do banco de dados feita, No terminal do VSC execute o comando:
+```
+node seed.js. 
+```
+- Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
+- 
+- Inicie a aplicação:
+```
+$ cd Foodfy
+```
+- Inicie a aplicação:
+```
+$ npm start
+```
 
 ## License
 
