@@ -18,22 +18,25 @@
 Este aplicação apresenta algumas das mais recentes ferramentas e práticas em desenvolvimento web!!
 Alguns deles estão listados abaixo.
 
+
+### Frontend:
 - ⚛️ [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - ⚛️ [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
-- 💹 [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- 💹 [JAVASCRIPT](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- ⚛️ [NUNJUCKS](https://github.com/mozilla/nunjucks)
+- ⚛️ [LOTTIE](https://github.com/airbnb/lottie-web)
+
+### Backend:
 - ⚛️ [NODE](https://nodejs.org/en/)
 - ⚛️ [EXPRESS](https://github.com/expressjs/express)
-- 💹 [METHOD-ORRIDE](https://github.com/expressjs/method-override)
-- ⚛️ [NUNJUCKS](https://github.com/mozilla/nunjucks)
-- ⚛️ [POSTGRESQL](https://www.postgresql.org/)
-- 💹 [NPM-RULL-ALL](https://github.com/mysticatea/npm-run-all)
+- 💹 [POSTGRESQL](https://www.postgresql.org/)
 - ⚛️ [NODEMON](https://github.com/remy/nodemon)
-- ⚛️ [BROWSER-SYNC](https://github.com/BrowserSync/browser-sync)
 - 💹 [MULTER](https://github.com/expressjs/multer)
 - ⚛️ [NODE-CONNECT-SIMPLE](https://github.com/voxpelli/node-connect-pg-simple)
 - ⚛️ [BCRYPT](https://github.com/dcodeIO/bcrypt.js) 
 - 💹 [NODEMAILER](https://github.com/nodemailer/nodemailer)
 - ⚛️ [SESSION](https://github.com/expressjs/session)
+- ⚛️ [FAKER](https://github.com/marak/Faker.js/) 
 
 ## INSTALAÇÃO <BR>
 
