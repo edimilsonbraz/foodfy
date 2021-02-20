@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-  <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="600">
+<!--   <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy_eMEWz_K42P.png" width="600"> -->
   
 <br>
 <img src="https://ik.imagekit.io/1n1swj1w28/Foodfy02_qbkZct__dy.png" width="600">
@@ -39,6 +39,11 @@ Alguns deles estão listados abaixo.
 - ⚛️ [FAKER](https://github.com/marak/Faker.js/) 
 
 ## INSTALAÇÃO <BR>
+  
+Para clonar e executar essa aplicação você vai precisar dos seguintes softwares instalados em seu computador:
+- [Git](https://git-scm.com/)
+- [Node](https://nodejs.org/en/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 1 - Abra o terminal do seu computador e mude para o diretório que deseja manter este aplicativo. Execute o código
 ```
@@ -52,9 +57,27 @@ $ cd foodfy
 ```
 $ npm install
 ```
-4 - Esta aplicação requer um banco de dados onde todas as informações de receitas, chefs e usuários são armazenadas. DB usado no projeto [PostgresSQL](https://www.postgresql.org/)<br>
-5 - Depois de instalar o postgres, você precisará do [Postbird](https://www.electronjs.org/apps/postbird), um IDE para se comunicar com o servidor. Use o mesmo login e senha no arquivo src/config/db.js<br>
-6 - Com a configuração do banco de dados feita, No terminal do VSC execute o comando node seed.js. Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
+### Configuração do DB
+- Esta aplicação requer um banco de dados onde todas as informações de receitas, chefs e usuários são armazenadas. DB usado no projeto [PostgresSQL](https://www.postgresql.org/) | (versão que estou usando neste projeto, é a versão 12)<br>
+- Depois de instalar o postgres, você precisará do [Postbird](https://www.electronjs.org/apps/postbird), que é a visualização do BD numa interface gráfica. Use o mesmo login e senha no arquivo src/config/db.js<br>
+
+### Iniciando o PostgresSQL
+
+- ### Windows:
+1. Abra o Powershell como administrador, e navegue até a pasta de instalação:
+```
+$ cd "C:\Program Files\PostgreSQL\13\bin\"
+```
+2. Inicie o postgres com o comando abaixo:
+```
+$ .\pg_ctl.exe -D "C:\Program Files\PostgreSQL\13\data" start
+```
+3. Após o uso, o comando para desligá-lo é:
+```
+$ .\pg_ctl.exe -D "C:\Program Files\PostgreSQL\13\data" stop
+```
+
+- Com a configuração do banco de dados feita, No terminal do VSC execute o comando node seed.js. Isso irá preencher o banco de dados com alguns dados aleatórios em receitas, chefs e usuários. 
 
 Atualizando .....
 
